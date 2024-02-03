@@ -21,7 +21,9 @@ struct LandingView: View {
                     images: [
                         "Landing",
                         "Landing2",
-                        "Landing3"
+                        "Landing3",
+                        "Landing4",
+                        "Landing5"
                     ],
                     height: Constants.scrnPercForSlider(geometry)
                 )

@@ -17,7 +17,7 @@ struct ImageSliderView: View {
     var body: some View {
         Image(images[currentIndex])
             .resizable()
-            .scaledToFill()
+//            .scaleEffect(CGSize(width: 1.0, height: 4/3.0))
             .ignoresSafeArea()
             .padding(0)
             .frame(height: height)
@@ -35,7 +35,9 @@ struct ImageSliderView: View {
         images: [
             "Landing",
             "Landing2",
-            "Landing3"
+            "Landing3",
+            "Landing4",
+            "Landing5"
         ]
     )
 }

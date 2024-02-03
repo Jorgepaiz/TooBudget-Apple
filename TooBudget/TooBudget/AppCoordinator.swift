@@ -14,6 +14,8 @@ final class AppCoordinator {
     
     init() {
         self._currentView = AnyView(Text("Loading..."))
+        
+        navigate(.landing)
     }
     
     var currentView: AnyView {
