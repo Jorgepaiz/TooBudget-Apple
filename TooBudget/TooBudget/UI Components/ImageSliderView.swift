@@ -8,11 +8,34 @@
 import SwiftUI
 
 struct ImageSliderView: View {
+    let images: [String]
+    var height: CGFloat = 100
+    
+    @State private var currentIndex = 0
+    private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(images[currentIndex])
+            .resizable()
+            .scaledToFill()
+            .ignoresSafeArea()
+            .padding(0)
+            .frame(height: height)
+            .shadow(color: .gray, radius: 12, x: 3, y: -10)
+            .onReceive(timer, perform: { _ in
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    currentIndex = (currentIndex + 1) % images.count
+                }
+            })
     }
 }
 
 #Preview {
-    ImageSliderView()
+    ImageSliderView(
+        images: [
+            "Landing",
+            "Landing2",
+            "Landing3"
+        ]
+    )
 }

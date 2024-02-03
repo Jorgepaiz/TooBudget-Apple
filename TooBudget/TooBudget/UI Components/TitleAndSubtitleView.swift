@@ -1,5 +1,5 @@
 //
-//  TitleAndSubtitle.swift
+//  TitleAndSubtitleView.swift
 //  TooBudget
 //
 //  Created by Jorge Paiz on 2/2/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TitleAndSubtitle: View {
+struct TitleAndSubtitleView: View {
     let title: String
     let subtitle: String
     var maxWidth: CGFloat = 300
@@ -25,7 +25,7 @@ struct TitleAndSubtitle: View {
 }
 
 #Preview {
-    TitleAndSubtitle(
+    TitleAndSubtitleView(
         title: "long_text_placeholder",
         subtitle: "long_text_placeholder"
     )
