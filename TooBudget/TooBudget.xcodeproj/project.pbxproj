@@ -21,7 +21,27 @@
 		8898F5102B6DBF7A00C3C86A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F50F2B6DBF7A00C3C86A /* HomeCoordinator.swift */; };
 		8898F5132B6DC03B00C3C86A /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5122B6DC03B00C3C86A /* ViewModelProtocol.swift */; };
 		8898F5152B6DC04300C3C86A /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5142B6DC04300C3C86A /* CoordinatorProtocol.swift */; };
+		8898F51D2B6DCC7600C3C86A /* TooBudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F51C2B6DCC7600C3C86A /* TooBudgetTests.swift */; };
+		8898F52A2B6DCCBD00C3C86A /* TooBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5292B6DCCBD00C3C86A /* TooBudgetUITests.swift */; };
+		8898F52C2B6DCCBD00C3C86A /* TooBudgetUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F52B2B6DCCBD00C3C86A /* TooBudgetUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8898F51E2B6DCC7600C3C86A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8844736E2B6D9943001E347A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 884473752B6D9943001E347A;
+			remoteInfo = TooBudget;
+		};
+		8898F52D2B6DCCBD00C3C86A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8844736E2B6D9943001E347A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 884473752B6D9943001E347A;
+			remoteInfo = TooBudget;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		884473762B6D9943001E347A /* TooBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TooBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,10 +60,29 @@
 		8898F50F2B6DBF7A00C3C86A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		8898F5122B6DC03B00C3C86A /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		8898F5142B6DC04300C3C86A /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		8898F51A2B6DCC7600C3C86A /* TooBudgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TooBudgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8898F51C2B6DCC7600C3C86A /* TooBudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetTests.swift; sourceTree = "<group>"; };
+		8898F5272B6DCCBD00C3C86A /* TooBudgetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TooBudgetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8898F5292B6DCCBD00C3C86A /* TooBudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetUITests.swift; sourceTree = "<group>"; };
+		8898F52B2B6DCCBD00C3C86A /* TooBudgetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		884473732B6D9943001E347A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8898F5172B6DCC7600C3C86A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8898F5242B6DCCBD00C3C86A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				884473782B6D9943001E347A /* TooBudget */,
+				8898F51B2B6DCC7600C3C86A /* TooBudgetTests */,
+				8898F5282B6DCCBD00C3C86A /* TooBudgetUITests */,
 				884473772B6D9943001E347A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				884473762B6D9943001E347A /* TooBudget.app */,
+				8898F51A2B6DCC7600C3C86A /* TooBudgetTests.xctest */,
+				8898F5272B6DCCBD00C3C86A /* TooBudgetUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,6 +190,23 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		8898F51B2B6DCC7600C3C86A /* TooBudgetTests */ = {
+			isa = PBXGroup;
+			children = (
+				8898F51C2B6DCC7600C3C86A /* TooBudgetTests.swift */,
+			);
+			path = TooBudgetTests;
+			sourceTree = "<group>";
+		};
+		8898F5282B6DCCBD00C3C86A /* TooBudgetUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8898F5292B6DCCBD00C3C86A /* TooBudgetUITests.swift */,
+				8898F52B2B6DCCBD00C3C86A /* TooBudgetUITestsLaunchTests.swift */,
+			);
+			path = TooBudgetUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +227,42 @@
 			productReference = 884473762B6D9943001E347A /* TooBudget.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8898F5192B6DCC7600C3C86A /* TooBudgetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8898F5202B6DCC7600C3C86A /* Build configuration list for PBXNativeTarget "TooBudgetTests" */;
+			buildPhases = (
+				8898F5162B6DCC7600C3C86A /* Sources */,
+				8898F5172B6DCC7600C3C86A /* Frameworks */,
+				8898F5182B6DCC7600C3C86A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8898F51F2B6DCC7600C3C86A /* PBXTargetDependency */,
+			);
+			name = TooBudgetTests;
+			productName = TooBudgetTests;
+			productReference = 8898F51A2B6DCC7600C3C86A /* TooBudgetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8898F5262B6DCCBD00C3C86A /* TooBudgetUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8898F52F2B6DCCBD00C3C86A /* Build configuration list for PBXNativeTarget "TooBudgetUITests" */;
+			buildPhases = (
+				8898F5232B6DCCBD00C3C86A /* Sources */,
+				8898F5242B6DCCBD00C3C86A /* Frameworks */,
+				8898F5252B6DCCBD00C3C86A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8898F52E2B6DCCBD00C3C86A /* PBXTargetDependency */,
+			);
+			name = TooBudgetUITests;
+			productName = TooBudgetUITests;
+			productReference = 8898F5272B6DCCBD00C3C86A /* TooBudgetUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -179,6 +275,14 @@
 				TargetAttributes = {
 					884473752B6D9943001E347A = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					8898F5192B6DCC7600C3C86A = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 884473752B6D9943001E347A;
+					};
+					8898F5262B6DCCBD00C3C86A = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 884473752B6D9943001E347A;
 					};
 				};
 			};
@@ -196,6 +300,8 @@
 			projectRoot = "";
 			targets = (
 				884473752B6D9943001E347A /* TooBudget */,
+				8898F5192B6DCC7600C3C86A /* TooBudgetTests */,
+				8898F5262B6DCCBD00C3C86A /* TooBudgetUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,6 +314,20 @@
 				8844738A2B6D9DBD001E347A /* Launch Screen.storyboard in Resources */,
 				884473822B6D9944001E347A /* Preview Assets.xcassets in Resources */,
 				8844737E2B6D9944001E347A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8898F5182B6DCC7600C3C86A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8898F5252B6DCCBD00C3C86A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +352,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8898F5162B6DCC7600C3C86A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8898F51D2B6DCC7600C3C86A /* TooBudgetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8898F5232B6DCCBD00C3C86A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8898F52C2B6DCCBD00C3C86A /* TooBudgetUITestsLaunchTests.swift in Sources */,
+				8898F52A2B6DCCBD00C3C86A /* TooBudgetUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8898F51F2B6DCC7600C3C86A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 884473752B6D9943001E347A /* TooBudget */;
+			targetProxy = 8898F51E2B6DCC7600C3C86A /* PBXContainerItemProxy */;
+		};
+		8898F52E2B6DCCBD00C3C86A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 884473752B6D9943001E347A /* TooBudget */;
+			targetProxy = 8898F52D2B6DCCBD00C3C86A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		884473832B6D9944001E347A /* Debug */ = {
@@ -446,6 +596,86 @@
 			};
 			name = Release;
 		};
+		8898F5212B6DCC7600C3C86A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 93XRVQ86R7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorgepaiz.TooBudgetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TooBudget.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TooBudget";
+			};
+			name = Debug;
+		};
+		8898F5222B6DCC7600C3C86A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 93XRVQ86R7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorgepaiz.TooBudgetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TooBudget.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TooBudget";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8898F5302B6DCCBD00C3C86A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 93XRVQ86R7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorgepaiz.TooBudgetUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TooBudget;
+			};
+			name = Debug;
+		};
+		8898F5312B6DCCBD00C3C86A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 93XRVQ86R7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorgepaiz.TooBudgetUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TooBudget;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -463,6 +693,24 @@
 			buildConfigurations = (
 				884473862B6D9944001E347A /* Debug */,
 				884473872B6D9944001E347A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8898F5202B6DCC7600C3C86A /* Build configuration list for PBXNativeTarget "TooBudgetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8898F5212B6DCC7600C3C86A /* Debug */,
+				8898F5222B6DCC7600C3C86A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8898F52F2B6DCCBD00C3C86A /* Build configuration list for PBXNativeTarget "TooBudgetUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8898F5302B6DCCBD00C3C86A /* Debug */,
+				8898F5312B6DCCBD00C3C86A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
