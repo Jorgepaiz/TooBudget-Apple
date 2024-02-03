@@ -87,6 +87,7 @@
 		8898F5452B6DEEEC00C3C86A /* SocialMediaAccesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaAccesView.swift; sourceTree = "<group>"; };
 		8898F5472B6DEF7B00C3C86A /* ShapeStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeStyles.swift; sourceTree = "<group>"; };
 		8898F5492B6DEFE900C3C86A /* VersionBuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionBuildView.swift; sourceTree = "<group>"; };
+		88C842ED2B6E0E46009BB0BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +138,7 @@
 		884473782B6D9943001E347A /* TooBudget */ = {
 			isa = PBXGroup;
 			children = (
+				88C842ED2B6E0E46009BB0BE /* Info.plist */,
 				884473792B6D9943001E347A /* TooBudgetApp.swift */,
 				8898F4FF2B6DBDF300C3C86A /* AppCoordinator.swift */,
 				8898F5012B6DBE9300C3C86A /* Model */,
@@ -583,6 +585,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TooBudget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "TooBudget+";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -632,6 +635,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TooBudget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "TooBudget+";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
