@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TooBudgetApp: App {
+    private let appCoordinator = AppCoordinator()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            appCoordinator.currentView
         }
     }
 }

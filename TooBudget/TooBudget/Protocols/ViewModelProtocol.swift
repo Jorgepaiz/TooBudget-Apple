@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol ViewModelProtocol {
+    var coordinator: CoordinatorProtocol { get }
+}

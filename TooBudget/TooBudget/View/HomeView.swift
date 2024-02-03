@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Bindable private var viewModel: HomeViewModel
+    
+    init(_ viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geomery in
+        }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(HomeViewModel(HomeCoordinator(AppCoordinator())))
 }

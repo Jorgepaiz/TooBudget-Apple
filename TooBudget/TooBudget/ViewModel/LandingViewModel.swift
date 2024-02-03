@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import Observation
+
+@Observable
+final class LandingViewModel: ViewModelProtocol {
+    let coordinator: CoordinatorProtocol
+    
+    init(_ coordinator: LandingCoordinator) {
+        self.coordinator = coordinator
+    }
+}

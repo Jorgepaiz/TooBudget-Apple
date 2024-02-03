@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct LandingView: View {
+    @Bindable private var viewModel: LandingViewModel
+    
+    init(_ viewModel: LandingViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+        }
     }
 }
 
 #Preview {
-    LandingView()
+    LandingView(LandingViewModel(LandingCoordinator(AppCoordinator())))
 }
