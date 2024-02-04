@@ -29,6 +29,7 @@ struct SocialMediaAccessView: View {
             }
             .buttonStyle(SocialButtonStyle())
         }
+        .padding(.bottom, 10)
     }
 }
 

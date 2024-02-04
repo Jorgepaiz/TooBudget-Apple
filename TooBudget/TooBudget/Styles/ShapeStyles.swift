@@ -12,7 +12,6 @@ struct RectangleToLineStyle: ViewModifier {
         content
             .frame(height: 1)
             .foregroundColor(.principal)
-            .shadow(color: .gray, radius: 3, x: 3, y: 2)
     }
 }
 

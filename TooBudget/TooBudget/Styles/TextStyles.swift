@@ -12,11 +12,12 @@ struct TitleTextStyle: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .foregroundColor(.shade3)
+            .foregroundColor(.principal)
             .font(.largeTitle)
-            .fontWeight(.light)
+            .fontWeight(.thin)
             .multilineTextAlignment(.center)
             .lineLimit(1)
+            .kerning(2)
             .frame(maxWidth: maxWidth)
     }
 }
@@ -26,11 +27,12 @@ struct SubtitleTextStyle: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .foregroundColor(.shade3)
+            .foregroundColor(.gray)
             .font(.callout)
-            .fontWeight(.thin)
+            .fontWeight(.light)
             .multilineTextAlignment(.center)
             .lineLimit(2)
+            .kerning(1)
             .frame(maxWidth: maxWidth)
     }
 }
@@ -38,10 +40,21 @@ struct SubtitleTextStyle: ViewModifier {
 struct AnnotationTextStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .foregroundColor(.shade3)
+            .foregroundColor(.principal)
             .font(.subheadline)
             .fontWeight(.light)
+            .kerning(1)
             .frame(width: 130)
+    }
+}
+
+struct NormalTextStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(.principal)
+            .font(.body)
+            .fontWeight(.light)
+            .kerning(1)
     }
 }
 
@@ -56,6 +69,10 @@ extension View {
     
     func annotationTextStyle() -> some View {
         self.modifier(AnnotationTextStyle())
+    }
+    
+    func normalTextStyle() -> some View {
+        self.modifier(NormalTextStyle())
     }
 }
 

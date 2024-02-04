@@ -16,6 +16,8 @@ struct PrincipalButtonStyle: ButtonStyle {
             .background((configuration.isPressed ? Color.shade1 : Color.principal).gradient)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .font(.headline)
+            .fontWeight(.medium)
+            .kerning(2)
             .shadow(color: .gray, radius: 3, x: 3, y: 3)
             .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
     }
@@ -34,7 +36,8 @@ struct TextButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.subheadline)
-            .fontWeight(.medium)
+            .fontWeight(.regular)
+            .kerning(1)
             .foregroundStyle(.white.gradient)
             .frame(minWidth: 0, idealWidth: .infinity)
             .padding(.horizontal, 10)

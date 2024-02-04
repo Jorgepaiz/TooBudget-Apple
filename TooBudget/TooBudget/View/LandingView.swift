@@ -26,7 +26,9 @@ struct LandingView: View {
                         "Landing5"
                     ],
                     height: Constants.scrnPercForSlider(geometry)
+//                    size: geometry.size
                 )
+                
                 TitleAndSubtitleView(
                     title: "landing_title",
                     subtitle: "landing_subtitle",
@@ -40,8 +42,8 @@ struct LandingView: View {
                 
                 // main buttons
                 HStack(spacing: 30) {
-                    Button("btn_sign_in") {}
-                    Button("btn_sign_up") {}
+                    Button("btn_sign_in") { viewModel.showSignInView() }
+                    Button("btn_sign_up") { viewModel.showSignUpView() }
                 }
                 .buttonStyle(PrincipalButtonStyle())
                 .padding(.horizontal, Constants.mainHorizontalPadding)
@@ -55,8 +57,6 @@ struct LandingView: View {
                 SocialMediaAccessView()
                     .padding(.horizontal, Constants.mainHorizontalPadding)
                 
-                Spacer()
-                
                 // version
                 VersionBuildView()
                     .padding(.horizontal, Constants.mainHorizontalPadding)
@@ -64,14 +64,20 @@ struct LandingView: View {
         }
         .background(.backdrop.gradient)
         .background(.white)
-        .sheet(isPresented: $viewModel.sheetOfSignInView) {}
-        .sheet(isPresented: $viewModel.sheetOfSignUpView) {}
-        .sheet(isPresented: $viewModel.sheetOfForgotView) {}
+        .sheet(isPresented: $viewModel.sheetOfSignInView) {
+            SignInView(SignInViewModel(viewModel))
+        }
+        .sheet(isPresented: $viewModel.sheetOfSignUpView) {
+            SignUpView(SignUpViewModel(viewModel))
+        }
+        .sheet(isPresented: $viewModel.sheetOfForgotView) {
+            ForgotView(ForgotViewModel(viewModel))
+        }
         .fullScreenCover(isPresented: $viewModel.showActivityIndicator) {}
     }
 }
 
 #Preview {
     LandingView(LandingViewModel(LandingCoordinator(AppCoordinator())))
-//        .environment(\.locale, Locale(identifier: "es"))
+        .environment(\.locale, Locale(identifier: "es"))
 }
