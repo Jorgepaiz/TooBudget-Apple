@@ -53,7 +53,9 @@ struct ForgotView: View {
                                         .textContentType(.emailAddress)
                                         .submitLabel(.next)
                                     
-                                    Button("btn_forgot_password_send") {}
+                                    Button("btn_forgot_password_send") {
+                                        viewModel.validateForm()
+                                    }
                                         .buttonStyle(PrincipalButtonStyle())
                                         .padding(.top, 10)
                                 }

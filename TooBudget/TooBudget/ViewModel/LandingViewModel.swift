@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+import FirebaseAuth
 
 @Observable
 final class LandingViewModel: ViewModelProtocol {
@@ -16,30 +17,54 @@ final class LandingViewModel: ViewModelProtocol {
         self.coordinator = coordinator
     }
     
-    var sheetOfSignInView = false
-    var sheetOfSignUpView = false
-    var sheetOfForgotView = false
-    var showActivityIndicator = false
+    var signInSheet = false
+    var signUpSheet = false
+    var forgotSheet = false
+    var modalSheet = false
+    var activityIndicatorMessage = ""
     
     private func closeAllSheets() {
-        sheetOfSignInView = false
-        sheetOfSignUpView = false
-        sheetOfForgotView = false
-        showActivityIndicator = false
+        signInSheet = false
+        signUpSheet = false
+        forgotSheet = false
+        modalSheet = false
+    }
+    
+    private func showActivityIndicator(_ message: String, action: @escaping () -> Void) {
+        closeAllSheets()
+        activityIndicatorMessage = NSLocalizedString(message, comment: "")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.modalSheet.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                action()
+            }
+        }
     }
     
     func showSignInView() {
         closeAllSheets()
-        sheetOfSignInView.toggle()
+        signInSheet.toggle()
     }
     
     func showSignUpView() {
         closeAllSheets()
-        sheetOfSignUpView.toggle()
+        signUpSheet.toggle()
     }
     
     func showForgotView() {
         closeAllSheets()
-        sheetOfForgotView.toggle()
+        forgotSheet.toggle()
+    }
+    
+    func logIn(email: String, password: String) {
+        showActivityIndicator("message_sign_in") {}
+    }
+    
+    func createAccount(fullname: String, email: String, password: String) {
+        showActivityIndicator("message_sign_up") {}
+    }
+    
+    func forgotPassword(email: String) {
+        showActivityIndicator("message_forgot_password") {}
     }
 }

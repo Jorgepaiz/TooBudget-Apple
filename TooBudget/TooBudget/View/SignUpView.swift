@@ -86,7 +86,7 @@ struct SignUpView: View {
                                         .textContentType(.password)
                                         .submitLabel(.done)
                                     
-                                    Button("btn_sign_up_create_account") {}
+                                    Button("btn_sign_up_create_account") { viewModel.validateForm() }
                                         .buttonStyle(PrincipalButtonStyle())
                                         .padding(.top, 10)
                                 }

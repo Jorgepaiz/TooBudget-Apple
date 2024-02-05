@@ -150,6 +150,40 @@
         }
       }
     },
+    "email_error_not_valid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email is not valid."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correo electrónico no válido."
+          }
+        }
+      }
+    },
+    "email_error_required" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The \\\"Email\\\" field is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\\\"Correo electrónico\\\" es obligatorio."
+          }
+        }
+      }
+    },
     "forgot_password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -231,6 +265,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre completo"
+          }
+        }
+      }
+    },
+    "full_name_error_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only name and surname."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo nombre y apellido."
+          }
+        }
+      }
+    },
+    "full_name_error_required" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The \\\"Full name\\\" field is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\\\"Nombre completo\\\" es obligatorio."
           }
         }
       }
@@ -436,6 +504,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contraseña"
+          }
+        }
+      }
+    },
+    "password_error_policies" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8 characters, letters, and numbers."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8 caracteres, letras y números."
+          }
+        }
+      }
+    },
+    "password_error_required" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The \\\"Password\\\" field is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\\\"Contraseña\\\" es obligatorio."
           }
         }
       }

@@ -26,7 +26,6 @@ struct LandingView: View {
                         "Landing5"
                     ],
                     height: Constants.scrnPercForSlider(geometry)
-//                    size: geometry.size
                 )
                 
                 TitleAndSubtitleView(
@@ -64,16 +63,18 @@ struct LandingView: View {
         }
         .background(.backdrop.gradient)
         .background(.white)
-        .sheet(isPresented: $viewModel.sheetOfSignInView) {
+        .sheet(isPresented: $viewModel.signInSheet) {
             SignInView(SignInViewModel(viewModel))
         }
-        .sheet(isPresented: $viewModel.sheetOfSignUpView) {
+        .sheet(isPresented: $viewModel.signUpSheet) {
             SignUpView(SignUpViewModel(viewModel))
         }
-        .sheet(isPresented: $viewModel.sheetOfForgotView) {
+        .sheet(isPresented: $viewModel.forgotSheet) {
             ForgotView(ForgotViewModel(viewModel))
         }
-        .fullScreenCover(isPresented: $viewModel.showActivityIndicator) {}
+        .fullScreenCover(isPresented: $viewModel.modalSheet) {
+            ActivityIndicator(message: viewModel.activityIndicatorMessage)
+        }
     }
 }
 

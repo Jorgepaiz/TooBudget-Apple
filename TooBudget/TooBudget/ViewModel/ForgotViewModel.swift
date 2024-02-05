@@ -21,4 +21,21 @@ final class ForgotViewModel {
     func showSignInView() {
         landingViewModel.showSignInView()
     }
+    
+    func validateForm() {
+        // validate email
+        email = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        if email.isEmpty {
+            errorEmail = "email_error_required"
+        } else if !Validations.isValidEmail(email) {
+            errorEmail = "email_error_not_valid"
+        } else {
+            errorEmail = ""
+        }
+        
+        // create account
+        if errorEmail.isEmpty {
+            landingViewModel.forgotPassword(email: email)
+        }
+    }
 }

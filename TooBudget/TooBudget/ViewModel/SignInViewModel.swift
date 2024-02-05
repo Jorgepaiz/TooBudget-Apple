@@ -33,4 +33,30 @@ final class SignInViewModel {
     func showForgotView() {
         landingViewModel.showForgotView()
     }
+    
+    func validateForm() {
+        // validate email
+        email = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        if email.isEmpty {
+            errorEmail = "email_error_required"
+        } else if !Validations.isValidEmail(email) {
+            errorEmail = "email_error_not_valid"
+        } else {
+            errorEmail = ""
+        }
+        
+        // validate password
+        if password.isEmpty {
+            errorPassword = "password_error_required"
+        } else if !Validations.isValidPassword(password) {
+            errorPassword = "password_error_policies"
+        } else {
+            errorPassword = ""
+        }
+        
+        // create account
+        if errorEmail.isEmpty && errorPassword.isEmpty {
+            landingViewModel.logIn(email: email, password: password)
+        }
+    }
 }
