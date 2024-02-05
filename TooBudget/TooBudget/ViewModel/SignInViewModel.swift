@@ -35,28 +35,53 @@ final class SignInViewModel {
     }
     
     func validateForm() {
-        // validate email
+        // Validator instance
+        let validator = Authentication()
+        
+        // Trim whitespaces and newlines
         email = email.trimmingCharacters(in: .whitespacesAndNewlines)
-        if email.isEmpty {
-            errorEmail = "email_error_required"
-        } else if !Validations.isValidEmail(email) {
-            errorEmail = "email_error_not_valid"
-        } else {
-            errorEmail = ""
-        }
         
-        // validate password
-        if password.isEmpty {
-            errorPassword = "password_error_required"
-        } else if !Validations.isValidPassword(password) {
-            errorPassword = "password_error_policies"
-        } else {
-            errorPassword = ""
-        }
-        
-        // create account
-        if errorEmail.isEmpty && errorPassword.isEmpty {
+        // Attempt validation
+        do {
+            try validate(email: email, with: validator)
+            try validate(password: password, with: validator)
+            
+            // Create account if all validations pass
             landingViewModel.logIn(email: email, password: password)
+        } catch {
+            // Handle specific errors
+            handleError(error)
+        }
+    }
+    
+    // Specific validation functions
+    private func validate(email: String, with validator: Authentication) throws {
+        guard try validator.isValidEmail(email) else { throw AuthenticationError.emailNotValid }
+    }
+    
+    private func validate(password: String, with validator: Authentication) throws {
+        guard try validator.isValidPassword(password) else { throw AuthenticationError.passwordPolicies }
+    }
+    
+    // Centralized error handling
+    private func handleError(_ error: Error) {
+        // Clear previous error messages
+        errorEmail.removeAll()
+        errorPassword.removeAll()
+        
+        if let authError = error as? AuthenticationError {
+            switch authError {
+            case .emailIsRequired:
+                errorEmail = "email_error_required"
+            case .emailNotValid:
+                errorEmail = "email_error_not_valid"
+            case .passwordIsRequired:
+                errorPassword = "password_error_required"
+            case .passwordPolicies:
+                errorPassword = "password_error_policies"
+            default:
+                print("Unknown Authentication error: \(error)")
+            }
         }
     }
 }

@@ -23,19 +23,44 @@ final class ForgotViewModel {
     }
     
     func validateForm() {
-        // validate email
-        email = email.trimmingCharacters(in: .whitespacesAndNewlines)
-        if email.isEmpty {
-            errorEmail = "email_error_required"
-        } else if !Validations.isValidEmail(email) {
-            errorEmail = "email_error_not_valid"
-        } else {
-            errorEmail = ""
-        }
+        // Validator instance
+        let validator = Authentication()
         
-        // create account
-        if errorEmail.isEmpty {
+        // Trim whitespaces and newlines
+        email = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Attempt validation
+        do {
+            try validate(email: email, with: validator)
+            
+            // Create account if all validations pass
             landingViewModel.forgotPassword(email: email)
+        } catch {
+            // Handle specific errors
+            handleError(error)
         }
     }
+    
+    // Specific validation functions
+    private func validate(email: String, with validator: Authentication) throws {
+        guard try validator.isValidEmail(email) else { throw AuthenticationError.emailNotValid }
+    }
+    
+    // Centralized error handling
+    private func handleError(_ error: Error) {
+        // Clear previous error messages
+        errorEmail.removeAll()
+        
+        if let authError = error as? AuthenticationError {
+            switch authError {
+            case .emailIsRequired:
+                errorEmail = "email_error_required"
+            case .emailNotValid:
+                errorEmail = "email_error_not_valid"
+            default:
+                print("Unknown Authentication error: \(error)")
+            }
+        }
+    }
+        
 }

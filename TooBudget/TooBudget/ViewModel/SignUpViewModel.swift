@@ -33,38 +33,66 @@ final class SignUpViewModel {
     }
     
     func validateForm() {
-        // validate full name
+        // Validator instance
+        let validator = Authentication()
+        
+        // Trim whitespaces and newlines
         fullname = fullname.trimmingCharacters(in: .whitespacesAndNewlines)
-        if fullname.isEmpty {
-            errorFullname = "full_name_error_required"
-        } else if !Validations.isValidFullName(fullname) {
-            errorFullname = "full_name_error_name"
-        } else {
-            errorFullname = ""
-        }
-        
-        // validate email
         email = email.trimmingCharacters(in: .whitespacesAndNewlines)
-        if email.isEmpty {
-            errorEmail = "email_error_required"
-        } else if !Validations.isValidEmail(email) {
-            errorEmail = "email_error_not_valid"
-        } else {
-            errorEmail = ""
-        }
         
-        // validate password
-        if password.isEmpty {
-            errorPassword = "password_error_required"
-        } else if !Validations.isValidPassword(password) {
-            errorPassword = "password_error_policies"
-        } else {
-            errorPassword = ""
-        }
-        
-        // create account
-        if errorFullname.isEmpty && errorEmail.isEmpty && errorPassword.isEmpty {
+        // Attempt validation
+        do {
+            try validate(fullname: fullname, with: validator)
+            try validate(email: email, with: validator)
+            try validate(password: password, with: validator)
+            
+            // Create account if all validations pass
             landingViewModel.createAccount(fullname: fullname, email: email, password: password)
+        } catch {
+            // Handle specific errors
+            handleError(error)
         }
     }
+    
+    // Specific validation functions
+    private func validate(fullname: String, with validator: Authentication) throws {
+        guard try validator.isValidFullname(fullname) else { throw AuthenticationError.fullnameNotValid }
+    }
+    
+    private func validate(email: String, with validator: Authentication) throws {
+        guard try validator.isValidEmail(email) else { throw AuthenticationError.emailNotValid }
+    }
+    
+    private func validate(password: String, with validator: Authentication) throws {
+        guard try validator.isValidPassword(password) else { throw AuthenticationError.passwordPolicies }
+    }
+    
+    // Centralized error handling
+    private func handleError(_ error: Error) {
+        // Clear previous error messages
+        errorFullname.removeAll()
+        errorEmail.removeAll()
+        errorPassword.removeAll()
+        
+        if let authError = error as? AuthenticationError {
+            switch authError {
+            case .fullnameIsRequired:
+                errorFullname = "full_name_error_required"
+            case .fullnameNotValid:
+                errorFullname = "full_name_error_name"
+            case .emailIsRequired:
+                errorEmail = "email_error_required"
+            case .emailNotValid:
+                errorEmail = "email_error_not_valid"
+            case .passwordIsRequired:
+                errorPassword = "password_error_required"
+            case .passwordPolicies:
+                errorPassword = "password_error_policies"
+            }
+        } else {
+            // Log unknown errors
+            print("Unknown Authentication error: \(error)")
+        }
+    }
+    
 }

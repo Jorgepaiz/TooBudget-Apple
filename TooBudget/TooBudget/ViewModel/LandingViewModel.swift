@@ -61,8 +61,44 @@ final class LandingViewModel: ViewModelProtocol {
     }
     
     func createAccount(fullname: String, email: String, password: String) {
-        showActivityIndicator("message_sign_up") {}
+        showActivityIndicator("message_sign_up") {
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+                guard let self = self else { return }
+                
+                if let error = error {
+                    print("There was an error creating an account. Error detail: \(error.localizedDescription)")
+                    return // Early exit on error
+                }
+                
+                guard let user = result?.user else {
+                    print("Failed to retrieve user after account creation.")
+                    return // Early exit if user is unexpectedly nil
+                }
+                
+                // Proceed to update the user profile
+                self.updateUserProfile(for: user, withFullname: fullname)
+            }
+        }
     }
+    
+    private func updateUserProfile(for user: User, withFullname fullname: String) {
+        let changesRequest = user.createProfileChangeRequest()
+        changesRequest.displayName = fullname
+        
+        changesRequest.commitChanges { [weak self] error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                print("There was an error updating the account. Error detail: \(error.localizedDescription)")
+                return // Early exit on error
+            }
+            
+            print("Successfully created the user \(fullname) with the email \(String(describing: user.email))")
+            self.closeAllSheets()
+            self.coordinator.appCoordinator.navigate(.home)
+        }
+    }
+
     
     func forgotPassword(email: String) {
         showActivityIndicator("message_forgot_password") {}
