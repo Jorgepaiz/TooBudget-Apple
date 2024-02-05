@@ -1,5 +1,5 @@
 //
-//  Authentication.swift
+//  Validations.swift
 //  TooBudget
 //
 //  Created by Jorge Paiz on 2/4/24.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum AuthenticationError: Error {
+enum ValidationError: Error {
     case fullnameNotValid, fullnameIsRequired
     case emailNotValid, emailIsRequired
     case passwordPolicies, passwordIsRequired
 }
 
-final class Authentication {
+final class Validations {
     // Combine all regex checks into a single method to reduce redundancy
     private func matches(_ string: String, regex: String) -> Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
@@ -21,7 +21,7 @@ final class Authentication {
     }
     
     // Generalized validation method to handle empty string validation and regex matching
-    private func validate(_ value: String, with regex: String, emptyError: AuthenticationError, invalidError: AuthenticationError) throws -> Bool {
+    private func validate(_ value: String, with regex: String, emptyError: ValidationError, invalidError: ValidationError) throws -> Bool {
         guard !value.isEmpty else { throw emptyError }
         guard matches(value, regex: regex) else { throw invalidError }
         return true

@@ -15,7 +15,11 @@ struct HomeView: View {
     }
     
     var body: some View {
-        GeometryReader { geomery in
+        VStack {
+            Button("Logout") {
+                viewModel.logOut()
+            }
+            .buttonStyle(.bordered)
         }
     }
 }

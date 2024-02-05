@@ -36,7 +36,7 @@ final class SignInViewModel {
     
     func validateForm() {
         // Validator instance
-        let validator = Authentication()
+        let validator = Validations()
         
         // Trim whitespaces and newlines
         email = email.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -55,12 +55,12 @@ final class SignInViewModel {
     }
     
     // Specific validation functions
-    private func validate(email: String, with validator: Authentication) throws {
-        guard try validator.isValidEmail(email) else { throw AuthenticationError.emailNotValid }
+    private func validate(email: String, with validator: Validations) throws {
+        guard try validator.isValidEmail(email) else { throw ValidationError.emailNotValid }
     }
     
-    private func validate(password: String, with validator: Authentication) throws {
-        guard try validator.isValidPassword(password) else { throw AuthenticationError.passwordPolicies }
+    private func validate(password: String, with validator: Validations) throws {
+        guard try validator.isValidPassword(password) else { throw ValidationError.passwordPolicies }
     }
     
     // Centralized error handling
@@ -69,7 +69,7 @@ final class SignInViewModel {
         errorEmail.removeAll()
         errorPassword.removeAll()
         
-        if let authError = error as? AuthenticationError {
+        if let authError = error as? ValidationError {
             switch authError {
             case .emailIsRequired:
                 errorEmail = "email_error_required"

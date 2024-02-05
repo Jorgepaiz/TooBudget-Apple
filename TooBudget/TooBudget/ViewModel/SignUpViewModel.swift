@@ -34,7 +34,7 @@ final class SignUpViewModel {
     
     func validateForm() {
         // Validator instance
-        let validator = Authentication()
+        let validator = Validations()
         
         // Trim whitespaces and newlines
         fullname = fullname.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -55,16 +55,16 @@ final class SignUpViewModel {
     }
     
     // Specific validation functions
-    private func validate(fullname: String, with validator: Authentication) throws {
-        guard try validator.isValidFullname(fullname) else { throw AuthenticationError.fullnameNotValid }
+    private func validate(fullname: String, with validator: Validations) throws {
+        guard try validator.isValidFullname(fullname) else { throw ValidationError.fullnameNotValid }
     }
     
-    private func validate(email: String, with validator: Authentication) throws {
-        guard try validator.isValidEmail(email) else { throw AuthenticationError.emailNotValid }
+    private func validate(email: String, with validator: Validations) throws {
+        guard try validator.isValidEmail(email) else { throw ValidationError.emailNotValid }
     }
     
-    private func validate(password: String, with validator: Authentication) throws {
-        guard try validator.isValidPassword(password) else { throw AuthenticationError.passwordPolicies }
+    private func validate(password: String, with validator: Validations) throws {
+        guard try validator.isValidPassword(password) else { throw ValidationError.passwordPolicies }
     }
     
     // Centralized error handling
@@ -74,7 +74,7 @@ final class SignUpViewModel {
         errorEmail.removeAll()
         errorPassword.removeAll()
         
-        if let authError = error as? AuthenticationError {
+        if let authError = error as? ValidationError {
             switch authError {
             case .fullnameIsRequired:
                 errorFullname = "full_name_error_required"

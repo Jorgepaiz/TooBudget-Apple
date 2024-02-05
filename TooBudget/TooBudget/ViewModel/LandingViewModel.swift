@@ -23,6 +23,12 @@ final class LandingViewModel: ViewModelProtocol {
     var modalSheet = false
     var activityIndicatorMessage = ""
     
+    func previousLogin() {
+        if let _ = FirebaseService().currentUser() {
+            coordinator.appCoordinator.navigate(.home)
+        }
+    }
+    
     private func closeAllSheets() {
         signInSheet = false
         signUpSheet = false
@@ -57,50 +63,58 @@ final class LandingViewModel: ViewModelProtocol {
     }
     
     func logIn(email: String, password: String) {
-        showActivityIndicator("message_sign_in") {}
+        showActivityIndicator("message_sign_in") {
+            let firebaseService = FirebaseService()
+            
+            firebaseService.logIn(email: email, password: password) { result in
+                
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let user):
+                        self.closeAllSheets()
+                        self.coordinator.appCoordinator.navigate(.home)
+                        
+                    case .failure(let error):
+                        print("Error al loguear cuenta: \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
     }
     
     func createAccount(fullname: String, email: String, password: String) {
         showActivityIndicator("message_sign_up") {
-            Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-                guard let self = self else { return }
+            let firebaseService = FirebaseService()
+            
+            firebaseService.createAccount(fullname: fullname, email: email, password: password) { result in
                 
-                if let error = error {
-                    print("There was an error creating an account. Error detail: \(error.localizedDescription)")
-                    return // Early exit on error
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let user):
+                        self.closeAllSheets()
+                        self.coordinator.appCoordinator.navigate(.home)
+                        
+                    case .failure(let error):
+                        print("Error al crear cuenta: \(error.localizedDescription)")
+                    }
                 }
-                
-                guard let user = result?.user else {
-                    print("Failed to retrieve user after account creation.")
-                    return // Early exit if user is unexpectedly nil
-                }
-                
-                // Proceed to update the user profile
-                self.updateUserProfile(for: user, withFullname: fullname)
             }
         }
     }
-    
-    private func updateUserProfile(for user: User, withFullname fullname: String) {
-        let changesRequest = user.createProfileChangeRequest()
-        changesRequest.displayName = fullname
-        
-        changesRequest.commitChanges { [weak self] error in
-            guard let self = self else { return }
-            
-            if let error = error {
-                print("There was an error updating the account. Error detail: \(error.localizedDescription)")
-                return // Early exit on error
-            }
-            
-            print("Successfully created the user \(fullname) with the email \(String(describing: user.email))")
-            self.closeAllSheets()
-            self.coordinator.appCoordinator.navigate(.home)
-        }
-    }
-
     
     func forgotPassword(email: String) {
-        showActivityIndicator("message_forgot_password") {}
+        showActivityIndicator("message_forgot_password") {
+            let firebaseService = FirebaseService()
+            
+            firebaseService.forgotPassword(email: email) { error in
+                DispatchQueue.main.async {
+                    if let error {
+                        print("Error al enviar correo de cuenta: \(error.localizedDescription)")
+                    } else {
+                        self.closeAllSheets()
+                    }
+                }
+            }
+        }
     }
 }

@@ -75,6 +75,9 @@ struct LandingView: View {
         .fullScreenCover(isPresented: $viewModel.modalSheet) {
             ActivityIndicator(message: viewModel.activityIndicatorMessage)
         }
+        .onAppear() {
+            viewModel.previousLogin()
+        }
     }
 }
 

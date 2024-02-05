@@ -24,7 +24,7 @@ final class ForgotViewModel {
     
     func validateForm() {
         // Validator instance
-        let validator = Authentication()
+        let validator = Validations()
         
         // Trim whitespaces and newlines
         email = email.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -42,8 +42,8 @@ final class ForgotViewModel {
     }
     
     // Specific validation functions
-    private func validate(email: String, with validator: Authentication) throws {
-        guard try validator.isValidEmail(email) else { throw AuthenticationError.emailNotValid }
+    private func validate(email: String, with validator: Validations) throws {
+        guard try validator.isValidEmail(email) else { throw ValidationError.emailNotValid }
     }
     
     // Centralized error handling
@@ -51,7 +51,7 @@ final class ForgotViewModel {
         // Clear previous error messages
         errorEmail.removeAll()
         
-        if let authError = error as? AuthenticationError {
+        if let authError = error as? ValidationError {
             switch authError {
             case .emailIsRequired:
                 errorEmail = "email_error_required"
