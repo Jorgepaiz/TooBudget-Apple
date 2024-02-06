@@ -613,6 +613,9 @@
         }
       }
     },
+    "Set Favorites" : {
+
+    },
     "sign_in_instruction" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -714,6 +717,9 @@
           }
         }
       }
+    },
+    "Tap and hold a color to add it to your favorites" : {
+
     },
     "Unknown" : {
       "extractionState" : "manual",

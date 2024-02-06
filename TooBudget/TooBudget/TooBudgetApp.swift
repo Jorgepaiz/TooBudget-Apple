@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 @main
 struct TooBudgetApp: App {
@@ -15,6 +16,13 @@ struct TooBudgetApp: App {
     var body: some Scene {
         WindowGroup {
             appCoordinator.currentView
+                .task {
+                    try? Tips.resetDatastore()
+                    try? Tips.configure([
+                        .displayFrequency(.immediate),
+                        .datastoreLocation(.applicationDefault)
+                    ])
+                }
         }
     }
 }

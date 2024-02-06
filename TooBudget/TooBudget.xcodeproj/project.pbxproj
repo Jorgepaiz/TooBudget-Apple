@@ -16,6 +16,9 @@
 		880F34E92B705B0400D6C789 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34E82B705B0400D6C789 /* ActivityIndicatorView.swift */; };
 		880F34EC2B7167B600D6C789 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34EB2B7167B600D6C789 /* FirebaseService.swift */; };
 		880F34EE2B7167C700D6C789 /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34ED2B7167C700D6C789 /* FirebaseServiceProtocol.swift */; };
+		880F34F02B71AD8B00D6C789 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34EF2B71AD8B00D6C789 /* Tips.swift */; };
+		880F34F22B723F9800D6C789 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F12B723F9800D6C789 /* ToastView.swift */; };
+		880F34F42B7240C900D6C789 /* TipStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F32B7240C900D6C789 /* TipStyles.swift */; };
 		8844737A2B6D9943001E347A /* TooBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884473792B6D9943001E347A /* TooBudgetApp.swift */; };
 		8844737E2B6D9944001E347A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8844737D2B6D9944001E347A /* Assets.xcassets */; };
 		884473822B6D9944001E347A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884473812B6D9944001E347A /* Preview Assets.xcassets */; };
@@ -79,6 +82,9 @@
 		880F34E82B705B0400D6C789 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		880F34EB2B7167B600D6C789 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		880F34ED2B7167C700D6C789 /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
+		880F34EF2B71AD8B00D6C789 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
+		880F34F12B723F9800D6C789 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		880F34F32B7240C900D6C789 /* TipStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipStyles.swift; sourceTree = "<group>"; };
 		884473762B6D9943001E347A /* TooBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TooBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		884473792B6D9943001E347A /* TooBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetApp.swift; sourceTree = "<group>"; };
 		8844737D2B6D9944001E347A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				880DCC2F2B70546200CF56ED /* Validations.swift */,
+				880F34EF2B71AD8B00D6C789 /* Tips.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -308,6 +315,7 @@
 				8898F5492B6DEFE900C3C86A /* VersionBuildView.swift */,
 				88C842F22B6E8CAC009BB0BE /* CloseButtonView.swift */,
 				88C843192B702863009BB0BE /* HaveAccountView.swift */,
+				880F34F12B723F9800D6C789 /* ToastView.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -329,6 +337,7 @@
 				8898F5432B6DEE2F00C3C86A /* ButtonStyles.swift */,
 				8898F5472B6DEF7B00C3C86A /* ShapeStyles.swift */,
 				88C842F42B6F2B30009BB0BE /* ToggleStyles.swift */,
+				880F34F32B7240C900D6C789 /* TipStyles.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -486,11 +495,13 @@
 				880F34EE2B7167C700D6C789 /* FirebaseServiceProtocol.swift in Sources */,
 				8898F5062B6DBF3A00C3C86A /* LandingView.swift in Sources */,
 				8898F5392B6DE19900C3C86A /* TitleAndSubtitleView.swift in Sources */,
+				880F34F22B723F9800D6C789 /* ToastView.swift in Sources */,
 				880DCC302B70546200CF56ED /* Validations.swift in Sources */,
 				880F34EC2B7167B600D6C789 /* FirebaseService.swift in Sources */,
 				8898F50E2B6DBF7000C3C86A /* HomeViewModel.swift in Sources */,
 				8898F5082B6DBF4800C3C86A /* LandingViewModel.swift in Sources */,
 				8898F5152B6DC04300C3C86A /* CoordinatorProtocol.swift in Sources */,
+				880F34F02B71AD8B00D6C789 /* Tips.swift in Sources */,
 				8898F5462B6DEEEC00C3C86A /* SocialMediaAccesView.swift in Sources */,
 				88C843122B700D1C009BB0BE /* SignUpViewModel.swift in Sources */,
 				8898F5372B6DE0E300C3C86A /* Constants.swift in Sources */,
@@ -499,6 +510,7 @@
 				88C8431A2B702863009BB0BE /* HaveAccountView.swift in Sources */,
 				88C842F52B6F2B30009BB0BE /* ToggleStyles.swift in Sources */,
 				88C843182B700D55009BB0BE /* ForgotViewModel.swift in Sources */,
+				880F34F42B7240C900D6C789 /* TipStyles.swift in Sources */,
 				8898F5482B6DEF7B00C3C86A /* ShapeStyles.swift in Sources */,
 				880DCC242B7050EC00CF56ED /* AppDelegate.swift in Sources */,
 				8898F5132B6DC03B00C3C86A /* ViewModelProtocol.swift in Sources */,

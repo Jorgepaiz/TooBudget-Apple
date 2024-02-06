@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct LandingView: View {
     @Bindable private var viewModel: LandingViewModel
@@ -16,49 +17,83 @@ struct LandingView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
-                ImageSliderView(
-                    images: [
-                        "Landing",
-                        "Landing2",
-                        "Landing3",
-                        "Landing4",
-                        "Landing5"
-                    ],
-                    height: Constants.scrnPercForSlider(geometry)
-                )
-                
-                TitleAndSubtitleView(
-                    title: "landing_title",
-                    subtitle: "landing_subtitle",
-                    maxWidth: Constants.scrnPercForTitle(geometry)
-                )
-                
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                
-                // main buttons
-                HStack(spacing: 30) {
-                    Button("btn_sign_in") { viewModel.showSignInView() }
-                    Button("btn_sign_up") { viewModel.showSignUpView() }
+            ZStack {
+                // main view
+                VStack(spacing: 0) {
+                    ImageSliderView(
+                        images: [
+                            "Landing",
+                            "Landing2",
+                            "Landing3",
+                            "Landing4",
+                            "Landing5"
+                        ],
+                        height: Constants.scrnPercForSlider(geometry)
+                    )
+                    
+                    TitleAndSubtitleView(
+                        title: "landing_title",
+                        subtitle: "landing_subtitle",
+                        maxWidth: Constants.scrnPercForTitle(geometry)
+                    )
+                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    
+                    // main buttons
+                    HStack(spacing: 30) {
+                        Button("btn_sign_in") { viewModel.showSignInView() }
+                        //                        .popoverTip(favoriteLandmarkTip, arrowEdge: .top)
+                        Button("btn_sign_up") { viewModel.showSignUpView() }
+                        //                        .popoverTip(addAppIdeaTip, arrowEdge: .bottom)
+                    }
+                    .buttonStyle(PrincipalButtonStyle())
+                    .padding(.horizontal, Constants.mainHorizontalPadding)
+                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    
+                    // social media
+                    SocialMediaAccessView()
+                        .padding(.horizontal, Constants.mainHorizontalPadding)
+                    
+                    // version
+                    VersionBuildView()
+                        .padding(.horizontal, Constants.mainHorizontalPadding)
                 }
-                .buttonStyle(PrincipalButtonStyle())
-                .padding(.horizontal, Constants.mainHorizontalPadding)
                 
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                
-                // social media
-                SocialMediaAccessView()
-                    .padding(.horizontal, Constants.mainHorizontalPadding)
-                
-                // version
-                VersionBuildView()
-                    .padding(.horizontal, Constants.mainHorizontalPadding)
+                // notifications
+                VStack {
+                    Spacer()
+                    
+                    ToastView(
+                        title: "Information",
+                        message: "Custom message is long text to test capacity of the tip component."
+                    )
+                    
+                    ToastView(
+                        title: "Success",
+                        message: "Custom message is long text to test capacity of the tip component.",
+                        kind: .success
+                    )
+                    
+                    ToastView(
+                        title: "Warning",
+                        message: "Custom message is long text to test capacity of the tip component.",
+                        kind: .warning
+                    )
+                    
+                    ToastView(
+                        title: "Error",
+                        message: "Custom message is long text to test capacity of the tip component.",
+                        kind: .error
+                    )
+                }
+                .padding(.horizontal)
             }
         }
         .background(.backdrop.gradient)
@@ -84,4 +119,11 @@ struct LandingView: View {
 #Preview {
     LandingView(LandingViewModel(LandingCoordinator(AppCoordinator())))
         .environment(\.locale, Locale(identifier: "es"))
+        .task {
+            try? Tips.resetDatastore()
+            try? Tips.configure([
+                .displayFrequency(.immediate),
+//                .datastoreLocation(.applicationDefault)
+            ])
+        }
 }
