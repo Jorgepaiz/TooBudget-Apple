@@ -16,7 +16,6 @@
 		880F34E92B705B0400D6C789 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34E82B705B0400D6C789 /* ActivityIndicatorView.swift */; };
 		880F34EC2B7167B600D6C789 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34EB2B7167B600D6C789 /* FirebaseService.swift */; };
 		880F34EE2B7167C700D6C789 /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34ED2B7167C700D6C789 /* FirebaseServiceProtocol.swift */; };
-		880F34F02B71AD8B00D6C789 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34EF2B71AD8B00D6C789 /* Tips.swift */; };
 		880F34F22B723F9800D6C789 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F12B723F9800D6C789 /* ToastView.swift */; };
 		880F34F42B7240C900D6C789 /* TipStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F32B7240C900D6C789 /* TipStyles.swift */; };
 		8844737A2B6D9943001E347A /* TooBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884473792B6D9943001E347A /* TooBudgetApp.swift */; };
@@ -82,7 +81,6 @@
 		880F34E82B705B0400D6C789 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		880F34EB2B7167B600D6C789 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		880F34ED2B7167C700D6C789 /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
-		880F34EF2B71AD8B00D6C789 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		880F34F12B723F9800D6C789 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		880F34F32B7240C900D6C789 /* TipStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipStyles.swift; sourceTree = "<group>"; };
 		884473762B6D9943001E347A /* TooBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TooBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				880DCC2F2B70546200CF56ED /* Validations.swift */,
-				880F34EF2B71AD8B00D6C789 /* Tips.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -501,7 +498,6 @@
 				8898F50E2B6DBF7000C3C86A /* HomeViewModel.swift in Sources */,
 				8898F5082B6DBF4800C3C86A /* LandingViewModel.swift in Sources */,
 				8898F5152B6DC04300C3C86A /* CoordinatorProtocol.swift in Sources */,
-				880F34F02B71AD8B00D6C789 /* Tips.swift in Sources */,
 				8898F5462B6DEEEC00C3C86A /* SocialMediaAccesView.swift in Sources */,
 				88C843122B700D1C009BB0BE /* SignUpViewModel.swift in Sources */,
 				8898F5372B6DE0E300C3C86A /* Constants.swift in Sources */,

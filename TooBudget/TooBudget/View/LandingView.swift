@@ -72,24 +72,24 @@ struct LandingView: View {
                     
                     ToastView(
                         title: "Information",
-                        message: "Custom message is long text to test capacity of the tip component."
+                        message: "Custom message with long text for testing."
                     )
                     
                     ToastView(
                         title: "Success",
-                        message: "Custom message is long text to test capacity of the tip component.",
+                        message: "Custom message with long text for testing.",
                         kind: .success
                     )
                     
                     ToastView(
                         title: "Warning",
-                        message: "Custom message is long text to test capacity of the tip component.",
+                        message: "Custom message with long text for testing.",
                         kind: .warning
                     )
                     
                     ToastView(
                         title: "Error",
-                        message: "Custom message is long text to test capacity of the tip component.",
+                        message: "Custom message with long text for testing.",
                         kind: .error
                     )
                 }

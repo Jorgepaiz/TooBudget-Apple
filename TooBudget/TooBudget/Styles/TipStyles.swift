@@ -14,7 +14,7 @@ struct InfoTipStyle: TipViewStyle {
             HStack {
                 configuration.title
                     .font(.headline)
-                    .fontWeight(.regular)
+                    .fontWeight(.medium)
                     .kerning(2)
                     .foregroundStyle(.tint4)
                     .padding(.leading)
@@ -23,17 +23,17 @@ struct InfoTipStyle: TipViewStyle {
                 
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.headline)
+                        .font(.system(size: 20))
                         .fontWeight(.light)
-                        .foregroundStyle(.shade1.gradient.opacity(0.5))
+                        .foregroundStyle(.tint4.gradient.opacity(1.0))
                         .padding([.top, .trailing], 10)
                 }
             }
             HStack(alignment: .top) {
-                Image(systemName: "exclamationmark.triangle")
+                Image(systemName: "exclamationmark.circle")
                     .font(.title)
                     .fontWeight(.light)
-                    .foregroundStyle(.shade1.gradient.opacity(0.5))
+                    .foregroundStyle(.tint4.gradient)
                     .padding([.leading, .bottom])
                 
                 configuration.message
@@ -64,7 +64,7 @@ struct SuccessTipStyle: TipViewStyle {
             HStack {
                 configuration.title
                     .font(.headline)
-                    .fontWeight(.regular)
+                    .fontWeight(.medium)
                     .kerning(2)
                     .foregroundStyle(.tint4)
                     .padding(.leading)
@@ -73,17 +73,17 @@ struct SuccessTipStyle: TipViewStyle {
                 
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.headline)
+                        .font(.system(size: 20))
                         .fontWeight(.light)
-                        .foregroundStyle(.shade1.gradient.opacity(0.5))
+                        .foregroundStyle(.tint4.gradient.opacity(0.9))
                         .padding([.top, .trailing], 10)
                 }
             }
             HStack(alignment: .top) {
-                Image(systemName: "exclamationmark.triangle")
+                Image(systemName: "checkmark.circle")
                     .font(.title)
                     .fontWeight(.light)
-                    .foregroundStyle(.shade1.gradient.opacity(0.5))
+                    .foregroundStyle(.tint4.gradient)
                     .padding([.leading, .bottom])
                 
                 configuration.message
@@ -114,7 +114,7 @@ struct WarningTipStyle: TipViewStyle {
             HStack {
                 configuration.title
                     .font(.headline)
-                    .fontWeight(.regular)
+                    .fontWeight(.medium)
                     .kerning(2)
                     .foregroundStyle(.tint4)
                     .padding(.leading)
@@ -123,9 +123,9 @@ struct WarningTipStyle: TipViewStyle {
                 
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.headline)
+                        .font(.system(size: 20))
                         .fontWeight(.light)
-                        .foregroundStyle(.shade1.gradient.opacity(0.5))
+                        .foregroundStyle(.tint4.gradient.opacity(0.8))
                         .padding([.top, .trailing], 10)
                 }
             }
@@ -133,7 +133,7 @@ struct WarningTipStyle: TipViewStyle {
                 Image(systemName: "exclamationmark.triangle")
                     .font(.title)
                     .fontWeight(.light)
-                    .foregroundStyle(.shade1.gradient.opacity(0.5))
+                    .foregroundStyle(.tint4.gradient.opacity(0.9))
                     .padding([.leading, .bottom])
                 
                 configuration.message
@@ -164,7 +164,7 @@ struct ErrorTipStyle: TipViewStyle {
             HStack {
                 configuration.title
                     .font(.headline)
-                    .fontWeight(.regular)
+                    .fontWeight(.medium)
                     .kerning(2)
                     .foregroundStyle(.tint4)
                     .padding(.leading)
@@ -173,17 +173,17 @@ struct ErrorTipStyle: TipViewStyle {
                 
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.headline)
+                        .font(.system(size: 20))
                         .fontWeight(.light)
-                        .foregroundStyle(.shade1.gradient.opacity(0.5))
+                        .foregroundStyle(.tint4.gradient.opacity(0.8))
                         .padding([.top, .trailing], 10)
                 }
             }
             HStack(alignment: .top) {
-                Image(systemName: "exclamationmark.triangle")
+                Image(systemName: "x.circle")
                     .font(.title)
                     .fontWeight(.light)
-                    .foregroundStyle(.shade1.gradient.opacity(0.5))
+                    .foregroundStyle(.tint4.gradient.opacity(0.9))
                     .padding([.leading, .bottom])
                 
                 configuration.message
