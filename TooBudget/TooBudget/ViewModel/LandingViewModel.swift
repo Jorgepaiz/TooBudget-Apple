@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+import Firebase
 import FirebaseAuth
 
 @Observable
@@ -47,6 +48,31 @@ final class LandingViewModel: ViewModelProtocol {
         }
     }
     
+    private func saveUserData(_ user: User) -> Bool {
+        guard let email = user.email,
+              let fullname = user.displayName else {
+            print("can't get user data from Firebase")
+            return false
+        }
+        let newUser = UserModel(id: user.uid, fullname: fullname, email: email)
+        Utilities.saveUserData(newUser)
+        return true
+    }
+    
+    private func proccessLoginOrCreateResponse(_ result: Result<User, Error>) {
+        switch result {
+        case .success(let user):
+            if saveUserData(user) {
+                self.coordinator.appCoordinator.navigate(.home)
+            } else {
+                // TODO: show a ToastView with the error detail
+            }
+        case .failure(let error):
+            print("Login or create account error. Description: \(error.localizedDescription)")
+            // TODO: show a ToastView with the error detail
+        }
+    }
+    
     func showSignInView() {
         closeAllSheets()
         signInSheet.toggle()
@@ -67,16 +93,9 @@ final class LandingViewModel: ViewModelProtocol {
             let firebaseService = FirebaseService()
             
             firebaseService.logIn(email: email, password: password) { result in
-                
                 DispatchQueue.main.async {
-                    switch result {
-                    case .success(let user):
-                        self.closeAllSheets()
-                        self.coordinator.appCoordinator.navigate(.home)
-                        
-                    case .failure(let error):
-                        print("Error al loguear cuenta: \(error.localizedDescription)")
-                    }
+                    self.closeAllSheets()
+                    self.proccessLoginOrCreateResponse(result)
                 }
             }
         }
@@ -87,16 +106,9 @@ final class LandingViewModel: ViewModelProtocol {
             let firebaseService = FirebaseService()
             
             firebaseService.createAccount(fullname: fullname, email: email, password: password) { result in
-                
                 DispatchQueue.main.async {
-                    switch result {
-                    case .success(let user):
-                        self.closeAllSheets()
-                        self.coordinator.appCoordinator.navigate(.home)
-                        
-                    case .failure(let error):
-                        print("Error al crear cuenta: \(error.localizedDescription)")
-                    }
+                    self.closeAllSheets()
+                    self.proccessLoginOrCreateResponse(result)
                 }
             }
         }

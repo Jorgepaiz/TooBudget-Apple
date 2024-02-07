@@ -18,6 +18,9 @@
 		880F34EE2B7167C700D6C789 /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34ED2B7167C700D6C789 /* FirebaseServiceProtocol.swift */; };
 		880F34F22B723F9800D6C789 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F12B723F9800D6C789 /* ToastView.swift */; };
 		880F34F42B7240C900D6C789 /* TipStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F32B7240C900D6C789 /* TipStyles.swift */; };
+		880F34F62B73730900D6C789 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F52B73730900D6C789 /* UserModel.swift */; };
+		880F34F82B7374B700D6C789 /* SignUpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F72B7374B700D6C789 /* SignUpType.swift */; };
+		880F34FA2B73767600D6C789 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F34F92B73767600D6C789 /* Utilities.swift */; };
 		8844737A2B6D9943001E347A /* TooBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884473792B6D9943001E347A /* TooBudgetApp.swift */; };
 		8844737E2B6D9944001E347A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8844737D2B6D9944001E347A /* Assets.xcassets */; };
 		884473822B6D9944001E347A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884473812B6D9944001E347A /* Preview Assets.xcassets */; };
@@ -83,6 +86,9 @@
 		880F34ED2B7167C700D6C789 /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
 		880F34F12B723F9800D6C789 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		880F34F32B7240C900D6C789 /* TipStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipStyles.swift; sourceTree = "<group>"; };
+		880F34F52B73730900D6C789 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		880F34F72B7374B700D6C789 /* SignUpType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpType.swift; sourceTree = "<group>"; };
+		880F34F92B73767600D6C789 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		884473762B6D9943001E347A /* TooBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TooBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		884473792B6D9943001E347A /* TooBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetApp.swift; sourceTree = "<group>"; };
 		8844737D2B6D9944001E347A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				880DCC2F2B70546200CF56ED /* Validations.swift */,
+				880F34F92B73767600D6C789 /* Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -263,6 +270,7 @@
 		8898F5012B6DBE9300C3C86A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				880F34F52B73730900D6C789 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				8898F5032B6DBEC500C3C86A /* Views.swift */,
+				880F34F72B7374B700D6C789 /* SignUpType.swift */,
 			);
 			path = Enumerations;
 			sourceTree = "<group>";
@@ -480,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880F34F82B7374B700D6C789 /* SignUpType.swift in Sources */,
 				8898F50A2B6DBF5400C3C86A /* LandingCoordinator.swift in Sources */,
 				8898F53C2B6DE24D00C3C86A /* TextFieldStyles.swift in Sources */,
 				8898F5442B6DEE2F00C3C86A /* ButtonStyles.swift in Sources */,
@@ -514,8 +524,10 @@
 				8898F5002B6DBDF300C3C86A /* AppCoordinator.swift in Sources */,
 				8898F5342B6DDFB600C3C86A /* ImageSliderView.swift in Sources */,
 				8844737A2B6D9943001E347A /* TooBudgetApp.swift in Sources */,
+				880F34F62B73730900D6C789 /* UserModel.swift in Sources */,
 				8898F54A2B6DEFE900C3C86A /* VersionBuildView.swift in Sources */,
 				88C842EF2B6E8A90009BB0BE /* SignInView.swift in Sources */,
+				880F34FA2B73767600D6C789 /* Utilities.swift in Sources */,
 				8898F5042B6DBEC500C3C86A /* Views.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

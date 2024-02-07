@@ -69,7 +69,7 @@ struct LandingView: View {
                 // notifications
                 VStack {
                     Spacer()
-                    
+                    /*
                     ToastView(
                         title: "Information",
                         message: "Custom message with long text for testing."
@@ -92,6 +92,7 @@ struct LandingView: View {
                         message: "Custom message with long text for testing.",
                         kind: .error
                     )
+                     */
                 }
                 .padding(.horizontal)
             }
