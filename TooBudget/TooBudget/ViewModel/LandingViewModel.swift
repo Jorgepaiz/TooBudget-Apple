@@ -48,21 +48,15 @@ final class LandingViewModel: ViewModelProtocol {
         }
     }
     
-    private func saveUserData(_ user: User) -> Bool {
-        guard let email = user.email,
-              let fullname = user.displayName else {
-            print("can't get user data from Firebase")
-            return false
-        }
-        let newUser = UserModel(id: user.uid, fullname: fullname, email: email)
-        Utilities.saveUserData(newUser)
-        return true
-    }
-    
-    private func proccessLoginOrCreateResponse(_ result: Result<User, Error>) {
+    private func proccessLoginOrCreateResponse(_ result: Result<User, Error>, isLogin: Bool = true) {
         switch result {
         case .success(let user):
-            if saveUserData(user) {
+            if let fullname = user.displayName,
+               let email = user.email {
+                let newUser = UserModel(id: user.uid, fullname: fullname, email: email)
+                Task {
+                    await initializingDataModel(newUser, isLogin: isLogin)
+                }
                 self.coordinator.appCoordinator.navigate(.home)
             } else {
                 // TODO: show a ToastView with the error detail
@@ -71,6 +65,51 @@ final class LandingViewModel: ViewModelProtocol {
             print("Login or create account error. Description: \(error.localizedDescription)")
             // TODO: show a ToastView with the error detail
         }
+    }
+    
+    private func initializingDataModel(_ user: UserModel, isLogin: Bool) async {
+        if isLogin {
+            // TODO: flow for recover data
+        } else {
+            // start with new data
+            await deleteAllUsers()
+            await createUser(user)
+        }
+    }
+    
+    private func fetchAllUser() async {
+        let userRepository = UserRepository()
+        do {
+            let users = try await userRepository.fetchAll()
+            print("All users: \(users)")
+        } catch {
+            print("Error fetching all users, detail: \(error.localizedDescription)")
+        }
+    }
+    
+    private func createUser(_ user: UserModel) async {
+        let userRepository = UserRepository()
+        do {
+            try await userRepository.createUser(user)
+        } catch {
+            print("Error creating user, detail: \(error.localizedDescription)")
+        }
+    }
+    
+    private func deleteAllUsers() async {
+        let userRepository = UserRepository()
+        do {
+            try await userRepository.deleteAll()
+        } catch {
+            print("Error deleting all users, detail: \(error.localizedDescription)")
+        }
+    }
+    
+    func testDataBase() async {
+        await fetchAllUser()
+        let user = UserModel(id: "user" + String(Int.random(in: 0...100)), fullname: "jorge paiz", email: "jorge@paiz.com")
+        await createUser(user)
+        await fetchAllUser()
     }
     
     func showSignInView() {
@@ -108,7 +147,7 @@ final class LandingViewModel: ViewModelProtocol {
             firebaseService.createAccount(fullname: fullname, email: email, password: password) { result in
                 DispatchQueue.main.async {
                     self.closeAllSheets()
-                    self.proccessLoginOrCreateResponse(result)
+                    self.proccessLoginOrCreateResponse(result, isLogin: false)
                 }
             }
         }
@@ -129,4 +168,5 @@ final class LandingViewModel: ViewModelProtocol {
             }
         }
     }
+
 }

@@ -10,4 +10,5 @@ import Foundation
 enum Views {
     case landing
     case home
+    case budget
 }

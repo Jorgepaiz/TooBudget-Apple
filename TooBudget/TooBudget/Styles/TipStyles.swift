@@ -8,6 +8,8 @@
 import SwiftUI
 import TipKit
 
+fileprivate let closeIcon = "xmark.circle"
+
 struct InfoTipStyle: TipViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         VStack {
@@ -22,7 +24,7 @@ struct InfoTipStyle: TipViewStyle {
                 Spacer()
                 
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
-                    Image(systemName: "xmark.circle.fill")
+                    Image(systemName: closeIcon)
                         .font(.system(size: 20))
                         .fontWeight(.light)
                         .foregroundStyle(.tint4.gradient.opacity(1.0))
@@ -30,7 +32,7 @@ struct InfoTipStyle: TipViewStyle {
                 }
             }
             HStack(alignment: .top) {
-                Image(systemName: "exclamationmark.circle")
+                Image(systemName: "exclamationmark.circle.fill")
                     .font(.title)
                     .fontWeight(.light)
                     .foregroundStyle(.tint4.gradient)
@@ -72,7 +74,7 @@ struct SuccessTipStyle: TipViewStyle {
                 Spacer()
                 
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
-                    Image(systemName: "xmark.circle.fill")
+                    Image(systemName: closeIcon)
                         .font(.system(size: 20))
                         .fontWeight(.light)
                         .foregroundStyle(.tint4.gradient.opacity(0.9))
@@ -80,7 +82,7 @@ struct SuccessTipStyle: TipViewStyle {
                 }
             }
             HStack(alignment: .top) {
-                Image(systemName: "checkmark.circle")
+                Image(systemName: "checkmark.circle.fill")
                     .font(.title)
                     .fontWeight(.light)
                     .foregroundStyle(.tint4.gradient)
@@ -122,7 +124,7 @@ struct WarningTipStyle: TipViewStyle {
                 Spacer()
                 
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
-                    Image(systemName: "xmark.circle.fill")
+                    Image(systemName: closeIcon)
                         .font(.system(size: 20))
                         .fontWeight(.light)
                         .foregroundStyle(.tint4.gradient.opacity(0.8))
@@ -130,7 +132,7 @@ struct WarningTipStyle: TipViewStyle {
                 }
             }
             HStack(alignment: .top) {
-                Image(systemName: "exclamationmark.triangle")
+                Image(systemName: "exclamationmark.triangle.fill")
                     .font(.title)
                     .fontWeight(.light)
                     .foregroundStyle(.tint4.gradient.opacity(0.9))
@@ -172,7 +174,7 @@ struct ErrorTipStyle: TipViewStyle {
                 Spacer()
                 
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
-                    Image(systemName: "xmark.circle.fill")
+                    Image(systemName: closeIcon)
                         .font(.system(size: 20))
                         .fontWeight(.light)
                         .foregroundStyle(.tint4.gradient.opacity(0.8))
@@ -180,7 +182,7 @@ struct ErrorTipStyle: TipViewStyle {
                 }
             }
             HStack(alignment: .top) {
-                Image(systemName: "x.circle")
+                Image(systemName: "x.circle.fill")
                     .font(.title)
                     .fontWeight(.light)
                     .foregroundStyle(.tint4.gradient.opacity(0.9))

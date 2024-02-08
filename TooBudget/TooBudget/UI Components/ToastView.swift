@@ -15,7 +15,7 @@ enum ToastKind {
     case error
 }
 
-struct NotificationTip: Tip {
+private struct NotificationTip: Tip {
     let header: String
     let description: String
     
@@ -28,24 +28,40 @@ struct ToastView: View {
     let message: String
     var kind = ToastKind.info
     
+    private var tipColor: some ShapeStyle {
+        var color: Color
+        switch kind {
+        case .info:
+            color = .tint2
+        case .success:
+            color = .trueTetradic3
+        case .warning:
+            color = .trueTetradic2
+        case .error:
+            color = .trueTetradic1
+        }
+        return color.gradient.opacity(0.9)
+    }
+    
+    
     var body: some View {
         VStack {
             if kind == .info {
                 TipView(NotificationTip(header: title, description: message))
                     .tipViewStyle(InfoTipStyle())
-                    .tipBackground(.tint2.gradient.opacity(0.9))
+                    .tipBackground(tipColor)
             } else if kind == .success {
                 TipView(NotificationTip(header: title, description: message))
                     .tipViewStyle(SuccessTipStyle())
-                    .tipBackground(.trueTetradic3.gradient.opacity(0.9))
+                    .tipBackground(tipColor)
             } else if kind == .warning {
                 TipView(NotificationTip(header: title, description: message))
                     .tipViewStyle(WarningTipStyle())
-                    .tipBackground(.trueTetradic2.gradient.opacity(0.9))
+                    .tipBackground(tipColor)
             } else {
                 TipView(NotificationTip(header: title, description: message))
                     .tipViewStyle(ErrorTipStyle())
-                    .tipBackground(.trueTetradic1.gradient.opacity(0.9))
+                    .tipBackground(tipColor)
             }
         }
         .padding([.bottom, .horizontal])

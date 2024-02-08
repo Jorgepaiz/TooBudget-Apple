@@ -30,6 +30,9 @@ final class AppCoordinator {
                 
             case .home:
                 _currentView = AnyView(HomeCoordinator(self).show())
+                
+            case .budget:
+                _currentView = AnyView(BudgetCoordinator(self).show())
             }
         }
     }

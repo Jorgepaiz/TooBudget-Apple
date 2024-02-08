@@ -7,6 +7,7 @@
 
 import SwiftUI
 import TipKit
+import SwiftData
 
 @main
 struct TooBudgetApp: App {
@@ -23,6 +24,7 @@ struct TooBudgetApp: App {
                         .datastoreLocation(.applicationDefault)
                     ])
                 }
+                .modelContainer(for: UserModel.self)
         }
     }
 }

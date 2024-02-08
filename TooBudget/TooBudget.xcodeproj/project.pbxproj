@@ -58,6 +58,15 @@
 		88C843162B700D40009BB0BE /* ForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C843152B700D40009BB0BE /* ForgotView.swift */; };
 		88C843182B700D55009BB0BE /* ForgotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C843172B700D55009BB0BE /* ForgotViewModel.swift */; };
 		88C8431A2B702863009BB0BE /* HaveAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C843192B702863009BB0BE /* HaveAccountView.swift */; };
+		88D9F06E2B73F2AD006E7133 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F06D2B73F2AD006E7133 /* DataService.swift */; };
+		88D9F0702B73F322006E7133 /* DataSeviceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F06F2B73F322006E7133 /* DataSeviceError.swift */; };
+		88D9F0722B73F33E006E7133 /* TooBudgetDataBaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0712B73F33E006E7133 /* TooBudgetDataBaseProtocol.swift */; };
+		88D9F0742B740C49006E7133 /* BudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0732B740C49006E7133 /* BudgetModel.swift */; };
+		88D9F0762B740CE4006E7133 /* BudgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0752B740CE4006E7133 /* BudgetType.swift */; };
+		88D9F0BC2B755039006E7133 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0BB2B755039006E7133 /* UserRepository.swift */; };
+		88D9F0BE2B75916C006E7133 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0BD2B75916C006E7133 /* BudgetView.swift */; };
+		88D9F0C02B759C5F006E7133 /* BudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0BF2B759C5F006E7133 /* BudgetViewModel.swift */; };
+		88D9F0C22B759C70006E7133 /* BudgetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0C12B759C70006E7133 /* BudgetCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +140,15 @@
 		88C843152B700D40009BB0BE /* ForgotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotView.swift; sourceTree = "<group>"; };
 		88C843172B700D55009BB0BE /* ForgotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotViewModel.swift; sourceTree = "<group>"; };
 		88C843192B702863009BB0BE /* HaveAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaveAccountView.swift; sourceTree = "<group>"; };
+		88D9F06D2B73F2AD006E7133 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		88D9F06F2B73F322006E7133 /* DataSeviceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSeviceError.swift; sourceTree = "<group>"; };
+		88D9F0712B73F33E006E7133 /* TooBudgetDataBaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetDataBaseProtocol.swift; sourceTree = "<group>"; };
+		88D9F0732B740C49006E7133 /* BudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetModel.swift; sourceTree = "<group>"; };
+		88D9F0752B740CE4006E7133 /* BudgetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetType.swift; sourceTree = "<group>"; };
+		88D9F0BB2B755039006E7133 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		88D9F0BD2B75916C006E7133 /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
+		88D9F0BF2B759C5F006E7133 /* BudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModel.swift; sourceTree = "<group>"; };
+		88D9F0C12B759C70006E7133 /* BudgetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +191,7 @@
 		880F34EA2B71679B00D6C789 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				88D9F06D2B73F2AD006E7133 /* DataService.swift */,
 				880F34EB2B7167B600D6C789 /* FirebaseService.swift */,
 			);
 			path = Services;
@@ -216,6 +235,7 @@
 				8898F53A2B6DE1DC00C3C86A /* Styles */,
 				880DCC2E2B70541600CF56ED /* Utilities */,
 				880F34EA2B71679B00D6C789 /* Services */,
+				88D9F0BA2B754E3B006E7133 /* Repository */,
 				8898F5412B6DEC6500C3C86A /* Localizable.xcstrings */,
 				8844737D2B6D9944001E347A /* Assets.xcassets */,
 				880DCC2C2B7053C100CF56ED /* GoogleService-Info.plist */,
@@ -242,6 +262,7 @@
 				88C842EE2B6E8A90009BB0BE /* SignInView.swift */,
 				88C843132B700D31009BB0BE /* SignUpView.swift */,
 				88C843152B700D40009BB0BE /* ForgotView.swift */,
+				88D9F0BD2B75916C006E7133 /* BudgetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,6 +275,7 @@
 				88C842F02B6E8AA2009BB0BE /* SignInViewModel.swift */,
 				88C843112B700D1C009BB0BE /* SignUpViewModel.swift */,
 				88C843172B700D55009BB0BE /* ForgotViewModel.swift */,
+				88D9F0BF2B759C5F006E7133 /* BudgetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -263,6 +285,7 @@
 			children = (
 				8898F5092B6DBF5400C3C86A /* LandingCoordinator.swift */,
 				8898F50F2B6DBF7A00C3C86A /* HomeCoordinator.swift */,
+				88D9F0C12B759C70006E7133 /* BudgetCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -271,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				880F34F52B73730900D6C789 /* UserModel.swift */,
+				88D9F0732B740C49006E7133 /* BudgetModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +304,8 @@
 			children = (
 				8898F5032B6DBEC500C3C86A /* Views.swift */,
 				880F34F72B7374B700D6C789 /* SignUpType.swift */,
+				88D9F0752B740CE4006E7133 /* BudgetType.swift */,
+				88D9F06F2B73F322006E7133 /* DataSeviceError.swift */,
 			);
 			path = Enumerations;
 			sourceTree = "<group>";
@@ -290,6 +316,7 @@
 				8898F5122B6DC03B00C3C86A /* ViewModelProtocol.swift */,
 				8898F5142B6DC04300C3C86A /* CoordinatorProtocol.swift */,
 				880F34ED2B7167C700D6C789 /* FirebaseServiceProtocol.swift */,
+				88D9F0712B73F33E006E7133 /* TooBudgetDataBaseProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -346,6 +373,14 @@
 				880F34F32B7240C900D6C789 /* TipStyles.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		88D9F0BA2B754E3B006E7133 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				88D9F0BB2B755039006E7133 /* UserRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,6 +528,7 @@
 				8898F50A2B6DBF5400C3C86A /* LandingCoordinator.swift in Sources */,
 				8898F53C2B6DE24D00C3C86A /* TextFieldStyles.swift in Sources */,
 				8898F5442B6DEE2F00C3C86A /* ButtonStyles.swift in Sources */,
+				88D9F0C22B759C70006E7133 /* BudgetCoordinator.swift in Sources */,
 				8898F5402B6DE32400C3C86A /* TextStyles.swift in Sources */,
 				88C842F12B6E8AA2009BB0BE /* SignInViewModel.swift in Sources */,
 				88C842F32B6E8CAC009BB0BE /* CloseButtonView.swift in Sources */,
@@ -506,7 +542,11 @@
 				880DCC302B70546200CF56ED /* Validations.swift in Sources */,
 				880F34EC2B7167B600D6C789 /* FirebaseService.swift in Sources */,
 				8898F50E2B6DBF7000C3C86A /* HomeViewModel.swift in Sources */,
+				88D9F0722B73F33E006E7133 /* TooBudgetDataBaseProtocol.swift in Sources */,
+				88D9F06E2B73F2AD006E7133 /* DataService.swift in Sources */,
 				8898F5082B6DBF4800C3C86A /* LandingViewModel.swift in Sources */,
+				88D9F0702B73F322006E7133 /* DataSeviceError.swift in Sources */,
+				88D9F0BE2B75916C006E7133 /* BudgetView.swift in Sources */,
 				8898F5152B6DC04300C3C86A /* CoordinatorProtocol.swift in Sources */,
 				8898F5462B6DEEEC00C3C86A /* SocialMediaAccesView.swift in Sources */,
 				88C843122B700D1C009BB0BE /* SignUpViewModel.swift in Sources */,
@@ -522,11 +562,15 @@
 				8898F5132B6DC03B00C3C86A /* ViewModelProtocol.swift in Sources */,
 				8898F53E2B6DE2B600C3C86A /* GroupTextFieldStyle.swift in Sources */,
 				8898F5002B6DBDF300C3C86A /* AppCoordinator.swift in Sources */,
+				88D9F0BC2B755039006E7133 /* UserRepository.swift in Sources */,
 				8898F5342B6DDFB600C3C86A /* ImageSliderView.swift in Sources */,
+				88D9F0C02B759C5F006E7133 /* BudgetViewModel.swift in Sources */,
 				8844737A2B6D9943001E347A /* TooBudgetApp.swift in Sources */,
 				880F34F62B73730900D6C789 /* UserModel.swift in Sources */,
 				8898F54A2B6DEFE900C3C86A /* VersionBuildView.swift in Sources */,
+				88D9F0742B740C49006E7133 /* BudgetModel.swift in Sources */,
 				88C842EF2B6E8A90009BB0BE /* SignInView.swift in Sources */,
+				88D9F0762B740CE4006E7133 /* BudgetType.swift in Sources */,
 				880F34FA2B73767600D6C789 /* Utilities.swift in Sources */,
 				8898F5042B6DBEC500C3C86A /* Views.swift in Sources */,
 			);

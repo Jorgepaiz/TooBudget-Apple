@@ -69,29 +69,30 @@ struct LandingView: View {
                 // notifications
                 VStack {
                     Spacer()
+                    
                     /*
-                    ToastView(
-                        title: "Information",
-                        message: "Custom message with long text for testing."
-                    )
-                    
-                    ToastView(
-                        title: "Success",
-                        message: "Custom message with long text for testing.",
-                        kind: .success
-                    )
-                    
-                    ToastView(
-                        title: "Warning",
-                        message: "Custom message with long text for testing.",
-                        kind: .warning
-                    )
-                    
-                    ToastView(
-                        title: "Error",
-                        message: "Custom message with long text for testing.",
-                        kind: .error
-                    )
+                     ToastView(
+                     title: "Information",
+                     message: "Custom message with long text for testing."
+                     )
+                     
+                     ToastView(
+                     title: "Success",
+                     message: "Custom message with long text for testing.",
+                     kind: .success
+                     )
+                     
+                     ToastView(
+                     title: "Warning",
+                     message: "Custom message with long text for testing.",
+                     kind: .warning
+                     )
+                     
+                     ToastView(
+                     title: "Error",
+                     message: "Custom message with long text for testing.",
+                     kind: .error
+                     )
                      */
                 }
                 .padding(.horizontal)
@@ -113,6 +114,10 @@ struct LandingView: View {
         }
         .onAppear() {
             viewModel.previousLogin()
+            // viewModel.textDataBase()
+            Task {
+                await viewModel.testDataBase()
+            }
         }
     }
 }
@@ -124,7 +129,7 @@ struct LandingView: View {
             try? Tips.resetDatastore()
             try? Tips.configure([
                 .displayFrequency(.immediate),
-//                .datastoreLocation(.applicationDefault)
+                .datastoreLocation(.applicationDefault)
             ])
         }
 }
