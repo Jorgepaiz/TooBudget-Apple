@@ -1,5 +1,5 @@
 //
-//  GroupTextFieldStyle.swift
+//  GroupStyles.swift
 //  TooBudget
 //
 //  Created by Jorge Paiz on 2/2/24.
@@ -24,3 +24,17 @@ struct GroupTextFieldStyle: GroupBoxStyle {
     }
 }
 
+struct GroupToastStyle: GroupBoxStyle {
+    let toastType: ToastType
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.content
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(toastType.color)
+                    .shadow(color: .gray, radius: 3, x: 3, y: 3)
+            )
+            .padding([.leading, .bottom, .trailing])
+        
+    }
+}

@@ -2,75 +2,75 @@
 //  ToastView.swift
 //  TooBudget
 //
-//  Created by Jorge Paiz on 2/6/24.
+//  Created by Jorge Paiz on 2/9/24.
 //
 
 import SwiftUI
-import TipKit
-
-enum ToastKind {
-    case info
-    case success
-    case warning
-    case error
-}
-
-private struct NotificationTip: Tip {
-    let header: String
-    let description: String
-    
-    var title: Text { Text(LocalizedStringKey(header)) }
-    var message: Text? { Text(LocalizedStringKey(description)) }
-}
 
 struct ToastView: View {
     let title: String
     let message: String
-    var kind = ToastKind.info
+    var showing: Binding<Bool> = .constant(true)
+    var type: ToastType = .info
     
-    private var tipColor: some ShapeStyle {
-        var color: Color
-        switch kind {
-        case .info:
-            color = .tint2
-        case .success:
-            color = .trueTetradic3
-        case .warning:
-            color = .trueTetradic2
-        case .error:
-            color = .trueTetradic1
-        }
-        return color.gradient.opacity(0.9)
-    }
-    
+    let closeIconSize: CGFloat = 20
+    let cornerPadding: CGFloat = 10
+    let headlineKerning: CGFloat = 2
+    let subheadlineKerning: CGFloat = 1
     
     var body: some View {
-        VStack {
-            if kind == .info {
-                TipView(NotificationTip(header: title, description: message))
-                    .tipViewStyle(InfoTipStyle())
-                    .tipBackground(tipColor)
-            } else if kind == .success {
-                TipView(NotificationTip(header: title, description: message))
-                    .tipViewStyle(SuccessTipStyle())
-                    .tipBackground(tipColor)
-            } else if kind == .warning {
-                TipView(NotificationTip(header: title, description: message))
-                    .tipViewStyle(WarningTipStyle())
-                    .tipBackground(tipColor)
-            } else {
-                TipView(NotificationTip(header: title, description: message))
-                    .tipViewStyle(ErrorTipStyle())
-                    .tipBackground(tipColor)
+        if showing.wrappedValue {
+            GroupBox {
+                VStack {
+                    HStack {
+                        Text(LocalizedStringKey(title))
+                            .font(.headline)
+                            .fontWeight(.medium)
+                            .kerning(headlineKerning)
+                            .foregroundStyle(.tint4)
+                            .padding(.leading)
+                        
+                        Spacer()
+                        
+                        Button("close",
+                               systemImage: "xmark.circle",
+                               action: {
+                            withAnimation {
+                                showing.wrappedValue.toggle()
+                            }
+                        })
+                        .labelStyle(.iconOnly)
+                        .font(.system(size: closeIconSize))
+                        .fontWeight(.light)
+                        .foregroundStyle(.tint4.gradient.opacity(1.0))
+                        .padding([.top, .trailing], cornerPadding)
+                    }
+                    HStack(alignment: .top) {
+                        Image(systemName: type.icon)
+                            .font(.title)
+                            .fontWeight(.light)
+                            .foregroundStyle(.tint4.gradient)
+                            .padding([.leading, .bottom])
+                        
+                        Text(LocalizedStringKey(message))
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                            .kerning(subheadlineKerning)
+                            .foregroundStyle(.shade3)
+                            .padding(.bottom)
+                        
+                        Spacer()
+                    }
+                }
             }
+            .groupBoxStyle(GroupToastStyle(toastType: type))
         }
-        .padding([.bottom, .horizontal])
     }
 }
 
 #Preview {
     ToastView(
-        title: "Title",
-        message: "Message"
+        title: "Title of the Toast",
+        message: "Long message of the Toast"
     )
 }

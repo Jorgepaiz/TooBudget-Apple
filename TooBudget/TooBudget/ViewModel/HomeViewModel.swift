@@ -32,7 +32,7 @@ final class HomeViewModel: ViewModelProtocol {
         let firebaseService = FirebaseService()
         
         firebaseService.signOut()
-        coordinator.appCoordinator.navigate(.landing)
+        coordinator.appCoordinator.navigate(to: .landing)
     }
     
     func checkCurrentBudget() async {
@@ -40,12 +40,12 @@ final class HomeViewModel: ViewModelProtocol {
         if let user = users.first {
             currentUser = user
         } else {
-            coordinator.appCoordinator.navigate(.landing)
+            coordinator.appCoordinator.navigate(to: .landing)
         }
         if let budget = currentUser?.currentBudget {
             currentBudget = budget
         } else {
-            coordinator.appCoordinator.navigate(.budget)
+            coordinator.appCoordinator.navigate(to: .budget)
         }
     }
 }

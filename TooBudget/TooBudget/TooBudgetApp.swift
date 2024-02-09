@@ -14,17 +14,25 @@ struct TooBudgetApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     private let appCoordinator = AppCoordinator()
     
+    init() {
+        configureTips()
+    }
+    
     var body: some Scene {
         WindowGroup {
             appCoordinator.currentView
-                .task {
-                    try? Tips.resetDatastore()
-                    try? Tips.configure([
-                        .displayFrequency(.immediate),
-                        .datastoreLocation(.applicationDefault)
-                    ])
-                }
                 .modelContainer(for: UserModel.self)
+        }
+    }
+
+    private func configureTips() {
+        do {
+            try Tips.resetDatastore()
+            try Tips.configure([
+                .displayFrequency(.immediate),
+            ])
+        } catch {
+            print("Error configuring Tips: \(error)")
         }
     }
 }

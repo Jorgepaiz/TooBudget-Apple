@@ -9,6 +9,7 @@ import Foundation
 import Observation
 import Firebase
 import FirebaseAuth
+import SwiftUI
 
 @Observable
 final class LandingViewModel: ViewModelProtocol {
@@ -23,10 +24,13 @@ final class LandingViewModel: ViewModelProtocol {
     var forgotSheet = false
     var modalSheet = false
     var activityIndicatorMessage = ""
+    var showToastError = false
+    var toastErrorTitle = ""
+    var toastErrotMessage = ""
     
     func previousLogin() {
         if let _ = FirebaseService().currentUser() {
-            coordinator.appCoordinator.navigate(.home)
+            coordinator.appCoordinator.navigate(to: .home)
         }
     }
     
@@ -57,13 +61,17 @@ final class LandingViewModel: ViewModelProtocol {
                 Task {
                     await initializingDataModel(newUser, isLogin: isLogin)
                 }
-                self.coordinator.appCoordinator.navigate(.home)
+                self.coordinator.appCoordinator.navigate(to: .home)
             } else {
                 // TODO: show a ToastView with the error detail
             }
         case .failure(let error):
             print("Login or create account error. Description: \(error.localizedDescription)")
-            // TODO: show a ToastView with the error detail
+            toastErrorTitle = isLogin ? "sign_in_error_title" : "sign_up_error_title"
+            toastErrotMessage = error.localizedDescription
+            withAnimation {
+                showToastError.toggle()
+            }
         }
     }
     

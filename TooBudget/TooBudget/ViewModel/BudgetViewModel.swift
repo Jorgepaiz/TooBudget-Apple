@@ -20,6 +20,6 @@ final class BudgetViewModel: ViewModelProtocol {
         let firebaseService = FirebaseService()
         
         firebaseService.signOut()
-        coordinator.appCoordinator.navigate(.landing)
+        coordinator.appCoordinator.navigate(to: .landing)
     }
 }

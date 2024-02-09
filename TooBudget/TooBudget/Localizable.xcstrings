@@ -136,6 +136,9 @@
     "Budget View" : {
 
     },
+    "close" : {
+
+    },
     "email" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -619,6 +622,23 @@
         }
       }
     },
+    "sign_in_error_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al Ingresar"
+          }
+        }
+      }
+    },
     "sign_in_instruction" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -666,6 +686,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ingrese"
+          }
+        }
+      }
+    },
+    "sign_up_error_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sing-up error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al Registrarse"
           }
         }
       }

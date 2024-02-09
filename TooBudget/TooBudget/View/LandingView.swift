@@ -66,34 +66,16 @@ struct LandingView: View {
                         .padding(.horizontal, Constants.mainHorizontalPadding)
                 }
                 
-                // notifications
+                // error notifications
                 VStack {
                     Spacer()
                     
-                    /*
-                     ToastView(
-                     title: "Information",
-                     message: "Custom message with long text for testing."
-                     )
-                     
-                     ToastView(
-                     title: "Success",
-                     message: "Custom message with long text for testing.",
-                     kind: .success
-                     )
-                     
-                     ToastView(
-                     title: "Warning",
-                     message: "Custom message with long text for testing.",
-                     kind: .warning
-                     )
-                     
-                     ToastView(
-                     title: "Error",
-                     message: "Custom message with long text for testing.",
-                     kind: .error
-                     )
-                     */
+                    ToastView(
+                        title: viewModel.toastErrorTitle,
+                        message: viewModel.toastErrotMessage,
+                        showing: $viewModel.showToastError,
+                        type: .error
+                    )
                 }
                 .padding(.horizontal)
             }
