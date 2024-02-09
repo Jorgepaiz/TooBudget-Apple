@@ -15,7 +15,7 @@ struct CloseButtonView: View {
             Button(action: { dismiss() }) { Image(systemName: "xmark.circle.fill") }
                 .font(.system(size: 25))
                 .fontWeight(.light)
-                .foregroundStyle(.shade1.opacity(0.5))
+                .foregroundStyle(.shade1.gradient.opacity(0.5))
                 .padding(Constants.paddingForCloseButton)
         }
     }

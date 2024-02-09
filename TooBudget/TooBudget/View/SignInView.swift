@@ -80,7 +80,9 @@ struct SignInView: View {
                                             .buttonStyle(TextButtonStyle())
                                     }
                                     
-                                    Button("btn_sign_in_access") { }
+                                    Button("btn_sign_in_access") {
+                                        viewModel.validateForm()
+                                    }
                                         .buttonStyle(PrincipalButtonStyle())
                                         .padding(.top, 10)
                                 }

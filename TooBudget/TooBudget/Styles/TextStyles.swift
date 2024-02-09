@@ -58,6 +58,26 @@ struct NormalTextStyle: ViewModifier {
     }
 }
 
+struct TitleTipStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.headline)
+            .fontWeight(.regular)
+            .kerning(2)
+            .foregroundStyle(.tint4)
+    }
+}
+
+struct MessageTipStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.subheadline)
+            .fontWeight(.light)
+            .kerning(1)
+            .foregroundStyle(.shade3)
+    }
+}
+
 extension View {
     func titleTextStyle(maxWidth: CGFloat = 300) -> some View {
         self.modifier(TitleTextStyle(maxWidth: maxWidth))
@@ -73,6 +93,14 @@ extension View {
     
     func normalTextStyle() -> some View {
         self.modifier(NormalTextStyle())
+    }
+    
+    func titleTipStyle() -> some View {
+        self.modifier(TitleTipStyle())
+    }
+    
+    func messageTipStyle() -> some View {
+        self.modifier(MessageTipStyle())
     }
 }
 

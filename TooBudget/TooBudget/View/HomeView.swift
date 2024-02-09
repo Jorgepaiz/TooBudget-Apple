@@ -15,7 +15,17 @@ struct HomeView: View {
     }
     
     var body: some View {
-        GeometryReader { geomery in
+        VStack {
+            Text("Home View")
+            Button("Logout") {
+                viewModel.logOut()
+            }
+            .buttonStyle(.bordered)
+        }
+        .onAppear() {
+            Task {
+                await viewModel.checkCurrentBudget()
+            }
         }
     }
 }

@@ -133,6 +133,12 @@
         }
       }
     },
+    "Budget View" : {
+
+    },
+    "close" : {
+
+    },
     "email" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -146,6 +152,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Correo electrónico"
+          }
+        }
+      }
+    },
+    "email_error_not_valid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email is not valid."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correo electrónico no válido."
+          }
+        }
+      }
+    },
+    "email_error_required" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The \\\"Email\\\" field is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\\\"Correo electrónico\\\" es obligatorio."
           }
         }
       }
@@ -235,6 +275,40 @@
         }
       }
     },
+    "full_name_error_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only name and surname."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo nombre y apellido."
+          }
+        }
+      }
+    },
+    "full_name_error_required" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The \\\"Full name\\\" field is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\\\"Nombre completo\\\" es obligatorio."
+          }
+        }
+      }
+    },
     "have_account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -268,6 +342,9 @@
           }
         }
       }
+    },
+    "Home View" : {
+
     },
     "landing_subtitle" : {
       "extractionState" : "manual",
@@ -355,6 +432,9 @@
         }
       }
     },
+    "Logout" : {
+
+    },
     "long_text_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -440,6 +520,40 @@
         }
       }
     },
+    "password_error_policies" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8 characters, letters, and numbers."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8 caracteres, letras y números."
+          }
+        }
+      }
+    },
+    "password_error_required" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The \\\"Password\\\" field is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\\\"Contraseña\\\" es obligatorio."
+          }
+        }
+      }
+    },
     "placeholder_email" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -508,6 +622,23 @@
         }
       }
     },
+    "sign_in_error_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al Ingresar"
+          }
+        }
+      }
+    },
     "sign_in_instruction" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -555,6 +686,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ingrese"
+          }
+        }
+      }
+    },
+    "sign_up_error_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sing-up error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al Registrarse"
           }
         }
       }

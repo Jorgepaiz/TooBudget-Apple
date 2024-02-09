@@ -10,27 +10,30 @@ import Observation
 
 @Observable
 final class AppCoordinator {
-    private var _currentView: AnyView
+    private var currentScreen: AppViews = .loading
     
     init() {
-        self._currentView = AnyView(Text("Loading..."))
-        
-        navigate(.landing)
+        currentScreen = .landing
+    }
+    
+    private func view(for screen: AppViews) -> AnyView {
+        switch screen {
+        case .loading:
+            return AnyView(Text("Loading..."))
+        case .landing:
+            return AnyView(LandingCoordinator(self).show())
+        case .home:
+            return AnyView(HomeCoordinator(self).show())
+        case .budget:
+            return AnyView(BudgetCoordinator(self).show())
+        }
     }
     
     var currentView: AnyView {
-        _currentView
+        view(for: currentScreen)
     }
     
-    var navigate: (Views) -> Void {
-        { [unowned self] view in
-            switch view {
-            case .landing:
-                _currentView = AnyView(LandingCoordinator(self).show())
-                
-            case .home:
-                _currentView = AnyView(HomeCoordinator(self).show())
-            }
-        }
+    func navigate(to view: AppViews) {
+        self.currentScreen = view
     }
 }
