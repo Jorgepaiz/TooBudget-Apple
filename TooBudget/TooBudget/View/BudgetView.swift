@@ -15,6 +15,10 @@ struct BudgetView: View {
     }
     var body: some View {
         Text("Budget View")
+        Button("Logout") {
+            viewModel.logOut()
+        }
+        .buttonStyle(.bordered)
     }
 }
 

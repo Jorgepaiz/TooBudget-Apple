@@ -15,4 +15,11 @@ final class BudgetViewModel: ViewModelProtocol {
     init(_ coordinator: BudgetCoordinator) {
         self.coordinator = coordinator
     }
+    
+    func logOut() {
+        let firebaseService = FirebaseService()
+        
+        firebaseService.signOut()
+        coordinator.appCoordinator.navigate(.landing)
+    }
 }

@@ -133,6 +133,9 @@
         }
       }
     },
+    "Budget View" : {
+
+    },
     "email" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -336,6 +339,9 @@
           }
         }
       }
+    },
+    "Home View" : {
+
     },
     "landing_subtitle" : {
       "extractionState" : "manual",

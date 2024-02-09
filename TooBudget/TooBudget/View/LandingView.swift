@@ -114,10 +114,6 @@ struct LandingView: View {
         }
         .onAppear() {
             viewModel.previousLogin()
-            // viewModel.textDataBase()
-            Task {
-                await viewModel.testDataBase()
-            }
         }
     }
 }

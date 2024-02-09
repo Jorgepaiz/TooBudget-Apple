@@ -16,10 +16,16 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
+            Text("Home View")
             Button("Logout") {
                 viewModel.logOut()
             }
             .buttonStyle(.bordered)
+        }
+        .onAppear() {
+            Task {
+                await viewModel.checkCurrentBudget()
+            }
         }
     }
 }
