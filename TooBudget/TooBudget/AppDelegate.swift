@@ -5,8 +5,8 @@
 //  Created by Jorge Paiz on 2/4/24.
 //
 
-import Foundation
 import Firebase
+import Foundation
 import UIKit
 
 final class AppDelegate: NSObject, UIApplicationDelegate {

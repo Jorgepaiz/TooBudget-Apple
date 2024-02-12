@@ -9,8 +9,8 @@ import Foundation
 import Observation
 
 @Observable
-final class HomeViewModel: ViewModelProtocol {
-    let coordinator: CoordinatorProtocol
+final class HomeViewModel {
+    let coordinator: HomeCoordinator
     
     init(_ coordinator: HomeCoordinator) {
         self.coordinator = coordinator

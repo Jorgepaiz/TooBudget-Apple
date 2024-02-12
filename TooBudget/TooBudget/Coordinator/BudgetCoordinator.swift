@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class BudgetCoordinator: CoordinatorProtocol {
+final class BudgetCoordinator {
     let appCoordinator: AppCoordinator
     
     init(_ appCoordinator: AppCoordinator) {

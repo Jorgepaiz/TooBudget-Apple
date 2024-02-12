@@ -5,32 +5,22 @@
 //  Created by Jorge Paiz on 2/2/24.
 //
 
-import SwiftUI
 import Observation
+import SwiftUI
 
 @Observable
 final class AppCoordinator {
-    private var currentScreen: AppViews = .loading
+    private var currentScreen: AppViews
+    private var viewFactory: ViewFactory {
+        return ViewFactory(self)
+    }
     
     init() {
         currentScreen = .landing
     }
     
-    private func view(for screen: AppViews) -> AnyView {
-        switch screen {
-        case .loading:
-            return AnyView(Text("Loading..."))
-        case .landing:
-            return AnyView(LandingCoordinator(self).show())
-        case .home:
-            return AnyView(HomeCoordinator(self).show())
-        case .budget:
-            return AnyView(BudgetCoordinator(self).show())
-        }
-    }
-    
     var currentView: AnyView {
-        view(for: currentScreen)
+        viewFactory.view(for: currentScreen)
     }
     
     func navigate(to view: AppViews) {

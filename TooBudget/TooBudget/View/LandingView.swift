@@ -26,7 +26,7 @@ struct LandingView: View {
                             "Landing2",
                             "Landing3",
                             "Landing4",
-                            "Landing5"
+                            "Landing5",
                         ],
                         height: Constants.scrnPercForSlider(geometry)
                     )
@@ -94,7 +94,7 @@ struct LandingView: View {
         .fullScreenCover(isPresented: $viewModel.modalSheet) {
             ActivityIndicator(message: viewModel.activityIndicatorMessage)
         }
-        .onAppear() {
+        .onAppear {
             viewModel.previousLogin()
         }
     }
@@ -107,7 +107,7 @@ struct LandingView: View {
             try? Tips.resetDatastore()
             try? Tips.configure([
                 .displayFrequency(.immediate),
-                .datastoreLocation(.applicationDefault)
+                .datastoreLocation(.applicationDefault),
             ])
         }
 }

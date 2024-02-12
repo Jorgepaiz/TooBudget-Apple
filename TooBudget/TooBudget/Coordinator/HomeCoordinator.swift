@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class HomeCoordinator: CoordinatorProtocol {
+final class HomeCoordinator {
     let appCoordinator: AppCoordinator
     
     init(_ appCoordinator: AppCoordinator) {

@@ -9,8 +9,8 @@ import Foundation
 import Observation
 
 @Observable
-final class BudgetViewModel: ViewModelProtocol {
-    let coordinator: CoordinatorProtocol
+final class BudgetViewModel {
+    let coordinator: BudgetCoordinator
     
     init(_ coordinator: BudgetCoordinator) {
         self.coordinator = coordinator

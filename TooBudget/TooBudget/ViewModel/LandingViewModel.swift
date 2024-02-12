@@ -5,15 +5,14 @@
 //  Created by Jorge Paiz on 2/2/24.
 //
 
-import Foundation
-import Observation
 import Firebase
 import FirebaseAuth
+import Observation
 import SwiftUI
 
 @Observable
-final class LandingViewModel: ViewModelProtocol {
-    let coordinator: CoordinatorProtocol
+final class LandingViewModel {
+    let coordinator: LandingCoordinator
     
     init(_ coordinator: LandingCoordinator) {
         self.coordinator = coordinator
@@ -39,6 +38,7 @@ final class LandingViewModel: ViewModelProtocol {
         signUpSheet = false
         forgotSheet = false
         modalSheet = false
+        showToastError = false
     }
     
     private func showActivityIndicator(_ message: String, action: @escaping () -> Void) {

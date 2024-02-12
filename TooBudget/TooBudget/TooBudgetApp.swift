@@ -5,9 +5,9 @@
 //  Created by Jorge Paiz on 2/2/24.
 //
 
+import SwiftData
 import SwiftUI
 import TipKit
-import SwiftData
 
 @main
 struct TooBudgetApp: App {
@@ -29,7 +29,7 @@ struct TooBudgetApp: App {
         do {
             try Tips.resetDatastore()
             try Tips.configure([
-                .displayFrequency(.immediate),
+                .displayFrequency(.immediate)
             ])
         } catch {
             print("Error configuring Tips: \(error)")

@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-final class LandingCoordinator: CoordinatorProtocol {
+final class LandingCoordinator {
     let appCoordinator: AppCoordinator
-    
+
     init(_ appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
     }
