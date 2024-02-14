@@ -14,16 +14,17 @@ final class ViewFactory {
         self.coordinator = coodinator
     }
     
-    func view(for screen: AppViews) -> AnyView {
+    @ViewBuilder
+    func view(for screen: AppViews) -> some View {
         switch screen {
         case .loading:
-            return AnyView(Text("Loading..."))
+            Text("Loading...")
         case .landing:
-            return AnyView(LandingCoordinator(coordinator).show())
+            LandingCoordinator(coordinator).show()
         case .home:
-            return AnyView(HomeCoordinator(coordinator).show())
+            HomeCoordinator(coordinator).show()
         case .budget:
-            return AnyView(BudgetCoordinator(coordinator).show())
+            BudgetCoordinator(coordinator).show()
         }
     }
 }

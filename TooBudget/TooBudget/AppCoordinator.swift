@@ -7,20 +7,22 @@
 
 import Observation
 import SwiftUI
+import SwiftData
 
 @Observable
 final class AppCoordinator {
     private var currentScreen: AppViews
     private var viewFactory: ViewFactory {
-        return ViewFactory(self)
+        ViewFactory(self)
     }
     
     init() {
         currentScreen = .landing
     }
     
-    var currentView: AnyView {
-        viewFactory.view(for: currentScreen)
+    var currentView: some View {
+        return viewFactory.view(for: currentScreen)
+            .modelContainer(DataService.shared.setupContainer())
     }
     
     func navigate(to view: AppViews) {

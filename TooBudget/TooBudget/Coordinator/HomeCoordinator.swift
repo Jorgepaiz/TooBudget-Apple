@@ -14,7 +14,7 @@ final class HomeCoordinator {
         self.appCoordinator = appCoordinator
     }
     
-    func show() -> any View {
+    func show() -> some View {
         HomeView(HomeViewModel(self))
     }
 }

@@ -21,7 +21,7 @@ final class BudgetModel: Codable {
     
     //log
     var notes: String
-    let createAt: Date
+    let createdAt: Date
     var updateAt: Date
     
     
@@ -32,7 +32,7 @@ final class BudgetModel: Codable {
         case _type
         case _owner
         case _notes
-        case _createAt
+        case _createdAt
         case _updateAt
     }
     
@@ -51,7 +51,7 @@ final class BudgetModel: Codable {
         self.type = type
         self.owner = owner
         self.notes = notes
-        self.createAt = createAt
+        self.createdAt = createAt
         self.updateAt = updateAt
     }
     
@@ -62,7 +62,7 @@ final class BudgetModel: Codable {
         self.type = try container.decode(BudgetType.self, forKey: ._type)
         self.owner = try container.decode(String.self, forKey: ._owner)
         self.notes = try container.decode(String.self, forKey: ._notes)
-        self.createAt = try container.decode(Date.self, forKey: ._createAt)
+        self.createdAt = try container.decode(Date.self, forKey: ._createdAt)
         self.updateAt = try container.decode(Date.self, forKey: ._updateAt)
     }
     
@@ -73,7 +73,7 @@ final class BudgetModel: Codable {
         try container.encode(type, forKey: ._type)
         try container.encode(owner, forKey: ._owner)
         try container.encode(notes, forKey: ._notes)
-        try container.encode(createAt, forKey: ._createAt)
+        try container.encode(createdAt, forKey: ._createdAt)
         try container.encode(updateAt, forKey: ._updateAt)
     }
     

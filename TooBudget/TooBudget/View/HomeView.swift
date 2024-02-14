@@ -22,11 +22,11 @@ struct HomeView: View {
             }
             .buttonStyle(.bordered)
         }
-        .onAppear() {
-            Task {
-                await viewModel.checkCurrentBudget()
-            }
-        }
+//        .onAppear{
+//            Task {
+//                await viewModel.checkCurrentBudget()
+//            }
+//        }
     }
 }
 

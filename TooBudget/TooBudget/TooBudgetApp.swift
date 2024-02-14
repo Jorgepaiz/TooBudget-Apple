@@ -21,7 +21,6 @@ struct TooBudgetApp: App {
     var body: some Scene {
         WindowGroup {
             appCoordinator.currentView
-                .modelContainer(for: UserModel.self)
         }
     }
 

@@ -9,10 +9,12 @@ import Firebase
 import FirebaseAuth
 import Observation
 import SwiftUI
+import SwiftData
 
 @Observable
 final class LandingViewModel {
-    let coordinator: LandingCoordinator
+    private let coordinator: LandingCoordinator
+    private let firebaseService = FirebaseService()
     
     init(_ coordinator: LandingCoordinator) {
         self.coordinator = coordinator
@@ -27,18 +29,20 @@ final class LandingViewModel {
     var toastErrorTitle = ""
     var toastErrotMessage = ""
     
-    func previousLogin() {
-        if let _ = FirebaseService().currentUser() {
-            coordinator.appCoordinator.navigate(to: .home)
-        }
-    }
-    
     private func closeAllSheets() {
         signInSheet = false
         signUpSheet = false
         forgotSheet = false
         modalSheet = false
         showToastError = false
+    }
+    
+    private func showError(title: String, message: String) {
+        toastErrorTitle = title
+        toastErrotMessage = message
+        withAnimation {
+            showToastError.toggle()
+        }
     }
     
     private func showActivityIndicator(_ message: String, action: @escaping () -> Void) {
@@ -53,71 +57,45 @@ final class LandingViewModel {
     }
     
     private func proccessLoginOrCreateResponse(_ result: Result<User, Error>, isLogin: Bool = true) {
+        let titleError = isLogin ? "sign_in_error_title" : "sign_up_error_title"
+        
         switch result {
         case .success(let user):
             if let fullname = user.displayName,
                let email = user.email {
                 let newUser = UserModel(id: user.uid, fullname: fullname, email: email)
-                Task {
-                    await initializingDataModel(newUser, isLogin: isLogin)
+                if initializingDataModel(newUser, isLogin: isLogin) {
+                    coordinator.appCoordinator.navigate(to: .home)
                 }
-                self.coordinator.appCoordinator.navigate(to: .home)
             } else {
-                // TODO: show a ToastView with the error detail
+                showError(title: titleError, message: "Can't fetch user information.")
             }
         case .failure(let error):
-            print("Login or create account error. Description: \(error.localizedDescription)")
-            toastErrorTitle = isLogin ? "sign_in_error_title" : "sign_up_error_title"
-            toastErrotMessage = error.localizedDescription
-            withAnimation {
-                showToastError.toggle()
+            showError(title: titleError, message: error.localizedDescription)
+        }
+    }
+    
+    private func initializingDataModel(_ user: UserModel, isLogin: Bool) -> Bool {
+        if isLogin {
+            // TODO: flow for recover data
+            return true
+        } else {
+            firebaseService.signOut()
+            do {
+                try DataService.shared.deleteModel()
+                try UserRepository().createUser(user)
+                return true
+            } catch {
+                showError(title: "Creating user", message: "Can't create a new user.")
+                return false
             }
         }
     }
     
-    private func initializingDataModel(_ user: UserModel, isLogin: Bool) async {
-        if isLogin {
-            // TODO: flow for recover data
-        } else {
-            // start with new data
-            await deleteAllUsers()
-            await createUser(user)
+    func previousLogin() {
+        if let _ = firebaseService.currentUser() {
+            coordinator.appCoordinator.navigate(to: .home)
         }
-    }
-    
-    private func fetchAllUser() async {
-        let userRepository = UserRepository()
-        do {
-            let users = try await userRepository.fetchAll()
-            print("All users: \(users)")
-        } catch {
-            print("Error fetching all users, detail: \(error.localizedDescription)")
-        }
-    }
-    
-    private func createUser(_ user: UserModel) async {
-        let userRepository = UserRepository()
-        do {
-            try await userRepository.createUser(user)
-        } catch {
-            print("Error creating user, detail: \(error.localizedDescription)")
-        }
-    }
-    
-    private func deleteAllUsers() async {
-        let userRepository = UserRepository()
-        do {
-            try await userRepository.deleteAll()
-        } catch {
-            print("Error deleting all users, detail: \(error.localizedDescription)")
-        }
-    }
-    
-    func testDataBase() async {
-        await fetchAllUser()
-        let user = UserModel(id: "user" + String(Int.random(in: 0...100)), fullname: "jorge paiz", email: "jorge@paiz.com")
-        await createUser(user)
-        await fetchAllUser()
     }
     
     func showSignInView() {
@@ -176,5 +154,5 @@ final class LandingViewModel {
             }
         }
     }
-
+    
 }

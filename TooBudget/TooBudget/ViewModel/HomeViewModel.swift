@@ -19,6 +19,7 @@ final class HomeViewModel {
     private var currentUser: UserModel?
     private var currentBudget: BudgetModel?
     
+    /*
     private func fetchAllUsers() async -> [UserModel] {
         let userRepository = UserRepository()
         do {
@@ -27,6 +28,7 @@ final class HomeViewModel {
             fatalError("Error fetching all users, detail \(error.localizedDescription)")
         }
     }
+     */
     
     func logOut() {
         let firebaseService = FirebaseService()
@@ -35,6 +37,7 @@ final class HomeViewModel {
         coordinator.appCoordinator.navigate(to: .landing)
     }
     
+    /*
     func checkCurrentBudget() async {
         let users = await fetchAllUsers()
         if let user = users.first {
@@ -48,4 +51,5 @@ final class HomeViewModel {
             coordinator.appCoordinator.navigate(to: .budget)
         }
     }
+     */
 }

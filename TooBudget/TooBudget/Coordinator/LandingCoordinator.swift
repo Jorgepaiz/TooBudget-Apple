@@ -14,7 +14,7 @@ final class LandingCoordinator {
         self.appCoordinator = appCoordinator
     }
     
-    func show() -> any View {
+    func show() -> some View {
         LandingView(LandingViewModel(self))
     }
     
