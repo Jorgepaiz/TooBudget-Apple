@@ -12,7 +12,7 @@ final class UserRepository: DataUserProtocol {
     private let context: ModelContext
     
     init() {
-        self.context = ModelContext(DataService.shared.setupContainer())
+        self.context = ModelContext(DataService.shared.container)
     }
     
     private func saveContext(_ error: DataServiceError) throws {

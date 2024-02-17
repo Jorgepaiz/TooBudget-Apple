@@ -22,7 +22,7 @@ final class AppCoordinator {
     
     var currentView: some View {
         return viewFactory.view(for: currentScreen)
-            .modelContainer(DataService.shared.setupContainer())
+            .modelContainer(DataService.shared.container)
     }
     
     func navigate(to view: AppViews) {

@@ -10,9 +10,9 @@ import SwiftData
 
 @Model
 final class UserModel: Codable {
-//final class UserModel {
     // identification
-    @Attribute(.unique) var id: String
+    @Attribute(.unique)
+    var id: String
     let name: String
     
     // content
@@ -21,13 +21,15 @@ final class UserModel: Codable {
     var surname: String
     var secondSurname: String
     let email: String
-    @Relationship(deleteRule: .cascade) var budgets: [BudgetModel]
-    @Relationship(deleteRule: .nullify) var currentBudget: BudgetModel?
+    @Relationship(deleteRule: .cascade) 
+    var budgets: [BudgetModel]
+    @Relationship(deleteRule: .nullify) 
+    var currentBudget: BudgetModel?
     
     // log
     var notes: String
     let createdAt: Date
-    var updateAt: Date
+    var updatedAt: Date
     
     // coding
     enum CodingKeys: CodingKey {
@@ -42,7 +44,7 @@ final class UserModel: Codable {
         case _currentBudget
         case _notes
         case _createdAt
-        case _updateAt
+        case _updatedAt
     }
     
     // constructors
@@ -57,8 +59,8 @@ final class UserModel: Codable {
         budgets: [BudgetModel] = [],
         currentBudget: BudgetModel? = nil,
         notes: String = "",
-        createdAt: Date = .now,
-        updateAt: Date = .now
+        createdAt: Date = Date(),
+        updatedAt: Date = Date()
     ) {
         self.id = id
         self.name = name
@@ -71,7 +73,7 @@ final class UserModel: Codable {
         self.email = email
         self.notes = notes
         self.createdAt = createdAt
-        self.updateAt = updateAt
+        self.updatedAt = updatedAt
     }
     
     required init(from decoder: Decoder) throws {
@@ -87,7 +89,7 @@ final class UserModel: Codable {
         self.currentBudget = try container.decode(BudgetModel.self, forKey: ._currentBudget)
         self.notes = try container.decode(String.self, forKey: ._notes)
         self.createdAt = try container.decode(Date.self, forKey: ._createdAt)
-        self.updateAt = try container.decode(Date.self, forKey: ._updateAt)
+        self.updatedAt = try container.decode(Date.self, forKey: ._updatedAt)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -99,21 +101,21 @@ final class UserModel: Codable {
         try container.encode(surname, forKey: ._surname)
         try container.encode(secondSurname, forKey: ._secondSurname)
         try container.encode(email, forKey: ._email)
-        try container.encode(budgets, forKey: ._budgets)
-        try container.encode(currentBudget, forKey: ._currentBudget)
+//        try container.encode(budgets, forKey: ._budgets)
+//        try container.encode(currentBudget, forKey: ._currentBudget)
         try container.encode(notes, forKey: ._notes)
         try container.encode(createdAt, forKey: ._createdAt)
-        try container.encode(updateAt, forKey: ._updateAt)
+        try container.encode(updatedAt, forKey: ._updatedAt)
     }
     
     convenience init(id: String, fullname: String, email: String) {
-        let parts = fullname.split(separator: " ")
-        let name = String(parts.first ?? "")
-        let surname = String(parts[1])
+        let parts = fullname.split(separator: " ").map(String.init)
+        let name = parts.first ?? ""
+        let surname = parts.count > 1 ? parts[1] : ""
+        
         self.init(id: id, name: name, surname: surname, email: email)
     }
 }
-
 
 extension UserModel {
     func toDictionary() -> [String: Any]? {
@@ -129,4 +131,3 @@ extension UserModel {
         }
     }
 }
-

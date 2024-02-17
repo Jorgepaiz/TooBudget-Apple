@@ -12,7 +12,7 @@ import SwiftData
 final class BudgetModel: Codable {
 //final class BudgetModel {
     // identification
-    @Attribute(.unique) var id: UUID
+    @Attribute(.unique) let id: UUID
     var name: String
     
     // content
@@ -22,7 +22,7 @@ final class BudgetModel: Codable {
     //log
     var notes: String
     let createdAt: Date
-    var updateAt: Date
+    var updatedAt: Date
     
     
     // coding
@@ -33,27 +33,27 @@ final class BudgetModel: Codable {
         case _owner
         case _notes
         case _createdAt
-        case _updateAt
+        case _updatedAt
     }
     
     // constructors
-    init(
-        id: UUID,
-        name: String,
-        type: BudgetType,
-        owner: String,
-        notes: String,
-        createAt: Date,
-        updateAt: Date
-    ) {
-        self.id = id
-        self.name = name
-        self.type = type
-        self.owner = owner
-        self.notes = notes
-        self.createdAt = createAt
-        self.updateAt = updateAt
-    }
+init(
+    id: UUID,
+    name: String,
+    type: BudgetType,
+    owner: String,
+    notes: String = "",
+    createdAt: Date = Date(),
+    updatedAt: Date = Date()
+) {
+    self.id = id
+    self.name = name
+    self.type = type
+    self.owner = owner
+    self.notes = notes
+    self.createdAt = createdAt
+    self.updatedAt = updatedAt
+}
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -63,7 +63,7 @@ final class BudgetModel: Codable {
         self.owner = try container.decode(String.self, forKey: ._owner)
         self.notes = try container.decode(String.self, forKey: ._notes)
         self.createdAt = try container.decode(Date.self, forKey: ._createdAt)
-        self.updateAt = try container.decode(Date.self, forKey: ._updateAt)
+        self.updatedAt = try container.decode(Date.self, forKey: ._updatedAt)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -74,9 +74,20 @@ final class BudgetModel: Codable {
         try container.encode(owner, forKey: ._owner)
         try container.encode(notes, forKey: ._notes)
         try container.encode(createdAt, forKey: ._createdAt)
-        try container.encode(updateAt, forKey: ._updateAt)
+        try container.encode(updatedAt, forKey: ._updatedAt)
     }
     
+    convenience init(name: String, type: BudgetType = .personal, owner: String) {
+        self.init(
+            id: .init(),
+            name: name,
+            type: type,
+            owner: owner,
+            notes: "",
+            createdAt: Date(),
+            updatedAt: Date()
+        )
+    }
 }
 
 extension BudgetModel {

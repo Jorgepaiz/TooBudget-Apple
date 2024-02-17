@@ -8,6 +8,5 @@
 import SwiftData
 
 protocol DataProtocol {
-    func setupContainer(inMemory: Bool) -> ModelContainer
     func deleteModel() throws
 }

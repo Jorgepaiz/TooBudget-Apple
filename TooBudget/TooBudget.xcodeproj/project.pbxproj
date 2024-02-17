@@ -29,6 +29,10 @@
 		8848461A2B7ABBB10063ECD6 /* DataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884846192B7ABBB10063ECD6 /* DataProtocol.swift */; };
 		8848461D2B7AC31F0063ECD6 /* DataUserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848461C2B7AC31F0063ECD6 /* DataUserProtocol.swift */; };
 		8848461F2B7AC73A0063ECD6 /* DataBudgetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848461E2B7AC73A0063ECD6 /* DataBudgetProtocol.swift */; };
+		884846212B7C653C0063ECD6 /* BudgetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884846202B7C653C0063ECD6 /* BudgetRepository.swift */; };
+		884846232B7C74450063ECD6 /* DataServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884846222B7C74450063ECD6 /* DataServiceTest.swift */; };
+		884846252B7C7FF20063ECD6 /* UserModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884846242B7C7FF20063ECD6 /* UserModelTest.swift */; };
+		884846272B7C82840063ECD6 /* BudgetModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884846262B7C82840063ECD6 /* BudgetModelTest.swift */; };
 		8898F5002B6DBDF300C3C86A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F4FF2B6DBDF300C3C86A /* AppCoordinator.swift */; };
 		8898F5042B6DBEC500C3C86A /* AppViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5032B6DBEC500C3C86A /* AppViews.swift */; };
 		8898F5062B6DBF3A00C3C86A /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5052B6DBF3A00C3C86A /* LandingView.swift */; };
@@ -37,7 +41,6 @@
 		8898F50C2B6DBF6200C3C86A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F50B2B6DBF6200C3C86A /* HomeView.swift */; };
 		8898F50E2B6DBF7000C3C86A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F50D2B6DBF7000C3C86A /* HomeViewModel.swift */; };
 		8898F5102B6DBF7A00C3C86A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F50F2B6DBF7A00C3C86A /* HomeCoordinator.swift */; };
-		8898F51D2B6DCC7600C3C86A /* TooBudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F51C2B6DCC7600C3C86A /* TooBudgetTests.swift */; };
 		8898F52A2B6DCCBD00C3C86A /* TooBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5292B6DCCBD00C3C86A /* TooBudgetUITests.swift */; };
 		8898F52C2B6DCCBD00C3C86A /* TooBudgetUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F52B2B6DCCBD00C3C86A /* TooBudgetUITestsLaunchTests.swift */; };
 		8898F5342B6DDFB600C3C86A /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5332B6DDFB600C3C86A /* ImageSliderView.swift */; };
@@ -110,6 +113,10 @@
 		884846192B7ABBB10063ECD6 /* DataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtocol.swift; sourceTree = "<group>"; };
 		8848461C2B7AC31F0063ECD6 /* DataUserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUserProtocol.swift; sourceTree = "<group>"; };
 		8848461E2B7AC73A0063ECD6 /* DataBudgetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBudgetProtocol.swift; sourceTree = "<group>"; };
+		884846202B7C653C0063ECD6 /* BudgetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetRepository.swift; sourceTree = "<group>"; };
+		884846222B7C74450063ECD6 /* DataServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTest.swift; sourceTree = "<group>"; };
+		884846242B7C7FF20063ECD6 /* UserModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelTest.swift; sourceTree = "<group>"; };
+		884846262B7C82840063ECD6 /* BudgetModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetModelTest.swift; sourceTree = "<group>"; };
 		8898F4FF2B6DBDF300C3C86A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8898F5032B6DBEC500C3C86A /* AppViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViews.swift; sourceTree = "<group>"; };
 		8898F5052B6DBF3A00C3C86A /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
@@ -119,7 +126,6 @@
 		8898F50D2B6DBF7000C3C86A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8898F50F2B6DBF7A00C3C86A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		8898F51A2B6DCC7600C3C86A /* TooBudgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TooBudgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8898F51C2B6DCC7600C3C86A /* TooBudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetTests.swift; sourceTree = "<group>"; };
 		8898F5272B6DCCBD00C3C86A /* TooBudgetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TooBudgetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8898F5292B6DCCBD00C3C86A /* TooBudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetUITests.swift; sourceTree = "<group>"; };
 		8898F52B2B6DCCBD00C3C86A /* TooBudgetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooBudgetUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -330,7 +336,9 @@
 		8898F51B2B6DCC7600C3C86A /* TooBudgetTests */ = {
 			isa = PBXGroup;
 			children = (
-				8898F51C2B6DCC7600C3C86A /* TooBudgetTests.swift */,
+				884846222B7C74450063ECD6 /* DataServiceTest.swift */,
+				884846242B7C7FF20063ECD6 /* UserModelTest.swift */,
+				884846262B7C82840063ECD6 /* BudgetModelTest.swift */,
 			);
 			path = TooBudgetTests;
 			sourceTree = "<group>";
@@ -385,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				88D9F0BB2B755039006E7133 /* UserRepository.swift */,
+				884846202B7C653C0063ECD6 /* BudgetRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -570,6 +579,7 @@
 				884846182B7ABA370063ECD6 /* DataService.swift in Sources */,
 				8898F5002B6DBDF300C3C86A /* AppCoordinator.swift in Sources */,
 				88D9F0BC2B755039006E7133 /* UserRepository.swift in Sources */,
+				884846212B7C653C0063ECD6 /* BudgetRepository.swift in Sources */,
 				8898F5342B6DDFB600C3C86A /* ImageSliderView.swift in Sources */,
 				8848461F2B7AC73A0063ECD6 /* DataBudgetProtocol.swift in Sources */,
 				88D9F0C02B759C5F006E7133 /* BudgetViewModel.swift in Sources */,
@@ -588,7 +598,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8898F51D2B6DCC7600C3C86A /* TooBudgetTests.swift in Sources */,
+				884846252B7C7FF20063ECD6 /* UserModelTest.swift in Sources */,
+				884846272B7C82840063ECD6 /* BudgetModelTest.swift in Sources */,
+				884846232B7C74450063ECD6 /* DataServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,7 +751,7 @@
 				CODE_SIGN_ENTITLEMENTS = TooBudget/TooBudget.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"TooBudget/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 93XRVQ86R7;
@@ -789,7 +801,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"TooBudget/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 93XRVQ86R7;
