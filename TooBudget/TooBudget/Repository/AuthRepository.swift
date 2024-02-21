@@ -15,11 +15,10 @@ final class AuthRepository {
         authService.currentLogin()
     }
     
-    func signUp(user: UserModel, password: String) -> AnyPublisher<UserModel?, FirebaseServiceError> {
+    func signUp(user: UserModel, password: String) -> AnyPublisher<UserModel, FirebaseServiceError> {
         authService.signUp(user: user, password: password)
-            .flatMap { [weak self] newUser -> AnyPublisher<UserModel?, FirebaseServiceError> in
-                guard let self = self,
-                      let newUser = newUser else {
+            .flatMap { [weak self] newUser -> AnyPublisher<UserModel, FirebaseServiceError> in
+                guard let self = self else {
                     return Fail(error: FirebaseServiceError.errorSignUp)
                         .eraseToAnyPublisher()
                 }
@@ -32,11 +31,27 @@ final class AuthRepository {
             .eraseToAnyPublisher()
     }
     
-    func signIn(email: String, password: String) -> AnyPublisher<UserModel?, FirebaseServiceError> {
+    func signIn(email: String, password: String) -> AnyPublisher<UserModel, FirebaseServiceError> {
         authService.signIn(email: email, password: password)
+            .flatMap { [weak self] user -> AnyPublisher<UserModel, FirebaseServiceError> in
+                guard let self = self else {
+                    return Fail(error: FirebaseServiceError.errorSignIn)
+                        .eraseToAnyPublisher()
+                }
+                
+                return self.firestore.getUser(id: user.id)
+                    .map { fetchUser in fetchUser }
+                    .mapError { _ in FirebaseServiceError.errorRetrievingTheUser }
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
     
     func signOut() -> AnyPublisher<Bool, FirebaseServiceError> {
         authService.signOut()
+    }
+    
+    func forgotPassword(_ email: String) -> AnyPublisher<Bool, FirebaseServiceError> {
+        authService.forgotPassword(email)
     }
 }

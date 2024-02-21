@@ -47,7 +47,7 @@ final class SignInViewModel {
             try validate(password: password, with: validator)
             
             // Create account if all validations pass
-//            landingViewModel.logIn(email: email, password: password)
+            landingViewModel.logIn(email: email, password: password)
         } catch {
             // Handle specific errors
             handleError(error)

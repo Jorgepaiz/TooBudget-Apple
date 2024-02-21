@@ -24,25 +24,6 @@ final class FirestoreService {
         .eraseToAnyPublisher()
     }
     
-    func fetchDocument<T: Decodable>(from collection: FirestoreCollections, decodingType: T.Type) -> AnyPublisher<T?, FirebaseServiceError> {
-        Deferred {
-            Future { promise in
-                
-            }
-        }
-        .receive(on: DispatchQueue.main)
-        .eraseToAnyPublisher()
-    }
-    
-    func addDocument<T: Decodable>(from collection: FirestoreCollections, decodingType: T.Type) -> AnyPublisher<Bool, FirebaseServiceError> {
-        Deferred {
-            Future { promise in
-            }
-        }
-        .receive(on: DispatchQueue.main)
-        .eraseToAnyPublisher()
-    }
-    
     func addDocuments<T: Decodable>(from collection: FirestoreCollections, decodingType: T.Type) -> AnyPublisher<Bool, FirebaseServiceError> {
         Deferred {
             Future { promise in
@@ -59,6 +40,40 @@ final class FirestoreService {
                 
                 collection.document(user.id).setData(user.toDictionary() ?? [:])
                 promise(.success(true))
+            }
+        }
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
+    }
+    
+    func getUser(id: String) -> AnyPublisher<UserModel, FirebaseServiceError> {
+        Deferred {
+            Future { promise in
+                let collection = self.db.collection(FirestoreCollections.users.name).document(id)
+                
+                collection.getDocument { snapshot, error in
+                    if let error = error {
+                        print("Error: \(error)")
+                        promise(.failure(.errorRetrievingTheUser))
+                        return
+                    }
+                    
+                    guard let snapshot = snapshot,
+                          let dictionary = snapshot.data() else {
+                        promise(.failure(.errorRetrievingTheUser))
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+                        let decoder = JSONDecoder()
+                        let user = try decoder.decode(UserModel.self, from: jsonData)
+                        
+                        promise(.success(user))
+                    } catch {
+                        promise(.failure(FirebaseServiceError.decodeUser))
+                    }
+                }
             }
         }
         .receive(on: DispatchQueue.main)

@@ -74,7 +74,7 @@ struct LandingView: View {
                         title: viewModel.toastErrorTitle,
                         message: viewModel.toastErrotMessage,
                         showing: $viewModel.showToastError,
-                        type: .error
+                        type: viewModel.isErrorToast ? .error : .success
                     )
                 }
                 .padding(.horizontal)

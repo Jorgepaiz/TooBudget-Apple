@@ -31,6 +31,7 @@ final class LandingViewModel {
     var showToastError = false
     var toastErrorTitle = ""
     var toastErrotMessage = ""
+    var isErrorToast = true
     
     private func closeAllSheets() {
         signInSheet = false
@@ -44,6 +45,7 @@ final class LandingViewModel {
         closeAllSheets()
         toastErrorTitle = title
         toastErrotMessage = message
+        isErrorToast = true
         withAnimation {
             showToastError.toggle()
         }
@@ -51,6 +53,16 @@ final class LandingViewModel {
     
     private func showError(_ error: FirebaseServiceError) {
         showError(title: "Authentication", message: error.localizedDescription)
+    }
+    
+    private func successMessage() {
+        closeAllSheets()
+        toastErrorTitle = "Authentication"
+        toastErrotMessage = "Message sent"
+        isErrorToast = false
+        withAnimation {
+            showToastError.toggle()
+        }
     }
     
     private func showActivityIndicator(_ message: String) {
@@ -61,44 +73,27 @@ final class LandingViewModel {
         }
     }
     
+    private func goToHome() {
+        closeAllSheets()
+        
+        guard let user = self.user else {
+            showError(title: "Creating user", message: "Don't exist user")
+            return
+        }
+        
+        do {
+            try DataService.shared.deleteModel()
+            try UserRepository().createUser(user)
+            coordinator.appCoordinator.navigate(to: .home)
+        } catch {
+            showError(title: "Creating user", message: "Can't create a new user.")
+        }
+    }
     
-    
-//    private func proccessLoginOrCreateResponse(_ result: Result<User, Error>, isLogin: Bool = true) {
-//        let titleError = isLogin ? "sign_in_error_title" : "sign_up_error_title"
-//        
-//        switch result {
-//        case .success(let user):
-//            if let fullname = user.displayName,
-//               let email = user.email {
-//                let newUser = UserModel(id: user.uid, fullname: fullname, email: email)
-//                if initializingDataModel(newUser, isLogin: isLogin) {
-//                    coordinator.appCoordinator.navigate(to: .home)
-//                }
-//            } else {
-//                showError(title: titleError, message: "Can't fetch user information.")
-//            }
-//        case .failure(let error):
-//            showError(title: titleError, message: error.localizedDescription)
-//        }
-//    }
-    
-//    private func initializingDataModel(_ user: UserModel, isLogin: Bool) -> Bool {
-//        if isLogin {
-//            // TODO: flow for recover data
-//            return true
-//        } else {
-//            firebaseService.signOut()
-//            do {
-//                try DataService.shared.deleteModel()
-//                try UserRepository().createUser(user)
-//                return true
-//            } catch {
-//                showError(title: "Creating user", message: "Can't create a new user.")
-//                return false
-//            }
-//        }
-//    }
-    
+    private func forgotPassword() {
+        closeAllSheets()
+    }
+ 
     func previousLogin() {
         if authRepository.currentLogin() {
             coordinator.appCoordinator.navigate(to: .home)
@@ -120,65 +115,6 @@ final class LandingViewModel {
         forgotSheet.toggle()
     }
     
-//    func logIn(email: String, password: String) {
-//        showActivityIndicator("message_sign_in") {
-//            let firebaseService = FirebaseService()
-//            
-//            firebaseService.logIn(email: email, password: password) { result in
-//                DispatchQueue.main.async {
-//                    self.closeAllSheets()
-//                    self.proccessLoginOrCreateResponse(result)
-//                }
-//            }
-//        }
-//    }
-    
-//    func createAccount(fullname: String, email: String, password: String) {
-//        showActivityIndicator("message_sign_up") {
-//            let firebaseService = FirebaseService()
-//            
-//            firebaseService.createAccount(fullname: fullname, email: email, password: password) { result in
-//                DispatchQueue.main.async {
-//                    self.closeAllSheets()
-//                    self.proccessLoginOrCreateResponse(result, isLogin: false)
-//                }
-//            }
-//        }
-//    }
-    
-//    func forgotPassword(email: String) {
-//        showActivityIndicator("message_forgot_password") {
-//            let firebaseService = FirebaseService()
-//            
-//            firebaseService.forgotPassword(email: email) { error in
-//                DispatchQueue.main.async {
-//                    if let error {
-//                        print("Error al enviar correo de cuenta: \(error.localizedDescription)")
-//                    } else {
-//                        self.closeAllSheets()
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
-    private func createUser() {
-        closeAllSheets()
-        
-        guard let user = self.user else {
-            showError(title: "Creating user", message: "Don't exist user")
-            return
-        }
-        
-        do {
-            try DataService.shared.deleteModel()
-            try UserRepository().createUser(user)
-            coordinator.appCoordinator.navigate(to: .home)
-        } catch {
-            showError(title: "Creating user", message: "Can't create a new user.")
-        }
-    }
-    
     func createUser(fullname: String, email: String, password: String) {
         showActivityIndicator("message_sign_up")
         let newUser = UserModel(fullname: fullname, email: email)
@@ -189,7 +125,7 @@ final class LandingViewModel {
                 .sink(receiveCompletion: { completion in
                     switch completion {
                     case .finished:
-                        self.createUser()
+                        self.goToHome()
                     case .failure(let error):
                         self.showError(error)
                     }
@@ -197,6 +133,41 @@ final class LandingViewModel {
                     self.user = user
                 })
                 .store(in: &self.cancellables)
+        }
+    }
+    
+    func logIn(email: String,  password: String) {
+        showActivityIndicator("message_sign_in")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.authRepository.signIn(email: email, password: password)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        self.goToHome()
+                    case .failure(let error):
+                        self.showError(error)
+                    }
+                } receiveValue: { user in
+                    self.user = user
+                }
+                .store(in: &self.cancellables)
+        }
+    }
+    
+    func forgotPassword(_ email: String) {
+        showActivityIndicator("message_forgot_password")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.authRepository.forgotPassword(email)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        self.successMessage()
+                    case .failure(let error):
+                        self.showError(error)
+                    }
+                } receiveValue: { _ in }
+                .store(in: &self.cancellables)
+
         }
     }
 }

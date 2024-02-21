@@ -18,4 +18,6 @@ enum FirebaseServiceError: Error {
     case signInUserDisabled
     case signUpEmailUsed
     case fetchAllCollection
+    case errorForgotPassword
+    case decodeUser
 }

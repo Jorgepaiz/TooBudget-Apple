@@ -34,7 +34,7 @@ final class ForgotViewModel {
             try validate(email: email, with: validator)
             
             // Create account if all validations pass
-//            landingViewModel.forgotPassword(email: email)
+            landingViewModel.forgotPassword(email)
         } catch {
             // Handle specific errors
             handleError(error)

@@ -17,7 +17,7 @@ final class AuthService {
         Auth.auth().currentUser != nil
     }
     
-    func signUp(user: UserModel, password: String) -> AnyPublisher<UserModel?, FirebaseServiceError> {
+    func signUp(user: UserModel, password: String) -> AnyPublisher<UserModel, FirebaseServiceError> {
         Deferred {
             Future { promise in
                 Auth.auth().createUser(withEmail: user.email, password: password) { authResult, error in
@@ -52,7 +52,7 @@ final class AuthService {
         .eraseToAnyPublisher()
     }
     
-    func signIn(email: String, password: String) -> AnyPublisher<UserModel?, FirebaseServiceError> {
+    func signIn(email: String, password: String) -> AnyPublisher<UserModel, FirebaseServiceError> {
         Deferred {
             Future { promise in
                 Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -93,6 +93,22 @@ final class AuthService {
                     promise(.success(true))
                 } catch {
                     promise(.failure(.errorSignOut))
+                }
+            }
+        }
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
+    }
+    
+    func forgotPassword(_ email: String) -> AnyPublisher<Bool, FirebaseServiceError> {
+        Deferred {
+            Future { promise in
+                Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    if let error = error {
+                        print("Error: \(error)")
+                        promise(.failure(.errorForgotPassword))
+                    }
+                    promise(.success(true))
                 }
             }
         }

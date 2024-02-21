@@ -23,7 +23,7 @@ final class UserModel: Codable {
     let email: String
     @Relationship(deleteRule: .cascade) 
     var budgets: [BudgetModel]
-    @Relationship(deleteRule: .nullify) 
+    @Relationship(deleteRule: .nullify)
     var currentBudget: BudgetModel?
     
     // log
@@ -86,7 +86,7 @@ final class UserModel: Codable {
         self.secondSurname = try container.decode(String.self, forKey: ._secondSurname)
         self.email = try container.decode(String.self, forKey: ._email)
         self.budgets = try container.decode([BudgetModel].self, forKey: ._budgets)
-        self.currentBudget = try container.decode(BudgetModel.self, forKey: ._currentBudget)
+        self.currentBudget = try container.decodeIfPresent(BudgetModel.self, forKey: ._currentBudget)
         self.notes = try container.decode(String.self, forKey: ._notes)
         self.createdAt = try container.decode(Date.self, forKey: ._createdAt)
         self.updatedAt = try container.decode(Date.self, forKey: ._updatedAt)
@@ -101,8 +101,8 @@ final class UserModel: Codable {
         try container.encode(surname, forKey: ._surname)
         try container.encode(secondSurname, forKey: ._secondSurname)
         try container.encode(email, forKey: ._email)
-//        try container.encode(budgets, forKey: ._budgets)
-//        try container.encode(currentBudget, forKey: ._currentBudget)
+        try container.encode(budgets, forKey: ._budgets)
+        try container.encode(currentBudget, forKey: ._currentBudget)
         try container.encode(notes, forKey: ._notes)
         try container.encode(createdAt, forKey: ._createdAt)
         try container.encode(updatedAt, forKey: ._updatedAt)
