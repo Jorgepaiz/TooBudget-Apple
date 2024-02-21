@@ -10,6 +10,32 @@ import Firebase
 import FirebaseAuth
 
 final class FirebaseService: FirebaseServiceProtocol {
+    func createAccount(user: UserModel, password: String) throws -> Bool {
+        var errorToThrow: FirebaseServiceError?
+        
+        createAccount(fullname: user.getFullname(), email: user.email, password: password) { result in
+            switch result {
+            case .success(_):
+                print("created new user")
+            case .failure(let error):
+                let codeError = (error as NSError).code
+                if codeError == 17007 {
+                    errorToThrow = .signUpEmailUsed
+                } else if codeError == -1 {
+                    errorToThrow = .errorRetrievingTheUser
+                } else {
+                    errorToThrow = .errorSignUp
+                }
+            }
+        }
+        
+        if let error = errorToThrow  {
+            throw error
+        }
+        
+        return true
+    }
+    
     func currentUser() -> User? {
         let user = Auth.auth().currentUser
         
@@ -19,6 +45,7 @@ final class FirebaseService: FirebaseServiceProtocol {
     func logIn(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
+                print("Error: \(error)")
                 completion(.failure(error))
                 return
             }

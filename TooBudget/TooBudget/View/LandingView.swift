@@ -97,9 +97,6 @@ struct LandingView: View {
         .onAppear {
             viewModel.previousLogin()
         }
-        .task {
-            DataService.shared.testDataBase()
-        }
     }
 }
 

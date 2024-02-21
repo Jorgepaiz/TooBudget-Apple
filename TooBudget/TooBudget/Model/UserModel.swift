@@ -108,12 +108,16 @@ final class UserModel: Codable {
         try container.encode(updatedAt, forKey: ._updatedAt)
     }
     
-    convenience init(id: String, fullname: String, email: String) {
+    convenience init(id: String = "", fullname: String, email: String) {
         let parts = fullname.split(separator: " ").map(String.init)
         let name = parts.first ?? ""
         let surname = parts.count > 1 ? parts[1] : ""
         
         self.init(id: id, name: name, surname: surname, email: email)
+    }
+    
+    func getFullname() -> String {
+        return "\(name) \(surname)"
     }
 }
 
