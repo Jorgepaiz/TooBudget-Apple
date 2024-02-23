@@ -17,9 +17,14 @@ final class BudgetViewModel {
     }
     
     func logOut() {
-        let firebaseService = FirebaseService()
-        
-        firebaseService.signOut()
-        coordinator.appCoordinator.navigate(to: .landing)
+        let _ = AuthRepository().signOut()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    self.coordinator.appCoordinator.navigate(to: .landing)
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
+            } receiveValue: { _ in }
     }
 }

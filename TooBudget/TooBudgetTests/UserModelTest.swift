@@ -22,8 +22,8 @@ final class UserModelTest: XCTestCase {
         let notes = "This is a test note."
         let createdAt = Date()
         let updatedAt = Date()
-        let budget1 = BudgetModel(name: "\(name) 1", owner: "owner1")
-        let budget2 = BudgetModel(name: "\(name) 1", owner: "owner2")
+//        let budget1 = BudgetModel(name: "\(name) 1", owner: "owner1")
+//        let budget2 = BudgetModel(name: "\(name) 1", owner: "owner2")
         
         // When
         let userModel = UserModel(
@@ -94,14 +94,14 @@ final class UserModelTest: XCTestCase {
             createdAt: Date(timeIntervalSince1970: 10000),
             updatedAt: Date(timeIntervalSince1970: 20000)
         )
-        let budget1 = BudgetModel(
-            name: "Personal Finances",
-            owner: "John Doe"
-        )
-        let budget2 = BudgetModel(
-            name: "Business Expenses",
-            owner: "John Doe"
-        )
+//        let budget1 = BudgetModel(
+//            name: "Personal Finances",
+//            owner: "John Doe"
+//        )
+//        let budget2 = BudgetModel(
+//            name: "Business Expenses",
+//            owner: "John Doe"
+//        )
 //        userModel.budgets = [budget1, budget2]
 //        userModel.currentBudget = budget2
         
