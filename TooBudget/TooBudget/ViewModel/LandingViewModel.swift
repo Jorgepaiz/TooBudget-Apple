@@ -74,6 +74,7 @@ final class LandingViewModel {
     }
     
     private func goToHome() {
+        AnalyticsService.logInUser()
         closeAllSheets()
         
         guard let user = self.user else {
@@ -86,6 +87,7 @@ final class LandingViewModel {
             try UserRepository().createUser(user)
             coordinator.appCoordinator.navigate(to: .home)
         } catch {
+            CrashlyticsService.logError(error)
             showError(title: "Creating user", message: "Can't create a new user.")
         }
     }

@@ -83,7 +83,10 @@ struct ForgotView: View {
         }
         .presentationBackground(.clear)
         .ignoresSafeArea()
-        .onDisappear() {
+        .onAppear {
+            AnalyticsService.specialScreenView("Forgot")
+        }
+        .onDisappear {
             dissmis()
         }
     }

@@ -35,6 +35,7 @@ final class HomeViewModel {
             .sink { completion in
                 switch completion {
                 case .finished:
+                    AnalyticsService.logOut()
                     self.coordinator.appCoordinator.navigate(to: .landing)
                 case .failure(let error):
                     print("Error: \(error)")

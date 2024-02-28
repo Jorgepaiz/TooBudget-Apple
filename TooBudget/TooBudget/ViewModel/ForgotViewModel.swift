@@ -37,6 +37,7 @@ final class ForgotViewModel {
             landingViewModel.forgotPassword(email)
         } catch {
             // Handle specific errors
+            CrashlyticsService.logError(error)
             handleError(error)
         }
     }

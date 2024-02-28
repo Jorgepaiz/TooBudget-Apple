@@ -13,12 +13,16 @@ struct BudgetView: View {
     init(_ viewModel: BudgetViewModel) {
         self.viewModel = viewModel
     }
+    
     var body: some View {
         Text("Budget View")
         Button("Logout") {
             viewModel.logOut()
         }
         .buttonStyle(.bordered)
+        .onAppear {
+            AnalyticsService.currentScreenView(.budget)
+        }
     }
 }
 

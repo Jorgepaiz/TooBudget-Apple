@@ -100,6 +100,7 @@ extension BudgetModel {
             return dictionary
         } catch {
             print("Error to convert to dictionary the model: BudgetModel")
+            CrashlyticsService.logError(error)
             return nil
         }
     }

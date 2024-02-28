@@ -24,6 +24,7 @@ final class DataService: DataProtocol {
             let configuration = ModelConfiguration(isStoredInMemoryOnly: inMemory)
             return try ModelContainer(for: UserModel.self, BudgetModel.self, configurations: configuration)
         } catch {
+            CrashlyticsService.logError(error)
             fatalError("Could not create the database on this device.")
         }
     }
@@ -56,6 +57,7 @@ final class DataService: DataProtocol {
             try printUsersAfterOperation { try userRepository.createUser(user) }
             try printUsersAfterOperation { try userRepository.createUser(user) }
         } catch {
+            CrashlyticsService.logError(error)
             print("Error on testDataBase: \(error.localizedDescription)")
         }
     }

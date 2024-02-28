@@ -50,6 +50,7 @@ final class SignInViewModel {
             landingViewModel.logIn(email: email, password: password)
         } catch {
             // Handle specific errors
+            CrashlyticsService.logError(error)
             handleError(error)
         }
     }

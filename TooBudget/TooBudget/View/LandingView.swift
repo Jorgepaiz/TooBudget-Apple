@@ -95,6 +95,7 @@ struct LandingView: View {
             ActivityIndicator(message: viewModel.activityIndicatorMessage)
         }
         .onAppear {
+            AnalyticsService.currentScreenView(.landing)
             viewModel.previousLogin()
         }
     }

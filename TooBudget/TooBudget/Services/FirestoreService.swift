@@ -71,6 +71,7 @@ final class FirestoreService {
                         
                         promise(.success(user))
                     } catch {
+                        CrashlyticsService.logError(error)
                         promise(.failure(FirebaseServiceError.decodeUser))
                     }
                 }

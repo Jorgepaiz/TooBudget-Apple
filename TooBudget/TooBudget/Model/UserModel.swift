@@ -131,6 +131,7 @@ extension UserModel {
             return dictionary
         } catch {
             print("Error to convert to dictionary the model: UserModel")
+            CrashlyticsService.logError(error)
             return nil
         }
     }

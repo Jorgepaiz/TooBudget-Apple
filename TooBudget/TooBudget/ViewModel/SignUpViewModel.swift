@@ -50,6 +50,7 @@ final class SignUpViewModel {
             landingViewModel.createUser(fullname: fullname, email: email, password: password)
         } catch {
             // Handle specific errors
+            CrashlyticsService.logError(error)
             handleError(error)
         }
     }

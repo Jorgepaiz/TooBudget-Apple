@@ -19,6 +19,7 @@ final class BudgetRepository: DataBudgetProtocol {
         do {
             try context.save()
         } catch {
+            CrashlyticsService.logError(error)
             throw error
         }
     }
@@ -37,6 +38,7 @@ final class BudgetRepository: DataBudgetProtocol {
         do {
             return (try context.fetch(descriptor)).first
         } catch {
+            CrashlyticsService.logError(error)
             throw DataServiceError.readBudget
         }
     }
@@ -67,6 +69,7 @@ final class BudgetRepository: DataBudgetProtocol {
         do {
             return try context.fetch(descriptor)
         } catch {
+            CrashlyticsService.logError(error)
             throw DataServiceError.readBudget
         }
     }

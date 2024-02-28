@@ -22,11 +22,9 @@ struct HomeView: View {
             }
             .buttonStyle(.bordered)
         }
-//        .onAppear{
-//            Task {
-//                await viewModel.checkCurrentBudget()
-//            }
-//        }
+        .onAppear {
+            AnalyticsService.currentScreenView(.home)
+        }
     }
 }
 

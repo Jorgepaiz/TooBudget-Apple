@@ -92,6 +92,7 @@ final class AuthService {
                     try Auth.auth().signOut()
                     promise(.success(true))
                 } catch {
+                    CrashlyticsService.logError(error)
                     promise(.failure(.errorSignOut))
                 }
             }

@@ -12,4 +12,17 @@ enum AppViews {
     case landing
     case home
     case budget
+    
+    var name: String {
+        switch self {
+        case .loading:
+            "Loading"
+        case .landing:
+            "Landing"
+        case .home:
+            "Home"
+        case .budget:
+            "Budget"
+        }
+    }
 }
