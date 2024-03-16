@@ -16,12 +16,12 @@ final class BudgetModel: Codable {
     var name: String
     
     // content
-    let type: BudgetType
+    var type: BudgetType
     let owner: String
     
     //log
     var notes: String
-    let createdAt: Date
+    var createdAt: Date
     var updatedAt: Date
     
     
@@ -77,7 +77,11 @@ init(
         try container.encode(updatedAt, forKey: ._updatedAt)
     }
     
-    convenience init(name: String, type: BudgetType = .personal, owner: String) {
+    convenience init(
+        name: String = "",
+        type: BudgetType = .special,
+        owner: String = ""
+    ) {
         self.init(
             id: .init(),
             name: name,

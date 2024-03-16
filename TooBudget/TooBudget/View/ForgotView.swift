@@ -84,7 +84,7 @@ struct ForgotView: View {
         .presentationBackground(.clear)
         .ignoresSafeArea()
         .onAppear {
-            AnalyticsService.specialScreenView("Forgot")
+            AnalyticsService.specialScreenView("Forgot Password")
         }
         .onDisappear {
             dissmis()

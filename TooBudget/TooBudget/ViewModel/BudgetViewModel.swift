@@ -7,13 +7,55 @@
 
 import Foundation
 import Observation
+import SwiftData
 
 @Observable
 final class BudgetViewModel {
-    let coordinator: BudgetCoordinator
+    private let coordinator: BudgetCoordinator
+    private let context: ModelContext
+    private var currentUser: UserModel?
     
     init(_ coordinator: BudgetCoordinator) {
         self.coordinator = coordinator
+        self.currentUser = UserRepository().getCurrentUser()
+        self.context = ModelContext(DataService.shared.container)
+        print("init -> currentUser: \(String(describing: self.currentUser))")
+    }
+    
+    var isThereDefaultBudget: Bool {
+        currentUser?.currentBudget != nil
+    }
+    
+    func setDefaultBudget(_ budget: BudgetModel) {
+        if let user = currentUser {
+            user.currentBudget = budget
+        }
+    }
+    
+    func getNewBudget() -> BudgetModel {
+        print("===> getNewBudget")
+        var budget = BudgetModel()
+        if let user = currentUser {
+            print("---> currentUser")
+            budget = BudgetModel(owner: user.getFullname())
+            user.currentBudget = budget
+            user.budgets.append(budget)
+            try? UserRepository().updateUser(user)
+        }
+        return budget
+    }
+    
+    func getBudgets() -> [BudgetModel] {
+        print("===> getBugets")
+        if let user = currentUser {
+            print("---> currentUser")
+            return user.budgets
+        }
+        return [BudgetModel]()
+    }
+    
+    func goToHome() {
+        coordinator.appCoordinator.navigate(to: .home)
     }
     
     func logOut() {
@@ -28,4 +70,5 @@ final class BudgetViewModel {
                 }
             } receiveValue: { _ in }
     }
+    
 }

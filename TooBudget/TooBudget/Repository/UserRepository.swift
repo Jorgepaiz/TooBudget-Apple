@@ -29,7 +29,7 @@ final class UserRepository: DataUserProtocol {
         try saveContext(.createUser)
     }
     
-    func readUser(id: String) throws -> UserModel? {
+    func readUserBy(id: String) throws -> UserModel? {
         var descriptor = FetchDescriptor<UserModel>(
             predicate: #Predicate { $0.id == id },
             sortBy: [.init(\.createdAt)]
@@ -43,23 +43,23 @@ final class UserRepository: DataUserProtocol {
         }
     }
     
-    func readUser(user: UserModel) throws -> UserModel? {
-        return try readUser(id: user.id)
+    func readUserBy(model user: UserModel) throws -> UserModel? {
+        return try readUserBy(id: user.id)
     }
     
     func updateUser(_ user: UserModel) throws {
         try saveContext(.updateUser)
     }
     
-    func deleteUser(id: String) throws {
-        guard let user = try readUser(id: id) else {
+    func deleteUserBy(id: String) throws {
+        guard let user = try readUserBy(id: id) else {
             throw DataServiceError.userNotFound
         }
         
-        try deleteUser(user: user)
+        try deleteUserBy(model: user)
     }
     
-    func deleteUser(user: UserModel) throws {
+    func deleteUserBy(model user: UserModel) throws {
         context.delete(user)
         try saveContext(.deleteUser)
     }
@@ -74,5 +74,13 @@ final class UserRepository: DataUserProtocol {
         }
     }
     
+    func getCurrentUser() -> UserModel? {
+        do {
+            return (try fetchAllUsers()).first
+        } catch {
+            CrashlyticsService.logError(error)
+        }
+        return nil
+    }
     
 }

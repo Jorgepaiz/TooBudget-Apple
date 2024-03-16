@@ -124,14 +124,20 @@ final class LandingViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             
             self.authRepository.signUp(user: newUser, password: password)
-                .sink(receiveCompletion: { completion in
+                .sink(receiveCompletion: {
+                    completion in
                     switch completion {
                     case .finished:
                         self.goToHome()
                     case .failure(let error):
+                        AnalyticsService.logEvent(
+                            "Error trying to Sign Up",
+                            parameters: [AnalyticsParameterValue: error.localizedDescription]
+                        )
                         self.showError(error)
                     }
-                }, receiveValue: { user in
+                },
+                      receiveValue: { user in
                     self.user = user
                 })
                 .store(in: &self.cancellables)
@@ -147,6 +153,10 @@ final class LandingViewModel {
                     case .finished:
                         self.goToHome()
                     case .failure(let error):
+                        AnalyticsService.logEvent(
+                            "Error trying to Sign In",
+                            parameters: [AnalyticsParameterValue: error.localizedDescription]
+                        )
                         self.showError(error)
                     }
                 } receiveValue: { user in
@@ -164,7 +174,10 @@ final class LandingViewModel {
                     switch completion {
                     case .finished:
                         self.successMessage()
-                    case .failure(let error):
+                    case .failure(let error):AnalyticsService.logEvent(
+                        "Error trying to recover password",
+                        parameters: [AnalyticsParameterValue: error.localizedDescription]
+                    )
                         self.showError(error)
                     }
                 } receiveValue: { _ in }

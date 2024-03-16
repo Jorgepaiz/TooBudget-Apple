@@ -14,23 +14,13 @@ final class HomeViewModel {
     
     init(_ coordinator: HomeCoordinator) {
         self.coordinator = coordinator
+        self.currentUser = UserRepository().getCurrentUser()
     }
     
     private var currentUser: UserModel?
     private var currentBudget: BudgetModel?
     
-    /*
-    private func fetchAllUsers() async -> [UserModel] {
-        let userRepository = UserRepository()
-        do {
-            return try await userRepository.fetchAll()
-        } catch {
-            fatalError("Error fetching all users, detail \(error.localizedDescription)")
-        }
-    }
-     */
-    
-    func logOut() {
+   func logOut() {
         let _ = AuthRepository().signOut()
             .sink { completion in
                 switch completion {
@@ -43,19 +33,16 @@ final class HomeViewModel {
             } receiveValue: { _ in }
     }
     
-    /*
-    func checkCurrentBudget() async {
-        let users = await fetchAllUsers()
-        if let user = users.first {
-            currentUser = user
-        } else {
-            coordinator.appCoordinator.navigate(to: .landing)
-        }
+    func goToBudget() {
+        self.coordinator.appCoordinator.navigate(to: .budget)
+    }
+    
+
+    func checkCurrentBudget() {
         if let budget = currentUser?.currentBudget {
             currentBudget = budget
         } else {
             coordinator.appCoordinator.navigate(to: .budget)
         }
     }
-     */
 }

@@ -7,20 +7,13 @@
 
 import Foundation
 
-enum BudgetType: Codable {
+enum BudgetType: String, Codable {
     case personal
     case family
     case special
     
     var name: String {
-        switch self {
-        case .personal:
-            return "Personal"
-        case .family:
-            return "Family"
-        case .special:
-            return "Special"
-        }
+        self.rawValue.capitalized
     }
     
     var description: String {

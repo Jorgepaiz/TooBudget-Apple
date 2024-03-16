@@ -10,15 +10,22 @@ import FirebaseAnalytics
 import FirebaseAuth
 
 final class AnalyticsService {
-    static func currentScreenView(_ screen: AppViews) {
+    static func logEvent(_ event: String, parameters: [String: Any]? = nil) {
         Analytics.logEvent(
+            event,
+            parameters: parameters
+        )
+    }
+    
+    static func currentScreenView(_ screen: AppViews) {
+        logEvent(
             AnalyticsEventScreenView,
             parameters: [AnalyticsParameterScreenName: screen.name]
         )
     }
     
     static func specialScreenView(_ screen: String) {
-        Analytics.logEvent(
+        logEvent(
             AnalyticsEventScreenView,
             parameters: [AnalyticsParameterScreenName: screen]
         )
@@ -32,15 +39,15 @@ final class AnalyticsService {
             Analytics.setUserID(user.uid)
             Analytics.setUserProperty("email", forName: email)
             Analytics.setUserProperty("fullName", forName: fullname)
-            Analytics.logEvent(
+            logEvent(
                 AnalyticsEventLogin,
-                parameters: [:]
+                parameters: [AnalyticsParameterStartDate: Date()]
             )
         }
     }
     
     static func logOut() {
-        Analytics.logEvent(
+        logEvent(
             AnalyticsEventSignUp,
             parameters: [AnalyticsParameterEndDate: Date()]
         )

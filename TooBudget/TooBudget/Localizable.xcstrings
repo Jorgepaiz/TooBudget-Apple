@@ -14,6 +14,9 @@
         }
       }
     },
+    "Add Budget" : {
+
+    },
     "btn_forgot_password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -133,10 +136,19 @@
         }
       }
     },
-    "Budget View" : {
+    "Budget" : {
+
+    },
+    "Budget Type" : {
 
     },
     "close" : {
+
+    },
+    "Created" : {
+
+    },
+    "Edit Budget" : {
 
     },
     "email" : {
@@ -309,6 +321,9 @@
         }
       }
     },
+    "Go Home" : {
+
+    },
     "have_account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -432,7 +447,13 @@
         }
       }
     },
+    "Log" : {
+
+    },
     "Logout" : {
+
+    },
+    "LogOut" : {
 
     },
     "long_text_placeholder" : {
@@ -502,6 +523,18 @@
           }
         }
       }
+    },
+    "Name" : {
+
+    },
+    "notes" : {
+
+    },
+    "Notes" : {
+
+    },
+    "Owner:" : {
+
     },
     "password" : {
       "extractionState" : "manual",
@@ -758,6 +791,9 @@
         }
       }
     },
+    "Type" : {
+
+    },
     "Unknown" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -774,6 +810,9 @@
           }
         }
       }
+    },
+    "Updated" : {
+
     }
   },
   "version" : "1.0"

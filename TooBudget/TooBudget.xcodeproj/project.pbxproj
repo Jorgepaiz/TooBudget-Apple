@@ -85,6 +85,8 @@
 		88D9F0C22B759C70006E7133 /* BudgetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0C12B759C70006E7133 /* BudgetCoordinator.swift */; };
 		88D9F0C42B765F01006E7133 /* ToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0C32B765F01006E7133 /* ToastType.swift */; };
 		88D9F0C62B765F72006E7133 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9F0C52B765F72006E7133 /* ToastView.swift */; };
+		88FF5DF92B90578500CD0382 /* BudgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF5DF82B90578500CD0382 /* BudgetListView.swift */; };
+		88FF5DFB2B9058AA00CD0382 /* BudgetEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF5DFA2B9058AA00CD0382 /* BudgetEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +188,8 @@
 		88D9F0C12B759C70006E7133 /* BudgetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCoordinator.swift; sourceTree = "<group>"; };
 		88D9F0C32B765F01006E7133 /* ToastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastType.swift; sourceTree = "<group>"; };
 		88D9F0C52B765F72006E7133 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		88FF5DF82B90578500CD0382 /* BudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListView.swift; sourceTree = "<group>"; };
+		88FF5DFA2B9058AA00CD0382 /* BudgetEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +309,8 @@
 				88C843152B700D40009BB0BE /* ForgotView.swift */,
 				8898F50B2B6DBF6200C3C86A /* HomeView.swift */,
 				88D9F0BD2B75916C006E7133 /* BudgetView.swift */,
+				88FF5DFA2B9058AA00CD0382 /* BudgetEditView.swift */,
+				88FF5DF82B90578500CD0382 /* BudgetListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -630,7 +636,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "INFO_PLIST=GoogleService-Info.plist\nDEVELOPMENT_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Debug/${INFO_PLIST}\nRELEASE_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Release/${INFO_PLIST}\n\necho \"Verifying ${INFO_PLIST} in ${DEVELOPMENT_INFO_PLIST}\"\nif [ ! -f $DEVELOPMENT_INFO_PLIST ] ; then\n    echo \"Development GoogleService-Info.plist not found.\"\n    exit 1\nfi\n\necho \"Verifying ${INFO_PLIST} in ${RELEASE_INFO_PLIST}\"\nif [ ! -f $RELEASE_INFO_PLIST ] ; then\n    echo \"Release GoogleService-Info.plist not found.\"\n    exit 1\nfi\n\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Copying ${INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\nif [ \"${CONFIGURATION}\" == \"Release\" ] ; then\n    echo \"Copied ${RELEASE_INFO_PLIST}.\"\n    cp \"${RELEASE_INFO_PLIST}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"Copied ${DEVELOPMENT_INFO_PLIST}.\"\n    cp \"${DEVELOPMENT_INFO_PLIST}\" \"${PLIST_DESTINATION}\"\nfi\n\n";
+			shellScript = "INFO_PLIST=GoogleService-Info.plist\nDEVELOPMENT_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Debug/${INFO_PLIST}\nRELEASE_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Release/${INFO_PLIST}\n\necho \"Verifying ${INFO_PLIST} in ${DEVELOPMENT_INFO_PLIST}\"\nif [ ! -f $DEVELOPMENT_INFO_PLIST ] ; then\n    echo \"Development GoogleService-Info.plist not found.\"\n    exit 1\nfi\n\necho \"Verifying ${INFO_PLIST} in ${RELEASE_INFO_PLIST}\"\nif [ ! -f $RELEASE_INFO_PLIST ] ; then\n    echo \"Release GoogleService-Info.plist not found.\"\n    exit 1\nfi\n\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Copying ${INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\nif [ \"${CONFIGURATION}\" == \"Release\" ] ; then\n    echo \"Copied ${RELEASE_INFO_PLIST}.\"\n    cp \"${RELEASE_INFO_PLIST}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"Copied ${DEVELOPMENT_INFO_PLIST}.\"\n    cp \"${DEVELOPMENT_INFO_PLIST}\" \"${PLIST_DESTINATION}\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -658,6 +664,7 @@
 				8848461A2B7ABBB10063ECD6 /* DataProtocol.swift in Sources */,
 				880DCC302B70546200CF56ED /* Validations.swift in Sources */,
 				8898F50E2B6DBF7000C3C86A /* HomeViewModel.swift in Sources */,
+				88FF5DFB2B9058AA00CD0382 /* BudgetEditView.swift in Sources */,
 				88B70E2F2B8400EF00663FE6 /* AuthService.swift in Sources */,
 				8898F5082B6DBF4800C3C86A /* LandingViewModel.swift in Sources */,
 				88B70E352B850A7C00663FE6 /* FirestoreService.swift in Sources */,
@@ -675,6 +682,7 @@
 				88D9F0C42B765F01006E7133 /* ToastType.swift in Sources */,
 				88C843182B700D55009BB0BE /* ForgotViewModel.swift in Sources */,
 				880F34F42B7240C900D6C789 /* TipStyles.swift in Sources */,
+				88FF5DF92B90578500CD0382 /* BudgetListView.swift in Sources */,
 				88D9F0C62B765F72006E7133 /* ToastView.swift in Sources */,
 				8898F5482B6DEF7B00C3C86A /* ShapeStyles.swift in Sources */,
 				880DCC242B7050EC00CF56ED /* AppDelegate.swift in Sources */,
