@@ -9,4 +9,6 @@ import Foundation
 
 enum SignUpType: Codable {
     case email
+    case apple
+    case gmail
 }

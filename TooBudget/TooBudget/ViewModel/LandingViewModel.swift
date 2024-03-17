@@ -124,8 +124,7 @@ final class LandingViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             
             self.authRepository.signUp(user: newUser, password: password)
-                .sink(receiveCompletion: {
-                    completion in
+                .sink(receiveCompletion: { completion in
                     switch completion {
                     case .finished:
                         self.goToHome()

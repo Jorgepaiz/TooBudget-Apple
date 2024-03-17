@@ -21,10 +21,8 @@ final class UserModel: Codable {
     var surname: String
     var secondSurname: String
     let email: String
-    @Relationship(deleteRule: .cascade) 
-    var budgets: [BudgetModel]
-    @Relationship(deleteRule: .nullify)
-    var currentBudget: BudgetModel?
+    var budgets: [UUID]
+    var currentBudget: UUID?
     
     // log
     var notes: String
@@ -33,18 +31,18 @@ final class UserModel: Codable {
     
     // coding
     enum CodingKeys: CodingKey {
-        case _id
-        case _name
-        case _signUpType
-        case _secondName
-        case _surname
-        case _secondSurname
-        case _email
-        case _budgets
-        case _currentBudget
-        case _notes
-        case _createdAt
-        case _updatedAt
+        case id
+        case name
+        case sign_up_type
+        case second_name
+        case surname
+        case second_surname
+        case email
+        case budgets
+        case current_budget
+        case notes
+        case created_at
+        case updated_at
     }
     
     // constructors
@@ -56,8 +54,8 @@ final class UserModel: Codable {
         surname: String = "",
         secondSurname: String = "",
         email: String,
-        budgets: [BudgetModel] = [],
-        currentBudget: BudgetModel? = nil,
+        budgets: [UUID] = [],
+        currentBudget: UUID? = nil,
         notes: String = "",
         createdAt: Date = Date(),
         updatedAt: Date = Date()
@@ -78,34 +76,34 @@ final class UserModel: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: ._id)
-        self.name = try container.decode(String.self, forKey: ._name)
-        self.signUpType = try container.decode(SignUpType.self, forKey: ._signUpType)
-        self.secondName = try container.decode(String.self, forKey: ._secondName)
-        self.surname = try container.decode(String.self, forKey: ._surname)
-        self.secondSurname = try container.decode(String.self, forKey: ._secondSurname)
-        self.email = try container.decode(String.self, forKey: ._email)
-        self.budgets = try container.decode([BudgetModel].self, forKey: ._budgets)
-        self.currentBudget = try container.decodeIfPresent(BudgetModel.self, forKey: ._currentBudget)
-        self.notes = try container.decode(String.self, forKey: ._notes)
-        self.createdAt = try container.decode(Date.self, forKey: ._createdAt)
-        self.updatedAt = try container.decode(Date.self, forKey: ._updatedAt)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.signUpType = try container.decode(SignUpType.self, forKey: .sign_up_type)
+        self.secondName = try container.decode(String.self, forKey: .second_name)
+        self.surname = try container.decode(String.self, forKey: .surname)
+        self.secondSurname = try container.decode(String.self, forKey: .second_surname)
+        self.email = try container.decode(String.self, forKey: .email)
+        self.budgets = try container.decode([UUID].self, forKey: .budgets)
+        self.currentBudget = try container.decodeIfPresent(UUID.self, forKey: .current_budget)
+        self.notes = try container.decode(String.self, forKey: .notes)
+        self.createdAt = try container.decode(Date.self, forKey: .created_at)
+        self.updatedAt = try container.decode(Date.self, forKey: .updated_at)
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: ._id)
-        try container.encode(name, forKey: ._name)
-        try container.encode(signUpType, forKey: ._signUpType)
-        try container.encode(secondName, forKey: ._secondName)
-        try container.encode(surname, forKey: ._surname)
-        try container.encode(secondSurname, forKey: ._secondSurname)
-        try container.encode(email, forKey: ._email)
-        try container.encode(budgets, forKey: ._budgets)
-        try container.encode(currentBudget, forKey: ._currentBudget)
-        try container.encode(notes, forKey: ._notes)
-        try container.encode(createdAt, forKey: ._createdAt)
-        try container.encode(updatedAt, forKey: ._updatedAt)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(signUpType, forKey: .sign_up_type)
+        try container.encode(secondName, forKey: .second_name)
+        try container.encode(surname, forKey: .surname)
+        try container.encode(secondSurname, forKey: .second_surname)
+        try container.encode(email, forKey: .email)
+        try container.encode(budgets, forKey: .budgets)
+        try container.encode(currentBudget, forKey: .current_budget)
+        try container.encode(notes, forKey: .notes)
+        try container.encode(createdAt, forKey: .created_at)
+        try container.encode(updatedAt, forKey: .updated_at)
     }
     
     convenience init(id: String = "", fullname: String, email: String) {

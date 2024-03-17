@@ -308,9 +308,7 @@
 				88C843132B700D31009BB0BE /* SignUpView.swift */,
 				88C843152B700D40009BB0BE /* ForgotView.swift */,
 				8898F50B2B6DBF6200C3C86A /* HomeView.swift */,
-				88D9F0BD2B75916C006E7133 /* BudgetView.swift */,
-				88FF5DFA2B9058AA00CD0382 /* BudgetEditView.swift */,
-				88FF5DF82B90578500CD0382 /* BudgetListView.swift */,
+				88A35E582BA72D4C00F5EC3D /* Budget */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +452,16 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
+		88A35E582BA72D4C00F5EC3D /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				88D9F0BD2B75916C006E7133 /* BudgetView.swift */,
+				88FF5DFA2B9058AA00CD0382 /* BudgetEditView.swift */,
+				88FF5DF82B90578500CD0382 /* BudgetListView.swift */,
+			);
+			path = Budget;
+			sourceTree = "<group>";
+		};
 		88B70E3A2B875DEF00663FE6 /* Unit Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,7 +557,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					884473752B6D9943001E347A = {
 						CreatedOnToolsVersion = 15.2;
@@ -784,6 +792,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -845,6 +854,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -874,6 +884,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 13;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TooBudget/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 93XRVQ86R7;
@@ -925,6 +936,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 13;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TooBudget/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 93XRVQ86R7;

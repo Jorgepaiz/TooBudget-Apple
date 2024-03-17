@@ -10,15 +10,15 @@ import Observation
 
 @Observable
 final class HomeViewModel {
-    let coordinator: HomeCoordinator
+    private let coordinator: HomeCoordinator
+    private var currentUser: UserModel?
+    private var currentBudget: BudgetModel?
     
     init(_ coordinator: HomeCoordinator) {
         self.coordinator = coordinator
         self.currentUser = UserRepository().getCurrentUser()
     }
     
-    private var currentUser: UserModel?
-    private var currentBudget: BudgetModel?
     
    func logOut() {
         let _ = AuthRepository().signOut()
@@ -40,7 +40,8 @@ final class HomeViewModel {
 
     func checkCurrentBudget() {
         if let budget = currentUser?.currentBudget {
-            currentBudget = budget
+//            currentBudget?.id = budget
+            return
         } else {
             coordinator.appCoordinator.navigate(to: .budget)
         }

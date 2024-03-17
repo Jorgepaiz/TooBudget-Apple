@@ -19,7 +19,6 @@ final class BudgetViewModel {
         self.coordinator = coordinator
         self.currentUser = UserRepository().getCurrentUser()
         self.context = ModelContext(DataService.shared.container)
-        print("init -> currentUser: \(String(describing: self.currentUser))")
     }
     
     var isThereDefaultBudget: Bool {
@@ -28,7 +27,7 @@ final class BudgetViewModel {
     
     func setDefaultBudget(_ budget: BudgetModel) {
         if let user = currentUser {
-            user.currentBudget = budget
+//            user.currentBudget = budget
         }
     }
     
@@ -38,18 +37,16 @@ final class BudgetViewModel {
         if let user = currentUser {
             print("---> currentUser")
             budget = BudgetModel(owner: user.getFullname())
-            user.currentBudget = budget
-            user.budgets.append(budget)
+//            user.currentBudget = budget
+//            user.budgets.append(budget)
             try? UserRepository().updateUser(user)
         }
         return budget
     }
     
     func getBudgets() -> [BudgetModel] {
-        print("===> getBugets")
         if let user = currentUser {
-            print("---> currentUser")
-            return user.budgets
+//            return user.budgets
         }
         return [BudgetModel]()
     }

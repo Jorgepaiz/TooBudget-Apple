@@ -15,6 +15,7 @@ struct BudgetListView: View {
             SortDescriptor(\BudgetModel.owner)
         ]
     ) private var budgets: [BudgetModel]
+//    var budgets: [BudgetModel]
     
     var body: some View {
         List {
@@ -36,11 +37,14 @@ struct BudgetListView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: BudgetModel.self, configurations: config)
-//        let budget = BudgetModel(id: UUID(), name: "My Budget", type: .family, owner: "my", notes: "my notes")
+//        let budget1 = BudgetModel(id: UUID(), name: "First Budget", type: .personal, owner: "my", notes: "my first note")
+//        let budget2 = BudgetModel(id: UUID(), name: "Second Budget", type: .family, owner: "my", notes: "my second note")
+//        let budget3 = BudgetModel(id: UUID(), name: "Third Budget", type: .special, owner: "my", notes: "my third notes")
+//        let budgets = [budget1, budget2, budget3]
+//        return BudgetListView(budgets: budgets)
         let query = Query<BudgetModel, [BudgetModel]>(sort: [
             SortDescriptor(\BudgetModel.name)
         ])
-//        let query2 = Query<BudgetModel, [BudgetModel]>()
         return NavigationStack {
             BudgetListView(_budgets: query)
                 .modelContainer(container)
