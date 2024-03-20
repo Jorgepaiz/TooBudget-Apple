@@ -7,13 +7,7 @@
 
 import Foundation
 
-enum FirestoreCollections {
-    case users
-    
-    var name: String {
-        switch self {
-        case .users:
-            return "Users"
-        }
-    }
+enum FirestoreCollections: String {
+    case users = "Users"
+    case budgets = "Budgets"
 }

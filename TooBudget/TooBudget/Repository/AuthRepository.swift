@@ -23,7 +23,7 @@ final class AuthRepository {
                         .eraseToAnyPublisher()
                 }
                 
-                return self.firestore.addUser(user: newUser)
+                return self.firestore.addUser(newUser)
                     .map { _ in newUser }
                     .mapError { _ in FirebaseServiceError.addingUserToFirestore }
                     .eraseToAnyPublisher()

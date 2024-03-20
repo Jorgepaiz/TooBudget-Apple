@@ -14,11 +14,13 @@ final class BudgetViewModel {
     private let coordinator: BudgetCoordinator
     private let context: ModelContext
     private var currentUser: UserModel?
+    private var budgets: [BudgetModel]?
     
     init(_ coordinator: BudgetCoordinator) {
         self.coordinator = coordinator
-        self.currentUser = UserRepository().getCurrentUser()
         self.context = ModelContext(DataService.shared.container)
+        self.currentUser = UserRepository().getCurrentUser()
+        self.budgets = try? BudgetRepository().fetchAllBudgets()
     }
     
     var isThereDefaultBudget: Bool {
@@ -27,28 +29,29 @@ final class BudgetViewModel {
     
     func setDefaultBudget(_ budget: BudgetModel) {
         if let user = currentUser {
-//            user.currentBudget = budget
+            user.currentBudget = budget.id
         }
     }
     
     func getNewBudget() -> BudgetModel {
-        print("===> getNewBudget")
         var budget = BudgetModel()
         if let user = currentUser {
-            print("---> currentUser")
-            budget = BudgetModel(owner: user.getFullname())
-//            user.currentBudget = budget
-//            user.budgets.append(budget)
+            budget = BudgetModel(owner: user.id)
+            user.currentBudget = budget.id
+            user.budgets.append(budget.id)
             try? UserRepository().updateUser(user)
+            try? BudgetRepository().createBudget(budget)
         }
         return budget
     }
     
     func getBudgets() -> [BudgetModel] {
-        if let user = currentUser {
-//            return user.budgets
-        }
-        return [BudgetModel]()
+        let budget1 = BudgetModel(id: UUID(), name: "First Budget", type: .personal, owner: "my", notes: "my first note")
+        let budget2 = BudgetModel(id: UUID(), name: "Second Budget", type: .family, owner: "my", notes: "my second note")
+        let budget3 = BudgetModel(id: UUID(), name: "Third Budget", type: .special, owner: "my", notes: "my third notes")
+        let tmpBudgets = [budget1, budget2, budget3]
+        return tmpBudgets
+//        return budgets ?? []
     }
     
     func goToHome() {

@@ -12,7 +12,7 @@ final class FirestoreCollectionsTests: XCTestCase {
 
     func testUsersCollectionName() {
         let collection = FirestoreCollections.users
-        XCTAssertEqual(collection.name, "Users", "The collection name for 'users' should be 'Users'")
+        XCTAssertEqual(collection.rawValue, "Users", "The collection name for 'users' should be 'Users'")
     }
 
 }

@@ -27,13 +27,13 @@ final class BudgetModel: Codable {
     
     // coding
     enum CodingKeys: CodingKey {
-        case _id
-        case _name
-        case _type
-        case _owner
-        case _notes
-        case _createdAt
-        case _updatedAt
+        case id
+        case name
+        case type
+        case owner
+        case notes
+        case created_at
+        case updated_at
     }
     
     // constructors
@@ -57,24 +57,24 @@ init(
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(UUID.self, forKey: ._id)
-        self.name = try container.decode(String.self, forKey: ._name)
-        self.type = try container.decode(BudgetType.self, forKey: ._type)
-        self.owner = try container.decode(String.self, forKey: ._owner)
-        self.notes = try container.decode(String.self, forKey: ._notes)
-        self.createdAt = try container.decode(Date.self, forKey: ._createdAt)
-        self.updatedAt = try container.decode(Date.self, forKey: ._updatedAt)
+        self.id = try container.decode(UUID.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.type = try container.decode(BudgetType.self, forKey: .type)
+        self.owner = try container.decode(String.self, forKey: .owner)
+        self.notes = try container.decode(String.self, forKey: .notes)
+        self.createdAt = try container.decode(Date.self, forKey: .created_at)
+        self.updatedAt = try container.decode(Date.self, forKey: .updated_at)
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: ._id)
-        try container.encode(name, forKey: ._name)
-        try container.encode(type, forKey: ._type)
-        try container.encode(owner, forKey: ._owner)
-        try container.encode(notes, forKey: ._notes)
-        try container.encode(createdAt, forKey: ._createdAt)
-        try container.encode(updatedAt, forKey: ._updatedAt)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(type, forKey: .type)
+        try container.encode(owner, forKey: .owner)
+        try container.encode(notes, forKey: .notes)
+        try container.encode(createdAt, forKey: .created_at)
+        try container.encode(updatedAt, forKey: .updated_at)
     }
     
     convenience init(

@@ -33,10 +33,10 @@ final class FirestoreService {
         .eraseToAnyPublisher()
     }
     
-    func addUser(user: UserModel) -> AnyPublisher<Bool, FirebaseServiceError> {
+    func addUser(_ user: UserModel) -> AnyPublisher<Bool, FirebaseServiceError> {
         Deferred {
             Future { promise in
-                let collection = self.db.collection(FirestoreCollections.users.name)
+                let collection = self.db.collection(FirestoreCollections.users.rawValue)
                 
                 collection.document(user.id).setData(user.toDictionary() ?? [:])
                 promise(.success(true))
@@ -49,7 +49,7 @@ final class FirestoreService {
     func getUser(id: String) -> AnyPublisher<UserModel, FirebaseServiceError> {
         Deferred {
             Future { promise in
-                let collection = self.db.collection(FirestoreCollections.users.name).document(id)
+                let collection = self.db.collection(FirestoreCollections.users.rawValue).document(id)
                 
                 collection.getDocument { snapshot, error in
                     if let error = error {
@@ -80,4 +80,18 @@ final class FirestoreService {
         .receive(on: DispatchQueue.main)
         .eraseToAnyPublisher()
     }
+    
+    func addBudget(_ budget: BudgetModel) -> AnyPublisher<Bool, FirebaseServiceError> {
+        Deferred {
+            Future { promise in
+                let collection = self.db.collection(FirestoreCollections.budgets.rawValue)
+                
+                collection.document(budget.id.uuidString).setData(budget.toDictionary() ?? [:])
+                promise(.success(true))
+            }
+        }
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
+    }
+    
 }

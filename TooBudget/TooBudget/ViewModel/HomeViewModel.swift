@@ -36,14 +36,4 @@ final class HomeViewModel {
     func goToBudget() {
         self.coordinator.appCoordinator.navigate(to: .budget)
     }
-    
-
-    func checkCurrentBudget() {
-        if let budget = currentUser?.currentBudget {
-//            currentBudget?.id = budget
-            return
-        } else {
-            coordinator.appCoordinator.navigate(to: .budget)
-        }
-    }
 }

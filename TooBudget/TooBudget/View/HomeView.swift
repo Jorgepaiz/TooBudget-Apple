@@ -34,7 +34,6 @@ struct HomeView: View {
         }
         .onAppear {
             AnalyticsService.currentScreenView(.home)
-            viewModel.checkCurrentBudget()
         }
     }
 }
