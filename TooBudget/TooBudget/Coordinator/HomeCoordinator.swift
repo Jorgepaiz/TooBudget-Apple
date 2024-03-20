@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-final class HomeCoordinator: CoordinatorProtocol {
+final class HomeCoordinator {
     let appCoordinator: AppCoordinator
     
     init(_ appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
     }
     
-    func show() -> any View {
+    func show() -> some View {
         HomeView(HomeViewModel(self))
     }
 }

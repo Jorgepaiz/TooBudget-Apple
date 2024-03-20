@@ -47,9 +47,10 @@ final class SignUpViewModel {
             try validate(password: password, with: validator)
             
             // Create account if all validations pass
-            landingViewModel.createAccount(fullname: fullname, email: email, password: password)
+            landingViewModel.createUser(fullname: fullname, email: email, password: password)
         } catch {
             // Handle specific errors
+            CrashlyticsService.logError(error)
             handleError(error)
         }
     }

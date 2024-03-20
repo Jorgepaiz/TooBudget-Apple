@@ -17,15 +17,23 @@ struct HomeView: View {
     var body: some View {
         VStack {
             Text("Home View")
-            Button("Logout") {
-                viewModel.logOut()
+            HStack {
+                Spacer()
+                Spacer()
+                Button ("Budget") {
+                    viewModel.goToBudget()
+                }
+                Spacer()
+                Button("Logout") {
+                    viewModel.logOut()
+                }
+                Spacer()
+                Spacer()
             }
             .buttonStyle(.bordered)
         }
-        .onAppear() {
-            Task {
-                await viewModel.checkCurrentBudget()
-            }
+        .onAppear {
+            AnalyticsService.currentScreenView(.home)
         }
     }
 }

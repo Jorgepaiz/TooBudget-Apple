@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-final class BudgetCoordinator: CoordinatorProtocol {
+final class BudgetCoordinator {
     let appCoordinator: AppCoordinator
     
     init(_ appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
     }
     
-    func show() -> any View {
+    func show() -> some View {
         BudgetView(BudgetViewModel(self))
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 enum ValidationError: Error {
     case fullnameNotValid, fullnameIsRequired
@@ -22,8 +23,20 @@ final class Validations {
     
     // Generalized validation method to handle empty string validation and regex matching
     private func validate(_ value: String, with regex: String, emptyError: ValidationError, invalidError: ValidationError) throws -> Bool {
-        guard !value.isEmpty else { throw emptyError }
-        guard matches(value, regex: regex) else { throw invalidError }
+        guard !value.isEmpty else {
+            AnalyticsService.logEvent(
+                "Validations",
+                parameters: [AnalyticsParameterValue: emptyError]
+            )
+            throw emptyError
+        }
+        guard matches(value, regex: regex) else {
+            AnalyticsService.logEvent(
+                "Validations",
+                parameters: [AnalyticsParameterValue: invalidError]
+            )
+            throw invalidError
+        }
         return true
     }
     

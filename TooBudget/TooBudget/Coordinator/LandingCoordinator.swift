@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-final class LandingCoordinator: CoordinatorProtocol {
+final class LandingCoordinator {
     let appCoordinator: AppCoordinator
-    
+
     init(_ appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
     }
     
-    func show() -> any View {
+    func show() -> some View {
         LandingView(LandingViewModel(self))
     }
     

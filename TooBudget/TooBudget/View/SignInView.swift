@@ -117,7 +117,10 @@ struct SignInView: View {
         }
         .presentationBackground(.clear)
         .ignoresSafeArea()
-        .onDisappear() {
+        .onAppear {
+            AnalyticsService.specialScreenView("Sign In")
+        }
+        .onDisappear {
             dissmis()
         }
     }

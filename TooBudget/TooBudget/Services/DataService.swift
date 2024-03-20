@@ -2,61 +2,69 @@
 //  DataService.swift
 //  TooBudget
 //
-//  Created by Jorge Paiz on 2/7/24.
+//  Created by Jorge Paiz on 2/12/24.
 //
 
 import Foundation
 import SwiftData
 
-final class DataService {
+final class DataService: DataProtocol {
     // singleton
     static let shared = DataService()
     private init() {}
     
-    @MainActor
-    private let context = setupContainer(inMemory: false)
+    var inMemory = false
     
-    @MainActor
-    private static func setupContainer(inMemory: Bool) -> ModelContext {
+    lazy var container: ModelContainer = {
+        setupContainer()
+    }()
+    
+    private func setupContainer() -> ModelContainer {
         do {
             let configuration = ModelConfiguration(isStoredInMemoryOnly: inMemory)
-            let container = try ModelContainer(for: UserModel.self, configurations: configuration)
-            return container.mainContext
+            return try ModelContainer(for: UserModel.self, BudgetModel.self, configurations: configuration)
         } catch {
+            CrashlyticsService.logError(error)
             fatalError("Could not create the database on this device.")
         }
     }
     
-    @MainActor
-    func fetchAllUsers() throws -> [UserModel] {
-        let descriptor = FetchDescriptor<UserModel>(sortBy: [SortDescriptor(\.name)])
-        do {
-            return try context.fetch(descriptor)
-        } catch {
-            print("Error fetch all user from DataBase, detail: \(error.localizedDescription)")
-            throw DataSeviceError.featchAllUsers
-        }
+    func deleteModel() throws {
+        let context = ModelContext(container)
+        try context.delete(model: UserModel.self)
     }
     
-    @MainActor
-    func insertUser(_ user: UserModel) throws {
-        context.insert(user)
+    func testDataBase() {
+        var user: UserModel {
+            UserModel(
+                id: "u" + String(Int.random(in: 0...100)),
+                fullname: "a b",
+                email: "a@b.com"
+            )
+        }
+        
+        let userRepository = UserRepository()
         do {
-            try context.save()
+            func printUsersAfterOperation(_ operation: () throws -> Void) throws {
+                try operation()
+                let users = try userRepository.fetchAllUsers()
+                print("Users: \(users)")
+            }
+            
+            // Execute the sequence of operations with the same user object.
+            try printUsersAfterOperation {}
+            try printUsersAfterOperation { try self.deleteModel() }
+            try printUsersAfterOperation { try userRepository.createUser(user) }
+            try printUsersAfterOperation { try userRepository.createUser(user) }
         } catch {
-            print("Error inserting a new user from DataBase, detail: \(error.localizedDescription)")
-            throw DataSeviceError.insertUser
+            CrashlyticsService.logError(error)
+            print("Error on testDataBase: \(error.localizedDescription)")
         }
     }
-    
-    @MainActor
-    func deleteAllData() throws {
-        do {
-            try context.delete(model: UserModel.self)
-        } catch {
-            print("Error deleting all users, detail: \(error.localizedDescription)")
-            throw DataSeviceError.deleteAllusers
-        }
+}
+
+extension DataService: Identifiable, Equatable {
+    static func == (lhs: DataService, rhs: DataService) -> Bool {
+        lhs.id == rhs.id
     }
-    
 }

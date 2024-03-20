@@ -123,7 +123,10 @@ struct SignUpView: View {
         }
         .presentationBackground(.clear)
         .ignoresSafeArea()
-        .onDisappear() {
+        .onAppear {
+            AnalyticsService.specialScreenView("Sign Up")
+        }
+        .onDisappear {
             dissmis()
         }
     }
