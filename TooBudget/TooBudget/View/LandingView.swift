@@ -10,6 +10,7 @@ import TipKit
 
 struct LandingView: View {
     @Bindable private var viewModel: LandingViewModel
+    private let constants = Constants.shared
     
     init(_ viewModel: LandingViewModel) {
         self.viewModel = viewModel
@@ -28,13 +29,13 @@ struct LandingView: View {
                             "Landing4",
                             "Landing5",
                         ],
-                        height: Constants.scrnPercForSlider(geometry)
+                        height: constants.scrnPercForSlider(geometry)
                     )
                     
                     TitleAndSubtitleView(
                         title: "landing_title",
                         subtitle: "landing_subtitle",
-                        maxWidth: Constants.scrnPercForTitle(geometry)
+                        maxWidth: constants.scrnPercForTitle(geometry)
                     )
                     
                     Spacer()

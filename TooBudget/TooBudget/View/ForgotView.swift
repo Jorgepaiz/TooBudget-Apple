@@ -10,6 +10,7 @@ import SwiftUI
 struct ForgotView: View {
     @Bindable private var viewModel: ForgotViewModel
     @Environment(\.dismiss) private var dissmis
+    private let constants = Constants.shared
     
     init(_ viewModel: ForgotViewModel) {
         self.viewModel = viewModel
@@ -30,7 +31,7 @@ struct ForgotView: View {
                         TitleAndSubtitleView(
                             title: "forgot_password_title",
                             subtitle: "forgot_password_subtitle",
-                            maxWidth: Constants.scrnPercForTitle(geometry)
+                            maxWidth: constants.scrnPercForTitle(geometry)
                         )
                         
                         // main scroll
@@ -73,7 +74,7 @@ struct ForgotView: View {
                 }
                 .frame(
                     width: geometry.size.width,
-                    height: Constants.scrnPercForSheet(geometry),
+                    height: constants.scrnPercForSheet(geometry),
                     alignment: .center
                 )
                 .background(.backdrop.gradient)
