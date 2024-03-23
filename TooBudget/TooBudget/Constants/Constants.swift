@@ -8,20 +8,24 @@
 import SwiftUI
 
 final class Constants {
-    // screen percentages
-    static var scrnPercForSlider: (GeometryProxy) -> CGFloat {
+    static let shared = Constants()
+    private init() {}
+}
+
+extension Constants {
+    var scrnPercForSlider: (GeometryProxy) -> CGFloat {
         { geometry in
             geometry.size.height * 0.45
         }
     }
     
-    static var scrnPercForTitle: (GeometryProxy) -> CGFloat {
+    var scrnPercForTitle: (GeometryProxy) -> CGFloat {
         { geometry in
             geometry.size.width * 0.7
         }
     }
     
-    static var scrnPercForSheet: (GeometryProxy) -> CGFloat {
+    var scrnPercForSheet: (GeometryProxy) -> CGFloat {
         { geometry in
             geometry.size.height * 0.85
         }
@@ -31,5 +35,18 @@ final class Constants {
     static let sheetCornerRadius: CGFloat = 30
     static let paddingBetweenSections: CGFloat = 40
     static let paddingForCloseButton = EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 10)
+    
+    var countries: [CountryElement] {
+        if let fileUrl = Bundle.main.url(forResource: "currencies", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: fileUrl)
+                return try .init(data: data)
+            } catch {
+                return []
+            }
+        } else {
+            return []
+        }
+    }
 }
 

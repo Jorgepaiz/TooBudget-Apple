@@ -33,6 +33,11 @@
 		884846272B7C82840063ECD6 /* BudgetModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884846262B7C82840063ECD6 /* BudgetModelTest.swift */; };
 		884EE79C2B8941E50061668F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884EE79B2B8941E50061668F /* AnalyticsService.swift */; };
 		884EE79E2B894F320061668F /* CrashlyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884EE79D2B894F320061668F /* CrashlyticsService.swift */; };
+		888F39FE2BAE933B002AA5CB /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = 888F39FD2BAE933B002AA5CB /* currencies.json */; };
+		888F3A012BAE94C5002AA5CB /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F3A002BAE94C5002AA5CB /* Flag.swift */; };
+		888F3A032BAE95E5002AA5CB /* JSONSchemaSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F3A022BAE95E5002AA5CB /* JSONSchemaSupport.swift */; };
+		888F3A052BAE96E3002AA5CB /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F3A042BAE96E3002AA5CB /* Currency.swift */; };
+		888F3A072BAE9742002AA5CB /* CountryElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F3A062BAE9742002AA5CB /* CountryElement.swift */; };
 		8898F5002B6DBDF300C3C86A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F4FF2B6DBDF300C3C86A /* AppCoordinator.swift */; };
 		8898F5042B6DBEC500C3C86A /* AppViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5032B6DBEC500C3C86A /* AppViews.swift */; };
 		8898F5062B6DBF3A00C3C86A /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898F5052B6DBF3A00C3C86A /* LandingView.swift */; };
@@ -133,6 +138,11 @@
 		884EE79B2B8941E50061668F /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		884EE79D2B894F320061668F /* CrashlyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsService.swift; sourceTree = "<group>"; };
 		888AD56D2B89306200DD82E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		888F39FD2BAE933B002AA5CB /* currencies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = currencies.json; sourceTree = "<group>"; };
+		888F3A002BAE94C5002AA5CB /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		888F3A022BAE95E5002AA5CB /* JSONSchemaSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSchemaSupport.swift; sourceTree = "<group>"; };
+		888F3A042BAE96E3002AA5CB /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		888F3A062BAE9742002AA5CB /* CountryElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryElement.swift; sourceTree = "<group>"; };
 		8898F4FF2B6DBDF300C3C86A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8898F5032B6DBEC500C3C86A /* AppViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViews.swift; sourceTree = "<group>"; };
 		8898F5052B6DBF3A00C3C86A /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
@@ -222,6 +232,7 @@
 		880DCC2E2B70541600CF56ED /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				888F39FF2BAE94A0002AA5CB /* Country-Currency */,
 				8848460F2B77697A0063ECD6 /* ViewFactory.swift */,
 				880DCC2F2B70546200CF56ED /* Validations.swift */,
 				880F34F92B73767600D6C789 /* Utilities.swift */,
@@ -283,6 +294,7 @@
 				888AD56A2B892FDA00DD82E5 /* Firebase */,
 				8898F5412B6DEC6500C3C86A /* Localizable.xcstrings */,
 				8844737D2B6D9944001E347A /* Assets.xcassets */,
+				888F39FB2BAE92E5002AA5CB /* Resources */,
 				8844737F2B6D9944001E347A /* TooBudget.entitlements */,
 				884473802B6D9944001E347A /* Preview Content */,
 			);
@@ -334,6 +346,33 @@
 				888AD56D2B89306200DD82E5 /* GoogleService-Info.plist */,
 			);
 			path = Debug;
+			sourceTree = "<group>";
+		};
+		888F39FB2BAE92E5002AA5CB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				888F39FC2BAE92FD002AA5CB /* Json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		888F39FC2BAE92FD002AA5CB /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				888F39FD2BAE933B002AA5CB /* currencies.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		888F39FF2BAE94A0002AA5CB /* Country-Currency */ = {
+			isa = PBXGroup;
+			children = (
+				888F3A002BAE94C5002AA5CB /* Flag.swift */,
+				888F3A042BAE96E3002AA5CB /* Currency.swift */,
+				888F3A062BAE9742002AA5CB /* CountryElement.swift */,
+				888F3A022BAE95E5002AA5CB /* JSONSchemaSupport.swift */,
+			);
+			path = "Country-Currency";
 			sourceTree = "<group>";
 		};
 		8898F4FD2B6DBAD000C3C86A /* ViewModel */ = {
@@ -592,6 +631,7 @@
 				8844738A2B6D9DBD001E347A /* Launch Screen.storyboard in Resources */,
 				884473822B6D9944001E347A /* Preview Assets.xcassets in Resources */,
 				8898F5422B6DEC6500C3C86A /* Localizable.xcstrings in Resources */,
+				888F39FE2BAE933B002AA5CB /* currencies.json in Resources */,
 				8844737E2B6D9944001E347A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,6 +689,7 @@
 				88B70E372B850B2B00663FE6 /* FirestoreCollections.swift in Sources */,
 				8898F5442B6DEE2F00C3C86A /* ButtonStyles.swift in Sources */,
 				88D9F0C22B759C70006E7133 /* BudgetCoordinator.swift in Sources */,
+				888F3A012BAE94C5002AA5CB /* Flag.swift in Sources */,
 				8898F5402B6DE32400C3C86A /* TextStyles.swift in Sources */,
 				88C842F12B6E8AA2009BB0BE /* SignInViewModel.swift in Sources */,
 				88C842F32B6E8CAC009BB0BE /* CloseButtonView.swift in Sources */,
@@ -685,6 +726,7 @@
 				8898F53E2B6DE2B600C3C86A /* GroupStyles.swift in Sources */,
 				884846182B7ABA370063ECD6 /* DataService.swift in Sources */,
 				884EE79C2B8941E50061668F /* AnalyticsService.swift in Sources */,
+				888F3A052BAE96E3002AA5CB /* Currency.swift in Sources */,
 				88B70E312B84165F00663FE6 /* FirebaseServiceError.swift in Sources */,
 				8898F5002B6DBDF300C3C86A /* AppCoordinator.swift in Sources */,
 				88D9F0BC2B755039006E7133 /* UserRepository.swift in Sources */,
@@ -699,7 +741,9 @@
 				88D9F0742B740C49006E7133 /* BudgetModel.swift in Sources */,
 				88C842EF2B6E8A90009BB0BE /* SignInView.swift in Sources */,
 				88D9F0762B740CE4006E7133 /* BudgetType.swift in Sources */,
+				888F3A032BAE95E5002AA5CB /* JSONSchemaSupport.swift in Sources */,
 				880F34FA2B73767600D6C789 /* Utilities.swift in Sources */,
+				888F3A072BAE9742002AA5CB /* CountryElement.swift in Sources */,
 				8898F5042B6DBEC500C3C86A /* AppViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

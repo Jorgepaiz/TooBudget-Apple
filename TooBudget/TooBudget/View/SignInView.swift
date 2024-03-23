@@ -11,6 +11,7 @@ struct SignInView: View {
     @Bindable private var viewModel: SignInViewModel
     @FocusState private var focusedField: SignInViewModel.Fields?
     @Environment(\.dismiss) private var dissmis
+    private let constants = Constants.shared
     
     init(_ viewModel: SignInViewModel) {
         self.viewModel = viewModel
@@ -31,7 +32,7 @@ struct SignInView: View {
                         TitleAndSubtitleView(
                             title: "sign_in_title",
                             subtitle: "sign_in_subtitle",
-                            maxWidth: Constants.scrnPercForTitle(geometry)
+                            maxWidth: constants.scrnPercForTitle(geometry)
                         )
                         
                         // main scroll
@@ -107,7 +108,7 @@ struct SignInView: View {
                 }
                 .frame(
                     width: geometry.size.width,
-                    height: Constants.scrnPercForSheet(geometry),
+                    height: constants.scrnPercForSheet(geometry),
                     alignment: .center
                 )
                 .background(.backdrop.gradient)

@@ -11,6 +11,7 @@ struct BudgetView: View {
     @Bindable private var viewModel: BudgetViewModel
     @State private var budgets: [BudgetModel]
     @State private var searchText = ""
+    private let constants = Constants.shared
     
     init(_ viewModel: BudgetViewModel) {
         self.viewModel = viewModel
@@ -31,7 +32,7 @@ struct BudgetView: View {
                     TitleAndSubtitleView(
                         title: "budget_title",
                         subtitle: "budget_subtitle",
-                        maxWidth: Constants.scrnPercForTitle(geometry)
+                        maxWidth: constants.scrnPercForTitle(geometry)
                     )
                     
                     HStack {
